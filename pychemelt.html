@@ -475,15 +475,16 @@ The current model assumes the protein is a monomer and that the unfolding is rev
 <dl class="py method">
 <dt class="sig sig-object py" id="pychemelt.main.Sample.read_file">
 <span class="sig-name descname"><span class="pre">read_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.read_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.read_file" title="Link to this definition">#</a></dt>
-<dd><p>Read the file and load the data into the sample object
-:param file: Path to the file
-:type file: str</p>
+<dd><p>Read the file and load the data into the sample object</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>True if the file was read and loaded into the sample object</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file</strong> (<em>str</em>) – Path to the file</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the file was read and loaded into the sample object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -491,15 +492,16 @@ The current model assumes the protein is a monomer and that the unfolding is rev
 <dl class="py method">
 <dt class="sig sig-object py" id="pychemelt.main.Sample.read_multiple_files">
 <span class="sig-name descname"><span class="pre">read_multiple_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.read_multiple_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.read_multiple_files" title="Link to this definition">#</a></dt>
-<dd><p>Read multiple files and load the data into the sample object
-:param files: List of paths to the files
-:type files: list</p>
+<dd><p>Read multiple files and load the data into the sample object</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>True if the files were read and loaded into the sample object</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>files</strong> (<em>list</em><em> or </em><em>str</em>) – List of paths to the files (or a single path)</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the files were read and loaded into the sample object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -508,37 +510,64 @@ The current model assumes the protein is a monomer and that the unfolding is rev
 <dt class="sig sig-object py" id="pychemelt.main.Sample.set_signal">
 <span class="sig-name descname"><span class="pre">set_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal_names</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.set_signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.set_signal" title="Link to this definition">#</a></dt>
 <dd><p>Set multiple signals to be used for the analysis.
-This way, we can fit globally multiple signals at the same time, such as 350nm and 330nm
-:param signal_names: List of names of the signals to be used. E.g., [‘350nm’,’330nm’]
-:type signal_names: list</p>
+This way, we can fit globally multiple signals at the same time, such as 350nm and 330nm</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>signal_names</strong> (<em>list</em><em> or </em><em>str</em>) – List of names of the signals to be used. E.g., [‘350nm’,’330nm’] or a single name</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method creates/updates the following attributes on the instance:
+- signal_lst_pre_multiple, temp_lst_pre_multiple : lists of lists
+- signal_names : list of signal name strings
+- nr_signals : int, number of signal types</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pychemelt.main.Sample.set_denaturant_concentrations">
 <span class="sig-name descname"><span class="pre">set_denaturant_concentrations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">concentrations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.set_denaturant_concentrations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.set_denaturant_concentrations" title="Link to this definition">#</a></dt>
-<dd><p>Set the denaturant concentrations for the sample
-:param concentrations: List of denaturant concentrations
-:type concentrations: list</p>
+<dd><p>Set the denaturant concentrations for the sample</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>concentrations</strong> (<em>list</em><em>, </em><em>optional</em>) – List of denaturant concentrations. If None, use the sample conditions</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Creates/updates attribute <cite>denaturant_concentrations_pre</cite> (numpy.ndarray)</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pychemelt.main.Sample.select_conditions">
 <span class="sig-name descname"><span class="pre">select_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boolean_lst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalise_to_global_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.select_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.select_conditions" title="Link to this definition">#</a></dt>
-<dd><p>For each signal, select the conditions to be used for the analysis
-:param boolean_lst: List of boolean lists, one for each condition
-:type boolean_lst: list
-:param normalise_to_global_max: If True, normalise the signal to the global maximum - per signal type
-:type normalise_to_global_max: bool</p>
+<dd><p>For each signal, select the conditions to be used for the analysis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>boolean_lst</strong> (<em>list</em><em> of </em><em>bool</em><em>, </em><em>optional</em>) – List of booleans selecting which conditions to keep. If None, keep all.</p></li>
+<li><p><strong>normalise_to_global_max</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, normalise the signal to the global maximum - per signal type</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Creates/updates several attributes used by downstream fitting:
+- signal_lst_multiple, temp_lst_multiple : lists of lists with selected data
+- denaturant_concentrations : list of selected denaturant concentrations
+- denaturant_concentrations_expanded : flattened numpy array matching expanded signals
+- boolean_lst, normalise_to_global_max, nr_den : control flags/values</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pychemelt.main.Sample.set_temperature_range">
 <span class="sig-name descname"><span class="pre">set_temperature_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.set_temperature_range"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.set_temperature_range" title="Link to this definition">#</a></dt>
-<dd><p>Set the temperature range for the sample
-:param min_temp: Minimum temperature
-:type min_temp: float
-:param max_temp: Maximum temperature
-:type max_temp: float</p>
+<dd><p>Set the temperature range for the sample</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>min_temp</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum temperature</p></li>
+<li><p><strong>max_temp</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum temperature</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -552,23 +581,34 @@ e.g., all 350nm datasets are mapped to 0, all 330nm datasets to 1, etc.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pychemelt.main.Sample.estimate_derivative">
 <span class="sig-name descname"><span class="pre">estimate_derivative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.estimate_derivative"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.estimate_derivative" title="Link to this definition">#</a></dt>
-<dd><p>Estimate the derivative of the signal using Savitzky-Golay filter
-:param window_length: Length of the filter window in degrees
-:type window_length: int</p>
+<dd><p>Estimate the derivative of the signal using Savitzky-Golay filter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>window_length</strong> (<em>int</em><em>, </em><em>optional</em>) – Length of the filter window in degrees</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Creates/updates attributes:
+- temp_deriv_lst_multiple, deriv_lst_multiple : lists storing estimated derivatives and corresponding temps</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pychemelt.main.Sample.guess_Tm">
 <span class="sig-name descname"><span class="pre">guess_Tm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.guess_Tm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.guess_Tm" title="Link to this definition">#</a></dt>
-<dd><p>Guess the Tm of the sample using the derivative of the signal
-:param x1: Shift from the minimum and maximum temperature to estimate the median of the initial and final baselines
-:type x1: float
-:param x2: Shift from the minimum and maximum temperature to estimate the median of the initial and final baselines
-:type x2: float</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>x2 must be greater than x1</p>
-</div>
+<dd><p>Guess the Tm of the sample using the derivative of the signal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> (<em>float</em><em>, </em><em>optional</em>) – Shift from the minimum and maximum temperature to estimate the median of the initial and final baselines</p></li>
+<li><p><strong>x2</strong> (<em>float</em><em>, </em><em>optional</em>) – Shift from the minimum and maximum temperature to estimate the median of the initial and final baselines</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>x2 must be greater than x1.</p>
+<p>This method creates/updates attributes:
+- t_melting_init_multiple : list of initial Tm guesses per signal
+- t_melting_df_multiple : list of pandas.DataFrame objects with Tm vs Denaturant</p>
 </dd></dl>
 
 <dl class="py method">
@@ -579,26 +619,37 @@ e.g., all 350nm datasets are mapped to 0, all 330nm datasets to 1, etc.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pychemelt.main.Sample.estimate_baseline_parameters">
 <span class="sig-name descname"><span class="pre">estimate_baseline_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_range_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_range_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_order_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_order_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.estimate_baseline_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.estimate_baseline_parameters" title="Link to this definition">#</a></dt>
-<dd><p>Estimate the baseline parameters for multiple signals
-:param window_range_native: Range of the window (in degrees) to estimate the baselines and slopes of the native state
-:type window_range_native: int
-:param window_range_unfolded: Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state
-:type window_range_unfolded: int
-:param poly_order_native: Order of the polynomial to fit the native state baseline (0, 1 or 2)
-:type poly_order_native: int
-:param poly_order_unfolded: Order of the polynomial to fit the unfolded state baseline (0, 1 or 2)
-:type poly_order_unfolded: int</p>
+<dd><p>Estimate the baseline parameters for multiple signals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window_range_native</strong> (<em>int</em><em>, </em><em>optional</em>) – Range of the window (in degrees) to estimate the baselines and slopes of the native state</p></li>
+<li><p><strong>window_range_unfolded</strong> (<em>int</em><em>, </em><em>optional</em>) – Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state</p></li>
+<li><p><strong>poly_order_native</strong> (<em>int</em><em>, </em><em>optional</em>) – Order of the polynomial to fit the native state baseline (0, 1 or 2)</p></li>
+<li><p><strong>poly_order_unfolded</strong> (<em>int</em><em>, </em><em>optional</em>) – Order of the polynomial to fit the unfolded state baseline (0, 1 or 2)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method sets or updates these attributes:
+- bNs_per_signal, bUs_per_signal, kNs_per_signal, kUs_per_signal, qNs_per_signal, qUs_per_signal
+- poly_order_native, poly_order_unfolded
+- fit_slopes_dic (via init_slope_dic)</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pychemelt.main.Sample.estimate_baseline_parameters_exponential">
 <span class="sig-name descname"><span class="pre">estimate_baseline_parameters_exponential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_range_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_range_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.estimate_baseline_parameters_exponential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.estimate_baseline_parameters_exponential" title="Link to this definition">#</a></dt>
 <dd><p>Estimate the baseline parameters for multiple signals
-Using exponential functions
-:param window_range_native: Range of the window (in degrees) to estimate the baselines and slopes of the native state
-:type window_range_native: int
-:param window_range_unfolded: Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state
-:type window_range_unfolded: int</p>
+Using exponential functions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window_range_native</strong> (<em>int</em><em>, </em><em>optional</em>) – Range of the window (in degrees) to estimate the baselines and slopes of the native state</p></li>
+<li><p><strong>window_range_unfolded</strong> (<em>int</em><em>, </em><em>optional</em>) – Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -620,9 +671,9 @@ Quadratic dependence for the native state - Quadratic dependence for the unfolde
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>window_range_native</strong> (<em>int</em>) – Range of the window (in degrees) to estimate the baselines and slopes of the native state</p></li>
-<li><p><strong>window_range_unfolded</strong> (<em>int</em>) – Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state</p></li>
-<li><p><strong>exclude_ids_lst</strong> (<em>list</em>) – List of ids to exclude from the fitting</p></li>
+<li><p><strong>window_range_native</strong> (<em>int</em><em>, </em><em>optional</em>) – Range of the window (in degrees) to estimate the baselines and slopes of the native state</p></li>
+<li><p><strong>window_range_unfolded</strong> (<em>int</em><em>, </em><em>optional</em>) – Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state</p></li>
+<li><p><strong>exclude_ids_lst</strong> (<em>list</em><em> of </em><em>int</em><em>, </em><em>optional</em>) – List of ids to exclude from the fitting</p></li>
 </ul>
 </dd>
 </dl>
@@ -644,6 +695,9 @@ We fit one curve at a time, with individual parameters</p>
 <dt class="sig sig-object py" id="pychemelt.main.Sample.guess_Cp">
 <span class="sig-name descname"><span class="pre">guess_Cp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.guess_Cp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.guess_Cp" title="Link to this definition">#</a></dt>
 <dd><p>Guess the Cp of the sample by fitting a line to the Tm and dH values</p>
+<p class="rubric">Notes</p>
+<p>This method creates/updates attributes used later in fitting:
+- Tms, dHs, slope_dh_tm, intercept_dh_tm, Cp0, Cp0 assigned to self.Cp0</p>
 </dd></dl>
 
 <dl class="py method">
@@ -651,6 +705,10 @@ We fit one curve at a time, with individual parameters</p>
 <span class="sig-name descname"><span class="pre">expand_multiple_signal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.expand_multiple_signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.expand_multiple_signal" title="Link to this definition">#</a></dt>
 <dd><p>Create a single list with all the signals
 Create a single list with all the temperatures</p>
+<p class="rubric">Notes</p>
+<p>Creates/updates attributes:
+- signal_lst_expanded, temp_lst_expanded
+- signal_lst_expanded_subset, temp_lst_expanded_subset</p>
 </dd></dl>
 
 <dl class="py method">
@@ -675,24 +733,24 @@ Create a single list with all the temperatures</p>
 <span class="sig-name descname"><span class="pre">fit_thermal_unfolding_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fit_m_dep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp_limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dh_limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tm_limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.fit_thermal_unfolding_global"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.fit_thermal_unfolding_global" title="Link to this definition">#</a></dt>
 <dd><p>Fit the thermal unfolding of the sample using the signal and temperature data
 We fit all the curves at once, with global thermodynamic parameters but local slopes and local baselines)
-Multiple signals can be fitted at the same time, such as 350nm and 330nm
-:param fit_m_dep: If True, fit the temperature dependence of the m-value
-:type fit_m_dep: bool
-:param cp_limits: List of two values, the lower and upper bounds for the Cp value</p>
-<blockquote>
-<div><p>If None, the bounds are set automatically</p>
-</div></blockquote>
+Multiple signals can be fitted at the same time, such as 350nm and 330nm</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dh_limits</strong> (<em>list</em>) – List of two values, the lower and upper bounds for the dH value
-If None, the bounds are set automatically</p></li>
-<li><p><strong>tm_limits</strong> (<em>list</em>) – List of two values, the lower and upper bounds for the Tm value
-If None, the bounds are set automatically</p></li>
-<li><p><strong>cp_value</strong> (<em>float</em>) – If provided, the Cp value is fixed to this value, the bounds are ignored</p></li>
+<li><p><strong>fit_m_dep</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, fit the temperature dependence of the m-value</p></li>
+<li><p><strong>cp_limits</strong> (<em>list</em><em>, </em><em>optional</em>) – List of two values, the lower and upper bounds for the Cp value. If None, bounds set automatically</p></li>
+<li><p><strong>dh_limits</strong> (<em>list</em><em>, </em><em>optional</em>) – List of two values, the lower and upper bounds for the dH value. If None, bounds set automatically</p></li>
+<li><p><strong>tm_limits</strong> (<em>list</em><em>, </em><em>optional</em>) – List of two values, the lower and upper bounds for the Tm value. If None, bounds set automatically</p></li>
+<li><p><strong>cp_value</strong> (<em>float</em><em>, </em><em>optional</em>) – If provided, the Cp value is fixed to this value, the bounds are ignored</p></li>
 </ul>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>This is a heavy routine that creates/updates many fitting-related attributes, including:
+- bNs_expanded, bUs_expanded, kNs_expanded, kUs_expanded, qNs_expanded, qUs_expanded
+- p0, low_bounds, high_bounds, global_fit_params, rel_errors
+- predicted_lst_multiple, params_names, params_df, dg_df
+- flags: global_fit_done, fit_m_dep, limited_tm, limited_dh, limited_cp, fixed_cp</p>
 </dd></dl>
 
 <dl class="py method">
@@ -702,6 +760,8 @@ If None, the bounds are set automatically</p></li>
 We fit all the curves at once, with global thermodynamic parameters and global slopes (but local baselines)
 Multiple refers to the fact that we fit many signals at the same time, such as 350nm and 330nm
 Must be run after fit_thermal_unfolding_global_multiple</p>
+<p class="rubric">Notes</p>
+<p>Updates global fitting attributes and sets <cite>global_global_fit_done</cite> when complete.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -709,9 +769,16 @@ Must be run after fit_thermal_unfolding_global_multiple</p>
 <span class="sig-name descname"><span class="pre">fit_thermal_unfolding_global_global_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_scale_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.fit_thermal_unfolding_global_global_global"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.fit_thermal_unfolding_global_global_global" title="Link to this definition">#</a></dt>
 <dd><p>Fit the thermal unfolding of the sample using the signal and temperature data
 We fit all the curves at once, with global thermodynamic parameters, global slopes and global baselines
-Must be run after fit_thermal_unfolding_global_global
-:param model_scale_factor: If True, model a scale factor for each denaturant concentration
-:type model_scale_factor: bool</p>
+Must be run after fit_thermal_unfolding_global_global</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model_scale_factor</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, model a scale factor for each denaturant concentration</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Updates many global fitting attributes and sets <cite>global_global_global_fit_done</cite> when complete. If
+<cite>model_scale_factor</cite> is True the method also creates scaled signal attributes:
+- signal_lst_multiple_scaled, predicted_lst_multiple_scaled</p>
 </dd></dl>
 
 <dl class="py method">
@@ -719,6 +786,15 @@ Must be run after fit_thermal_unfolding_global_global
 <span class="sig-name descname"><span class="pre">signal_to_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'raw'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.signal_to_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.signal_to_df" title="Link to this definition">#</a></dt>
 <dd><p>Create a dataframe with three columns: Temperature, Signal, and Denaturant.
 Optimized for speed by avoiding per-curve DataFrame creation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal_type</strong> (<em>{'raw'</em><em>, </em><em>'fitted'</em><em>, </em><em>'derivative'}</em><em>, </em><em>optional</em>) – Which signal to include in the dataframe. ‘raw’ uses experimental data, ‘fitted’ uses model predictions,
+‘derivative’ uses the estimated derivative signal.</p></li>
+<li><p><strong>scaled</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True and signal_type == ‘fitted’ or ‘raw’, use the scaled versions if available.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

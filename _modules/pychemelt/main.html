@@ -422,10 +422,16 @@
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Read the file and load the data into the sample object</span>
-<span class="sd">        Args:</span>
-<span class="sd">            file (str): Path to the file</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            bool: True if the file was read and loaded into the sample object</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        file : str</span>
+<span class="sd">            Path to the file</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True if the file was read and loaded into the sample object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">file_type</span> <span class="o">=</span> <span class="n">detect_file_type</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
@@ -500,10 +506,16 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">read_multiple_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Read multiple files and load the data into the sample object</span>
-<span class="sd">        Args:</span>
-<span class="sd">            files (list): List of paths to the files</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            bool: True if the files were read and loaded into the sample object</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        files : list or str</span>
+<span class="sd">            List of paths to the files (or a single path)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True if the files were read and loaded into the sample object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Convert to list if not isinstance(files, list):</span>
@@ -525,8 +537,18 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set multiple signals to be used for the analysis.</span>
 <span class="sd">        This way, we can fit globally multiple signals at the same time, such as 350nm and 330nm</span>
-<span class="sd">        Args:</span>
-<span class="sd">            signal_names (list): List of names of the signals to be used. E.g., [&#39;350nm&#39;,&#39;330nm&#39;]</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        signal_names : list or str</span>
+<span class="sd">            List of names of the signals to be used. E.g., [&#39;350nm&#39;,&#39;330nm&#39;] or a single name</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This method creates/updates the following attributes on the instance:</span>
+<span class="sd">        - signal_lst_pre_multiple, temp_lst_pre_multiple : lists of lists</span>
+<span class="sd">        - signal_names : list of signal name strings</span>
+<span class="sd">        - nr_signals : int, number of signal types</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Convert signal_names to list if it is a string</span>
@@ -558,8 +580,15 @@
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the denaturant concentrations for the sample</span>
-<span class="sd">        Args:</span>
-<span class="sd">            concentrations (list): List of denaturant concentrations</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        concentrations : list, optional</span>
+<span class="sd">            List of denaturant concentrations. If None, use the sample conditions</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Creates/updates attribute `denaturant_concentrations_pre` (numpy.ndarray)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">concentrations</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -579,9 +608,21 @@
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        For each signal, select the conditions to be used for the analysis</span>
-<span class="sd">        Args:</span>
-<span class="sd">            boolean_lst (list): List of boolean lists, one for each condition</span>
-<span class="sd">            normalise_to_global_max (bool): If True, normalise the signal to the global maximum - per signal type</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        boolean_lst : list of bool, optional</span>
+<span class="sd">            List of booleans selecting which conditions to keep. If None, keep all.</span>
+<span class="sd">        normalise_to_global_max : bool, optional</span>
+<span class="sd">            If True, normalise the signal to the global maximum - per signal type</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Creates/updates several attributes used by downstream fitting:</span>
+<span class="sd">        - signal_lst_multiple, temp_lst_multiple : lists of lists with selected data</span>
+<span class="sd">        - denaturant_concentrations : list of selected denaturant concentrations</span>
+<span class="sd">        - denaturant_concentrations_expanded : flattened numpy array matching expanded signals</span>
+<span class="sd">        - boolean_lst, normalise_to_global_max, nr_den : control flags/values</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">boolean_lst</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -630,9 +671,13 @@
             <span class="n">max_temp</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the temperature range for the sample</span>
-<span class="sd">        Args:</span>
-<span class="sd">            min_temp (float): Minimum temperature</span>
-<span class="sd">            max_temp (float): Maximum temperature</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        min_temp : float, optional</span>
+<span class="sd">            Minimum temperature</span>
+<span class="sd">        max_temp : float, optional</span>
+<span class="sd">            Maximum temperature</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Limit the signal to the temperature range</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">signal_lst_multiple</span><span class="p">)):</span>
@@ -676,8 +721,16 @@
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Estimate the derivative of the signal using Savitzky-Golay filter</span>
-<span class="sd">        Args:</span>
-<span class="sd">            window_length (int): Length of the filter window in degrees</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        window_length : int, optional</span>
+<span class="sd">            Length of the filter window in degrees</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Creates/updates attributes:</span>
+<span class="sd">        - temp_deriv_lst_multiple, deriv_lst_multiple : lists storing estimated derivatives and corresponding temps</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">temp_deriv_lst_multiple</span> <span class="o">=</span> <span class="p">[]</span>
@@ -721,11 +774,21 @@
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Guess the Tm of the sample using the derivative of the signal</span>
-<span class="sd">        Args:</span>
-<span class="sd">            x1 (float): Shift from the minimum and maximum temperature to estimate the median of the initial and final baselines</span>
-<span class="sd">            x2 (float): Shift from the minimum and maximum temperature to estimate the median of the initial and final baselines</span>
-<span class="sd">        Note:</span>
-<span class="sd">            x2 must be greater than x1</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x1 : float, optional</span>
+<span class="sd">            Shift from the minimum and maximum temperature to estimate the median of the initial and final baselines</span>
+<span class="sd">        x2 : float, optional</span>
+<span class="sd">            Shift from the minimum and maximum temperature to estimate the median of the initial and final baselines</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        x2 must be greater than x1.</span>
+
+<span class="sd">        This method creates/updates attributes:</span>
+<span class="sd">        - t_melting_init_multiple : list of initial Tm guesses per signal</span>
+<span class="sd">        - t_melting_df_multiple : list of pandas.DataFrame objects with Tm vs Denaturant</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">t_melting_init_multiple</span> <span class="o">=</span> <span class="p">[]</span>
@@ -776,11 +839,24 @@
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Estimate the baseline parameters for multiple signals</span>
-<span class="sd">        Args:</span>
-<span class="sd">            window_range_native (int): Range of the window (in degrees) to estimate the baselines and slopes of the native state</span>
-<span class="sd">            window_range_unfolded (int): Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state</span>
-<span class="sd">            poly_order_native (int): Order of the polynomial to fit the native state baseline (0, 1 or 2)</span>
-<span class="sd">            poly_order_unfolded (int): Order of the polynomial to fit the unfolded state baseline (0, 1 or 2)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        window_range_native : int, optional</span>
+<span class="sd">            Range of the window (in degrees) to estimate the baselines and slopes of the native state</span>
+<span class="sd">        window_range_unfolded : int, optional</span>
+<span class="sd">            Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state</span>
+<span class="sd">        poly_order_native : int, optional</span>
+<span class="sd">            Order of the polynomial to fit the native state baseline (0, 1 or 2)</span>
+<span class="sd">        poly_order_unfolded : int, optional</span>
+<span class="sd">            Order of the polynomial to fit the unfolded state baseline (0, 1 or 2)</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This method sets or updates these attributes:</span>
+<span class="sd">        - bNs_per_signal, bUs_per_signal, kNs_per_signal, kUs_per_signal, qNs_per_signal, qUs_per_signal</span>
+<span class="sd">        - poly_order_native, poly_order_unfolded</span>
+<span class="sd">        - fit_slopes_dic (via init_slope_dic)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">bNs_per_signal</span> <span class="o">=</span> <span class="p">[]</span>
@@ -824,9 +900,13 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Estimate the baseline parameters for multiple signals</span>
 <span class="sd">        Using exponential functions</span>
-<span class="sd">        Args:</span>
-<span class="sd">            window_range_native (int): Range of the window (in degrees) to estimate the baselines and slopes of the native state</span>
-<span class="sd">            window_range_unfolded (int): Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        window_range_native : int, optional</span>
+<span class="sd">            Range of the window (in degrees) to estimate the baselines and slopes of the native state</span>
+<span class="sd">        window_range_unfolded : int, optional</span>
+<span class="sd">            Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Exponential terms</span>
@@ -901,10 +981,14 @@
 
 <span class="sd">        Then compare them using the akaike criterion</span>
 
-<span class="sd">        Args:</span>
-<span class="sd">            window_range_native (int): Range of the window (in degrees) to estimate the baselines and slopes of the native state</span>
-<span class="sd">            window_range_unfolded (int): Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state</span>
-<span class="sd">            exclude_ids_lst (list): List of ids to exclude from the fitting</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        window_range_native : int, optional</span>
+<span class="sd">            Range of the window (in degrees) to estimate the baselines and slopes of the native state</span>
+<span class="sd">        window_range_unfolded : int, optional</span>
+<span class="sd">            Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state</span>
+<span class="sd">        exclude_ids_lst : list of int, optional</span>
+<span class="sd">            List of ids to exclude from the fitting</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">signal_lst_orig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_lst</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -1059,6 +1143,11 @@
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Guess the Cp of the sample by fitting a line to the Tm and dH values</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This method creates/updates attributes used later in fitting:</span>
+<span class="sd">        - Tms, dHs, slope_dh_tm, intercept_dh_tm, Cp0, Cp0 assigned to self.Cp0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Requires self.single_fit_done</span>
@@ -1123,6 +1212,12 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a single list with all the signals</span>
 <span class="sd">        Create a single list with all the temperatures</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Creates/updates attributes:</span>
+<span class="sd">        - signal_lst_expanded, temp_lst_expanded</span>
+<span class="sd">        - signal_lst_expanded_subset, temp_lst_expanded_subset</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Create a single list with all the signals</span>
@@ -1253,16 +1348,27 @@
 <span class="sd">        Fit the thermal unfolding of the sample using the signal and temperature data</span>
 <span class="sd">        We fit all the curves at once, with global thermodynamic parameters but local slopes and local baselines)</span>
 <span class="sd">        Multiple signals can be fitted at the same time, such as 350nm and 330nm</span>
-<span class="sd">        Args:</span>
-<span class="sd">            fit_m_dep (bool): If True, fit the temperature dependence of the m-value</span>
-<span class="sd">            cp_limits (list): List of two values, the lower and upper bounds for the Cp value</span>
-<span class="sd">                If None, the bounds are set automatically</span>
-<span class="sd">            dh_limits (list): List of two values, the lower and upper bounds for the dH value</span>
-<span class="sd">                If None, the bounds are set automatically</span>
-<span class="sd">            tm_limits (list): List of two values, the lower and upper bounds for the Tm value</span>
-<span class="sd">                If None, the bounds are set automatically</span>
-<span class="sd">            cp_value (float): If provided, the Cp value is fixed to this value, the bounds are ignored</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fit_m_dep : bool, optional</span>
+<span class="sd">            If True, fit the temperature dependence of the m-value</span>
+<span class="sd">        cp_limits : list, optional</span>
+<span class="sd">            List of two values, the lower and upper bounds for the Cp value. If None, bounds set automatically</span>
+<span class="sd">        dh_limits : list, optional</span>
+<span class="sd">            List of two values, the lower and upper bounds for the dH value. If None, bounds set automatically</span>
+<span class="sd">        tm_limits : list, optional</span>
+<span class="sd">            List of two values, the lower and upper bounds for the Tm value. If None, bounds set automatically</span>
+<span class="sd">        cp_value : float, optional</span>
+<span class="sd">            If provided, the Cp value is fixed to this value, the bounds are ignored</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This is a heavy routine that creates/updates many fitting-related attributes, including:</span>
+<span class="sd">        - bNs_expanded, bUs_expanded, kNs_expanded, kUs_expanded, qNs_expanded, qUs_expanded</span>
+<span class="sd">        - p0, low_bounds, high_bounds, global_fit_params, rel_errors</span>
+<span class="sd">        - predicted_lst_multiple, params_names, params_df, dg_df</span>
+<span class="sd">        - flags: global_fit_done, fit_m_dep, limited_tm, limited_dh, limited_cp, fixed_cp</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Requires Cp0</span>
@@ -1557,6 +1663,9 @@
 <span class="sd">        Multiple refers to the fact that we fit many signals at the same time, such as 350nm and 330nm</span>
 <span class="sd">        Must be run after fit_thermal_unfolding_global_multiple</span>
 
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Updates global fitting attributes and sets `global_global_fit_done` when complete.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Requires global fit done</span>
@@ -1759,8 +1868,17 @@
 <span class="sd">        Fit the thermal unfolding of the sample using the signal and temperature data</span>
 <span class="sd">        We fit all the curves at once, with global thermodynamic parameters, global slopes and global baselines</span>
 <span class="sd">        Must be run after fit_thermal_unfolding_global_global</span>
-<span class="sd">        Args:</span>
-<span class="sd">            model_scale_factor (bool): If True, model a scale factor for each denaturant concentration</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model_scale_factor : bool, optional</span>
+<span class="sd">            If True, model a scale factor for each denaturant concentration</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Updates many global fitting attributes and sets `global_global_global_fit_done` when complete. If</span>
+<span class="sd">        `model_scale_factor` is True the method also creates scaled signal attributes:</span>
+<span class="sd">        - signal_lst_multiple_scaled, predicted_lst_multiple_scaled</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Requires global global fit done</span>
@@ -2155,7 +2273,16 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create a dataframe with three columns: Temperature, Signal, and Denaturant.</span>
 <span class="sd">        Optimized for speed by avoiding per-curve DataFrame creation.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        signal_type : {&#39;raw&#39;, &#39;fitted&#39;, &#39;derivative&#39;}, optional</span>
+<span class="sd">            Which signal to include in the dataframe. &#39;raw&#39; uses experimental data, &#39;fitted&#39; uses model predictions,</span>
+<span class="sd">            &#39;derivative&#39; uses the estimated derivative signal.</span>
+<span class="sd">        scaled : bool, optional</span>
+<span class="sd">            If True and signal_type == &#39;fitted&#39; or &#39;raw&#39;, use the scaled versions if available.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="c1"># Flatten all arrays and repeat denaturant values accordingly</span>
 
         <span class="k">if</span> <span class="n">signal_type</span> <span class="o">==</span> <span class="s1">&#39;derivative&#39;</span><span class="p">:</span>
