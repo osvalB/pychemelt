@@ -80,10 +80,16 @@ class Sample:
 
         """
         Read the file and load the data into the sample object
-        Args:
-            file (str): Path to the file
-        Returns:
-            bool: True if the file was read and loaded into the sample object
+
+        Parameters
+        ----------
+        file : str
+            Path to the file
+
+        Returns
+        -------
+        bool
+            True if the file was read and loaded into the sample object
         """
 
         file_type = detect_file_type(file)
@@ -155,10 +161,16 @@ class Sample:
     def read_multiple_files(self, files):
         """
         Read multiple files and load the data into the sample object
-        Args:
-            files (list): List of paths to the files
-        Returns:
-            bool: True if the files were read and loaded into the sample object
+
+        Parameters
+        ----------
+        files : list or str
+            List of paths to the files (or a single path)
+
+        Returns
+        -------
+        bool
+            True if the files were read and loaded into the sample object
         """
 
         # Convert to list if not isinstance(files, list):
@@ -177,8 +189,18 @@ class Sample:
         """
         Set multiple signals to be used for the analysis.
         This way, we can fit globally multiple signals at the same time, such as 350nm and 330nm
-        Args:
-            signal_names (list): List of names of the signals to be used. E.g., ['350nm','330nm']
+
+        Parameters
+        ----------
+        signal_names : list or str
+            List of names of the signals to be used. E.g., ['350nm','330nm'] or a single name
+
+        Notes
+        -----
+        This method creates/updates the following attributes on the instance:
+        - signal_lst_pre_multiple, temp_lst_pre_multiple : lists of lists
+        - signal_names : list of signal name strings
+        - nr_signals : int, number of signal types
         """
 
         # Convert signal_names to list if it is a string
@@ -207,8 +229,15 @@ class Sample:
 
         """
         Set the denaturant concentrations for the sample
-        Args:
-            concentrations (list): List of denaturant concentrations
+
+        Parameters
+        ----------
+        concentrations : list, optional
+            List of denaturant concentrations. If None, use the sample conditions
+
+        Notes
+        -----
+        Creates/updates attribute `denaturant_concentrations_pre` (numpy.ndarray)
         """
 
         if concentrations is None:
@@ -225,9 +254,21 @@ class Sample:
 
         """
         For each signal, select the conditions to be used for the analysis
-        Args:
-            boolean_lst (list): List of boolean lists, one for each condition
-            normalise_to_global_max (bool): If True, normalise the signal to the global maximum - per signal type
+
+        Parameters
+        ----------
+        boolean_lst : list of bool, optional
+            List of booleans selecting which conditions to keep. If None, keep all.
+        normalise_to_global_max : bool, optional
+            If True, normalise the signal to the global maximum - per signal type
+
+        Notes
+        -----
+        Creates/updates several attributes used by downstream fitting:
+        - signal_lst_multiple, temp_lst_multiple : lists of lists with selected data
+        - denaturant_concentrations : list of selected denaturant concentrations
+        - denaturant_concentrations_expanded : flattened numpy array matching expanded signals
+        - boolean_lst, normalise_to_global_max, nr_den : control flags/values
         """
 
         if boolean_lst is None:
@@ -273,9 +314,13 @@ class Sample:
             max_temp=100):
         """
         Set the temperature range for the sample
-        Args:
-            min_temp (float): Minimum temperature
-            max_temp (float): Maximum temperature
+
+        Parameters
+        ----------
+        min_temp : float, optional
+            Minimum temperature
+        max_temp : float, optional
+            Maximum temperature
         """
         # Limit the signal to the temperature range
         for i in range(len(self.signal_lst_multiple)):
@@ -313,8 +358,16 @@ class Sample:
 
         """
         Estimate the derivative of the signal using Savitzky-Golay filter
-        Args:
-            window_length (int): Length of the filter window in degrees
+
+        Parameters
+        ----------
+        window_length : int, optional
+            Length of the filter window in degrees
+
+        Notes
+        -----
+        Creates/updates attributes:
+        - temp_deriv_lst_multiple, deriv_lst_multiple : lists storing estimated derivatives and corresponding temps
         """
 
         self.temp_deriv_lst_multiple = []
@@ -355,11 +408,21 @@ class Sample:
 
         """
         Guess the Tm of the sample using the derivative of the signal
-        Args:
-            x1 (float): Shift from the minimum and maximum temperature to estimate the median of the initial and final baselines
-            x2 (float): Shift from the minimum and maximum temperature to estimate the median of the initial and final baselines
-        Note:
-            x2 must be greater than x1
+
+        Parameters
+        ----------
+        x1 : float, optional
+            Shift from the minimum and maximum temperature to estimate the median of the initial and final baselines
+        x2 : float, optional
+            Shift from the minimum and maximum temperature to estimate the median of the initial and final baselines
+
+        Notes
+        -----
+        x2 must be greater than x1.
+
+        This method creates/updates attributes:
+        - t_melting_init_multiple : list of initial Tm guesses per signal
+        - t_melting_df_multiple : list of pandas.DataFrame objects with Tm vs Denaturant
         """
 
         self.t_melting_init_multiple = []
@@ -404,11 +467,24 @@ class Sample:
 
         """
         Estimate the baseline parameters for multiple signals
-        Args:
-            window_range_native (int): Range of the window (in degrees) to estimate the baselines and slopes of the native state
-            window_range_unfolded (int): Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state
-            poly_order_native (int): Order of the polynomial to fit the native state baseline (0, 1 or 2)
-            poly_order_unfolded (int): Order of the polynomial to fit the unfolded state baseline (0, 1 or 2)
+
+        Parameters
+        ----------
+        window_range_native : int, optional
+            Range of the window (in degrees) to estimate the baselines and slopes of the native state
+        window_range_unfolded : int, optional
+            Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state
+        poly_order_native : int, optional
+            Order of the polynomial to fit the native state baseline (0, 1 or 2)
+        poly_order_unfolded : int, optional
+            Order of the polynomial to fit the unfolded state baseline (0, 1 or 2)
+
+        Notes
+        -----
+        This method sets or updates these attributes:
+        - bNs_per_signal, bUs_per_signal, kNs_per_signal, kUs_per_signal, qNs_per_signal, qUs_per_signal
+        - poly_order_native, poly_order_unfolded
+        - fit_slopes_dic (via init_slope_dic)
         """
 
         self.bNs_per_signal = []
@@ -449,9 +525,13 @@ class Sample:
         """
         Estimate the baseline parameters for multiple signals
         Using exponential functions
-        Args:
-            window_range_native (int): Range of the window (in degrees) to estimate the baselines and slopes of the native state
-            window_range_unfolded (int): Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state
+
+        Parameters
+        ----------
+        window_range_native : int, optional
+            Range of the window (in degrees) to estimate the baselines and slopes of the native state
+        window_range_unfolded : int, optional
+            Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state
         """
 
         # Exponential terms
@@ -520,10 +600,14 @@ class Sample:
 
         Then compare them using the akaike criterion
 
-        Args:
-            window_range_native (int): Range of the window (in degrees) to estimate the baselines and slopes of the native state
-            window_range_unfolded (int): Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state
-            exclude_ids_lst (list): List of ids to exclude from the fitting
+        Parameters
+        ----------
+        window_range_native : int, optional
+            Range of the window (in degrees) to estimate the baselines and slopes of the native state
+        window_range_unfolded : int, optional
+            Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state
+        exclude_ids_lst : list of int, optional
+            List of ids to exclude from the fitting
         """
 
         self.signal_lst_orig = self.signal_lst.copy()
@@ -669,6 +753,11 @@ class Sample:
 
         """
         Guess the Cp of the sample by fitting a line to the Tm and dH values
+
+        Notes
+        -----
+        This method creates/updates attributes used later in fitting:
+        - Tms, dHs, slope_dh_tm, intercept_dh_tm, Cp0, Cp0 assigned to self.Cp0
         """
 
         # Requires self.single_fit_done
@@ -730,6 +819,12 @@ class Sample:
         """
         Create a single list with all the signals
         Create a single list with all the temperatures
+
+        Notes
+        -----
+        Creates/updates attributes:
+        - signal_lst_expanded, temp_lst_expanded
+        - signal_lst_expanded_subset, temp_lst_expanded_subset
         """
 
         # Create a single list with all the signals
@@ -848,16 +943,27 @@ class Sample:
         Fit the thermal unfolding of the sample using the signal and temperature data
         We fit all the curves at once, with global thermodynamic parameters but local slopes and local baselines)
         Multiple signals can be fitted at the same time, such as 350nm and 330nm
-        Args:
-            fit_m_dep (bool): If True, fit the temperature dependence of the m-value
-            cp_limits (list): List of two values, the lower and upper bounds for the Cp value
-                If None, the bounds are set automatically
-            dh_limits (list): List of two values, the lower and upper bounds for the dH value
-                If None, the bounds are set automatically
-            tm_limits (list): List of two values, the lower and upper bounds for the Tm value
-                If None, the bounds are set automatically
-            cp_value (float): If provided, the Cp value is fixed to this value, the bounds are ignored
 
+        Parameters
+        ----------
+        fit_m_dep : bool, optional
+            If True, fit the temperature dependence of the m-value
+        cp_limits : list, optional
+            List of two values, the lower and upper bounds for the Cp value. If None, bounds set automatically
+        dh_limits : list, optional
+            List of two values, the lower and upper bounds for the dH value. If None, bounds set automatically
+        tm_limits : list, optional
+            List of two values, the lower and upper bounds for the Tm value. If None, bounds set automatically
+        cp_value : float, optional
+            If provided, the Cp value is fixed to this value, the bounds are ignored
+
+        Notes
+        -----
+        This is a heavy routine that creates/updates many fitting-related attributes, including:
+        - bNs_expanded, bUs_expanded, kNs_expanded, kUs_expanded, qNs_expanded, qUs_expanded
+        - p0, low_bounds, high_bounds, global_fit_params, rel_errors
+        - predicted_lst_multiple, params_names, params_df, dg_df
+        - flags: global_fit_done, fit_m_dep, limited_tm, limited_dh, limited_cp, fixed_cp
         """
 
         # Requires Cp0
@@ -1149,6 +1255,9 @@ class Sample:
         Multiple refers to the fact that we fit many signals at the same time, such as 350nm and 330nm
         Must be run after fit_thermal_unfolding_global_multiple
 
+        Notes
+        -----
+        Updates global fitting attributes and sets `global_global_fit_done` when complete.
         """
 
         # Requires global fit done
@@ -1348,8 +1457,17 @@ class Sample:
         Fit the thermal unfolding of the sample using the signal and temperature data
         We fit all the curves at once, with global thermodynamic parameters, global slopes and global baselines
         Must be run after fit_thermal_unfolding_global_global
-        Args:
-            model_scale_factor (bool): If True, model a scale factor for each denaturant concentration
+
+        Parameters
+        ----------
+        model_scale_factor : bool, optional
+            If True, model a scale factor for each denaturant concentration
+
+        Notes
+        -----
+        Updates many global fitting attributes and sets `global_global_global_fit_done` when complete. If
+        `model_scale_factor` is True the method also creates scaled signal attributes:
+        - signal_lst_multiple_scaled, predicted_lst_multiple_scaled
         """
 
         # Requires global global fit done
@@ -1741,7 +1859,16 @@ class Sample:
         """
         Create a dataframe with three columns: Temperature, Signal, and Denaturant.
         Optimized for speed by avoiding per-curve DataFrame creation.
+
+        Parameters
+        ----------
+        signal_type : {'raw', 'fitted', 'derivative'}, optional
+            Which signal to include in the dataframe. 'raw' uses experimental data, 'fitted' uses model predictions,
+            'derivative' uses the estimated derivative signal.
+        scaled : bool, optional
+            If True and signal_type == 'fitted' or 'raw', use the scaled versions if available.
         """
+
         # Flatten all arrays and repeat denaturant values accordingly
 
         if signal_type == 'derivative':
