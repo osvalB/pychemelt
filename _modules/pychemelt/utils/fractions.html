@@ -344,12 +344,17 @@
 <a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.fractions.fn_two_state_monomer">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">fn_two_state_monomer</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Given the equilibrium constant K, of N &lt;-&gt; U, return the fraction of folded protein</span>
+<span class="sd">    Given the equilibrium constant K of N &lt;-&gt; U, return the fraction of folded protein.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        K (float): Equilibrium constant of the reaction N &lt;-&gt; U</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        float: Fraction of FOLDED protein</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    K : float</span>
+<span class="sd">        Equilibrium constant of the reaction N &lt;-&gt; U</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        Fraction of folded protein</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">K</span><span class="p">))</span></div>
 
@@ -358,18 +363,23 @@
 <a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.fractions.fu_two_state_dimer">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">fu_two_state_dimer</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="n">C</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Given the equilibrium constant K, of N2 &lt;-&gt; 2U,</span>
-<span class="sd">    and the concentration of dimer equivalent C, return the fraction of unfolded protein</span>
+<span class="sd">    Given the equilibrium constant K of N2 &lt;-&gt; 2U and the concentration of dimer equivalent C,</span>
+<span class="sd">    return the fraction of unfolded protein.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        K (float): Equilibrium constant of the reaction N2 &lt;-&gt; 2U</span>
-<span class="sd">        C (float): Concentration of dimer equivalent</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        float: Fraction of UNFOLDED protein</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    K : float</span>
+<span class="sd">        Equilibrium constant of the reaction N2 &lt;-&gt; 2U</span>
+<span class="sd">    C : float</span>
+<span class="sd">        Concentration of dimer equivalent</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        Fraction of unfolded protein</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">return</span> <span class="n">solve_one_root_quadratic</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">C</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="o">-</span><span class="n">K</span><span class="p">)</span></div>
-
 
 </pre></div>
 

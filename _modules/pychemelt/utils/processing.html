@@ -353,11 +353,18 @@
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Expand the temperature list to match the length of the signal list.</span>
-<span class="sd">    Args:</span>
-<span class="sd">        temp_lst (list): List of temperatures</span>
-<span class="sd">        signal_lst (list): List of signals</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        list: Expanded temperature list</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    temp_lst : list</span>
+<span class="sd">        List of temperatures</span>
+<span class="sd">    signal_lst : list</span>
+<span class="sd">        List of signals</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        Expanded temperature list</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">temp_lst</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">signal_lst</span><span class="p">):</span>
@@ -366,17 +373,22 @@
     <span class="k">return</span> <span class="n">temp_lst</span></div>
 
 
+
 <div class="viewcode-block" id="delete_words_appearing_more_than_five_times">
 <a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.processing.delete_words_appearing_more_than_five_times">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">delete_words_appearing_more_than_five_times</span><span class="p">(</span><span class="n">strings</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Deletes words that appear more than 5 times from a list of strings.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        strings (list): List of strings.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    strings : list of str</span>
+<span class="sd">        List of strings.</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">        list: List of strings with frequent words removed.</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of str</span>
+<span class="sd">        List of strings with frequent words removed.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">all_words</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">strings</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
     <span class="n">word_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">all_words</span><span class="p">)</span>
@@ -388,17 +400,22 @@
     <span class="k">return</span> <span class="n">cleaned_strings</span></div>
 
 
+
 <div class="viewcode-block" id="remove_letter_number_combinations">
 <a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.processing.remove_letter_number_combinations">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">remove_letter_number_combinations</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Removes any combination of a single letter followed by one or two digits (e.g., A1, B10, D5) from the input string.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        text (str): The input string from which patterns should be removed.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : str</span>
+<span class="sd">        The input string from which patterns should be removed.</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">        str: The cleaned string with all matching patterns removed.</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        The cleaned string with all matching patterns removed.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Pattern: one letter (case-insensitive) followed by 1 or 2 digits, as a whole word</span>
     <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\b[A-Za-z]\d{1,2}\b&#39;</span>
@@ -407,17 +424,22 @@
     <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s{2,}&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">cleaned_text</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div>
 
 
+
 <div class="viewcode-block" id="remove_numbers_after_letter">
 <a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.processing.remove_numbers_after_letter">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">remove_numbers_after_letter</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Removes all numbers coming after a letter until an underscore or space appears.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        text (str): The input string.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    text : str</span>
+<span class="sd">        The input string.</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">        str: The cleaned string.</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        The cleaned string.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(?&lt;=[A-Za-z])\d+(?=[_\s])&#39;</span>
@@ -425,18 +447,26 @@
     <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span></div>
 
 
+
 <div class="viewcode-block" id="remove_non_numeric_char">
 <a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.processing.remove_non_numeric_char">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">remove_non_numeric_char</span><span class="p">(</span><span class="n">input_string</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Remove all non-numeric characters except dots from a string.</span>
-<span class="sd">    Args:</span>
-<span class="sd">        input_string (str): Input string</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        str: String with non-numeric characters (except dots) removed</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input_string : str</span>
+<span class="sd">        Input string</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        String with non-numeric characters (except dots) removed</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\d.]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">input_string</span><span class="p">)</span></div>
+
 
 
 <div class="viewcode-block" id="clean_conditions_labels">
@@ -445,11 +475,15 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Clean the conditions labels by removing unwanted characters and patterns.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        conditions (list): List of condition strings.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    conditions : list</span>
+<span class="sd">        List of condition strings.</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">        list: List of cleaned condition strings.</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        List of cleaned condition strings.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span><span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">conditions</span><span class="p">]</span>
     <span class="n">conditions</span> <span class="o">=</span> <span class="n">delete_words_appearing_more_than_five_times</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span>
@@ -467,19 +501,28 @@
     <span class="k">return</span> <span class="n">conditions</span></div>
 
 
+
 <div class="viewcode-block" id="subset_signal_by_temperature">
 <a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.processing.subset_signal_by_temperature">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">subset_signal_by_temperature</span><span class="p">(</span><span class="n">signal_lst</span><span class="p">,</span> <span class="n">temp_lst</span><span class="p">,</span> <span class="n">min_temp</span><span class="p">,</span> <span class="n">max_temp</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Subset the signal and temperature lists based on the specified temperature range.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        signal (list): List of signal values.</span>
-<span class="sd">        temp (list): List of temperature values.</span>
-<span class="sd">        min_temp (float): Minimum temperature for subsetting.</span>
-<span class="sd">        max_temp (float): Maximum temperature for subsetting.</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        tuple: Tuple containing the subsetted signal and temperature lists.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    signal_lst : list</span>
+<span class="sd">        List of signal arrays.</span>
+<span class="sd">    temp_lst : list</span>
+<span class="sd">        List of temperature arrays.</span>
+<span class="sd">    min_temp : float</span>
+<span class="sd">        Minimum temperature for subsetting.</span>
+<span class="sd">    max_temp : float</span>
+<span class="sd">        Maximum temperature for subsetting.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple</span>
+<span class="sd">        Tuple containing the subsetted signal and temperature lists.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Limit the signal to the temperature range</span>
@@ -898,10 +941,6 @@
         <span class="n">do_remove</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">max_points</span>
 
     <span class="k">return</span> <span class="n">data</span></div>
-
-
-
-
 
 </pre></div>
 

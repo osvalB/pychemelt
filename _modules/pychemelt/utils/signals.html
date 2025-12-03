@@ -352,26 +352,33 @@
 <span class="sd">    Ref: Louise Hamborg et al., 2020. Global analysis of protein stability by temperature and chemical</span>
 <span class="sd">    denaturation</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        T (np.ndarray): temperature</span>
-<span class="sd">        D (np.ndarray): denaturant agent concentration</span>
-<span class="sd">        DHm (float): variation of enthalpy between the two considered states at Tm</span>
-<span class="sd">        Tm (float): temperature at which the equilibrium constant equals one</span>
-<span class="sd">        Cp0 (float): variation of calorific capacity between the two states</span>
-<span class="sd">        m0 (float): m-value at the reference temperature (Tref)</span>
-<span class="sd">        m1 (float): variation of calorific capacity between the two states</span>
-<span class="sd">        a_N (float): intercept of the native state signal</span>
-<span class="sd">        b_N (float): slope of the native state signal  - temperature</span>
-<span class="sd">        c_N (float): slope of the native state signal  - denaturant agent concentration</span>
-<span class="sd">        d_N (float): quadratic term of the native state signal - temperature</span>
-<span class="sd">        a_U (float): intercept of the unfolded state signal</span>
-<span class="sd">        b_U (float): slope of the unfolded state signal - temperature</span>
-<span class="sd">        c_U (float): slope of the unfolded state signal - denaturant agent concentration</span>
-<span class="sd">        d_U (float): quadratic term of the unfolded state signal - temperature</span>
-<span class="sd">        extra_arg (None): not used but required</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    T : array-like</span>
+<span class="sd">        Temperature</span>
+<span class="sd">    D : array-like</span>
+<span class="sd">        Denaturant agent concentration</span>
+<span class="sd">    DHm : float</span>
+<span class="sd">        Variation of enthalpy between the two considered states at Tm</span>
+<span class="sd">    Tm : float</span>
+<span class="sd">        Temperature at which the equilibrium constant equals one</span>
+<span class="sd">    Cp0 : float</span>
+<span class="sd">        Variation of calorific capacity between the two states</span>
+<span class="sd">    m0 : float</span>
+<span class="sd">        m-value at the reference temperature (Tref)</span>
+<span class="sd">    m1 : float</span>
+<span class="sd">        Variation of m-value with temperature</span>
+<span class="sd">    a_N, b_N, c_N, d_N : float</span>
+<span class="sd">        Parameters describing the native-state baseline (intercept, temp slope, denaturant slope, quadratic term)</span>
+<span class="sd">    a_U, b_U, c_U, d_U : float</span>
+<span class="sd">        Parameters describing the unfolded-state baseline (intercept, temp slope, denaturant slope, quadratic term)</span>
+<span class="sd">    extra_arg : None, optional</span>
+<span class="sd">        Not used but present for API compatibility with oligomeric models</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">        np.ndarray: Signal at the given temperatures and denaturant agent concentration, given the parameters</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        Signal at the given temperatures and denaturant agent concentration, given the parameters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">K</span>   <span class="o">=</span> <span class="n">eq_constant_termochem</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">D</span><span class="p">,</span><span class="n">DHm</span><span class="p">,</span><span class="n">Tm</span><span class="p">,</span><span class="n">Cp0</span><span class="p">,</span><span class="n">m0</span><span class="p">,</span><span class="n">m1</span><span class="p">)</span>
@@ -386,6 +393,7 @@
     <span class="k">return</span>  <span class="n">fn</span><span class="o">*</span><span class="p">(</span><span class="n">S_native</span><span class="p">)</span> <span class="o">+</span> <span class="n">fu</span><span class="o">*</span><span class="p">(</span><span class="n">S_unfolded</span><span class="p">)</span></div>
 
 
+
 <div class="viewcode-block" id="signal_two_state_t_unfolding_monomer">
 <a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.signals.signal_two_state_t_unfolding_monomer">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">signal_two_state_t_unfolding_monomer</span><span class="p">(</span>
@@ -393,22 +401,37 @@
         <span class="n">Cp</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">qN</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">qU</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">extra_arg</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    N ⇔ U</span>
+<span class="sd">    Two-state temperature unfolding (monomer).</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        T (np.ndarray): temperature</span>
-<span class="sd">        Tm (float): temperature at which the equilibrium constant equals one</span>
-<span class="sd">        dHm (float): variation of enthalpy between the two considered states at Tm</span>
-<span class="sd">        bN (float): intercept of the native state signal  - temperature</span>
-<span class="sd">        kN (float): slope of the native state signal</span>
-<span class="sd">        bU (float): intercept of the unfolded state signal  - temperature</span>
-<span class="sd">        kU (float): slope of the unfolded state signal</span>
-<span class="sd">        extra_arg (None): not used but required</span>
-<span class="sd">        Cp (float): variation of calorific capacity between the two states</span>
-<span class="sd">        qN (float): quadratic dependence for the native state</span>
-<span class="sd">        qU (float): quadratic dependence for the unfolded state</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        np.ndarray: Signal at the given temperatures, given the parameters</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    T : array-like</span>
+<span class="sd">        Temperature</span>
+<span class="sd">    Tm : float</span>
+<span class="sd">        Temperature at which the equilibrium constant equals one</span>
+<span class="sd">    dHm : float</span>
+<span class="sd">        Variation of enthalpy between the two considered states at Tm</span>
+<span class="sd">    bN : float</span>
+<span class="sd">        Intercept of the native state signal</span>
+<span class="sd">    kN : float</span>
+<span class="sd">        Slope of the native state signal</span>
+<span class="sd">    bU : float</span>
+<span class="sd">        Intercept of the unfolded state signal</span>
+<span class="sd">    kU : float</span>
+<span class="sd">        Slope of the unfolded state signal</span>
+<span class="sd">    Cp : float, optional</span>
+<span class="sd">        Variation of heat capacity between the two states (default: 0)</span>
+<span class="sd">    qN : float, optional</span>
+<span class="sd">        Quadratic dependence coefficient for the native state (default: 0)</span>
+<span class="sd">    qU : float, optional</span>
+<span class="sd">        Quadratic dependence coefficient for the unfolded state (default: 0)</span>
+<span class="sd">    extra_arg : None, optional</span>
+<span class="sd">        Not used but present for API compatibility</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        Signal at the given temperatures, given the parameters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">K</span>   <span class="o">=</span> <span class="n">eq_constant_thermo</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">dHm</span><span class="p">,</span><span class="n">Tm</span><span class="p">,</span><span class="n">Cp</span><span class="p">)</span>
@@ -424,6 +447,7 @@
 
 
 
+
 <div class="viewcode-block" id="signal_two_state_t_unfolding_monomer_exponential">
 <a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.signals.signal_two_state_t_unfolding_monomer_exponential">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">signal_two_state_t_unfolding_monomer_exponential</span><span class="p">(</span>
@@ -431,23 +455,37 @@
         <span class="n">alpha_u</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">Cp</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">extra_arg</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    N ⇔ U</span>
+<span class="sd">    Two-state temperature unfolding (monomer) with exponential baselines.</span>
 
-<span class="sd">    We use an exponential function to model the signal dependence on temperature</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    T : array-like</span>
+<span class="sd">        Temperature</span>
+<span class="sd">    Tm : float</span>
+<span class="sd">        Temperature at which the equilibrium constant equals one</span>
+<span class="sd">    dHm : float</span>
+<span class="sd">        Variation of enthalpy between the two considered states at Tm</span>
+<span class="sd">    aN : float</span>
+<span class="sd">        Intercept of the native state signal</span>
+<span class="sd">    cN : float</span>
+<span class="sd">        Pre-exponential factor of the native state signal</span>
+<span class="sd">    alpha_n : float</span>
+<span class="sd">        Exponential factor of the native state signal</span>
+<span class="sd">    aU : float</span>
+<span class="sd">        Intercept of the unfolded state signal</span>
+<span class="sd">    cU : float</span>
+<span class="sd">        Pre-exponential factor of the unfolded state signal</span>
+<span class="sd">    alpha_u : float, optional</span>
+<span class="sd">        Exponential factor of the unfolded state signal (default: 0)</span>
+<span class="sd">    Cp : float, optional</span>
+<span class="sd">        Heat capacity change (default: 0)</span>
+<span class="sd">    extra_arg : None, optional</span>
+<span class="sd">        Not used but present for API compatibility</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        T (np.ndarray): temperature</span>
-<span class="sd">        Tm (float): temperature at which the equilibrium constant equals one</span>
-<span class="sd">        dHm (float): variation of enthalpy between the two considered states at Tm</span>
-<span class="sd">        aN (float): intercept of the native state signal</span>
-<span class="sd">        cN (float): pre exponential factor of the native state signal</span>
-<span class="sd">        alpha_n (float): exponential factor of the native state signal</span>
-<span class="sd">        aU (float): intercept of the unfolded state signal</span>
-<span class="sd">        cU (float): pre exponential factor of the unfolded state signal</span>
-<span class="sd">        alpha_u (float): exponential factor of the unfolded state signal</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        np.ndarray: Signal at the given temperatures, given the parameters</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        Signal at the given temperatures, given the parameters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">K</span>   <span class="o">=</span> <span class="n">eq_constant_thermo</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">dHm</span><span class="p">,</span><span class="n">Tm</span><span class="p">,</span><span class="n">Cp</span><span class="p">)</span>

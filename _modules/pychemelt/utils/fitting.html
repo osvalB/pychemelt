@@ -346,7 +346,7 @@
 <span class="sd">compare_linear_to_quadratic - fit xy data to linear and quadratic models and compare the results</span>
 
 <span class="sd">fit_thermal_unfolding - to fit unfolding curves with a shared Tm, and DH but different baselines and slopes.</span>
-<span class="sd">No denaturant conocentration is taken into account</span>
+<span class="sd">No denaturant concentration is taken into account</span>
 
 <span class="sd">fit_tc_unfolding_single_slopes - to fit unfolding curves with shared Tm, DH, Cp and m.</span>
 <span class="sd">The curves can still have different baseline and slopes</span>
@@ -355,7 +355,7 @@
 <span class="sd">The slope terms are shared. The intercepts can be different.</span>
 
 <span class="sd">fit_tc_unfolding_many_signals - to fit unfolding curves with shared Tm, DH, Cp and m.</span>
-<span class="sd">The slope terms are shared. The intercepts are defined by a global parameters.</span>
+<span class="sd">The slope terms are shared. The intercepts are defined by global parameters.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -373,12 +373,20 @@
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Fit a line to the data using robust fitting</span>
-<span class="sd">    Args:</span>
-<span class="sd">        x (np.ndarray): x data</span>
-<span class="sd">        y (np.ndarray): y data</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        m (float): Slope of the fitted line</span>
-<span class="sd">        b (float): Intercept of the fitted line</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : array-like</span>
+<span class="sd">        x data</span>
+<span class="sd">    y : array-like</span>
+<span class="sd">        y data</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    m : float</span>
+<span class="sd">        Slope of the fitted line</span>
+<span class="sd">    b : float</span>
+<span class="sd">        Intercept of the fitted line</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># convert x and y to numpy arrays, if they are lists</span>
@@ -411,14 +419,23 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">fit_quadratic_robust</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Fit a qudratic equation to the data using robust fitting</span>
-<span class="sd">    Args:</span>
-<span class="sd">        x (np.ndarray): x data</span>
-<span class="sd">        y (np.ndarray): y data</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        a (float): Quadratic coefficient of the fitted line</span>
-<span class="sd">        b (float): Linear coefficient of the fitted line</span>
-<span class="sd">        c (float): Constant coefficient of the fitted line</span>
+<span class="sd">    Fit a quadratic equation to the data using robust fitting</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : array-like</span>
+<span class="sd">        x data</span>
+<span class="sd">    y : array-like</span>
+<span class="sd">        y data</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    a : float</span>
+<span class="sd">        Quadratic coefficient of the fitted polynomial</span>
+<span class="sd">    b : float</span>
+<span class="sd">        Linear coefficient of the fitted polynomial</span>
+<span class="sd">    c : float</span>
+<span class="sd">        Constant coefficient of the fitted polynomial</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># convert x and y to numpy arrays, if they are lists</span>
@@ -451,17 +468,27 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">fit_exponential_robust</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Fit a exponential function to the data using robust fitting</span>
+<span class="sd">    Fit an exponential function to the data using robust fitting.</span>
 
-<span class="sd">    Remember to shift the temperature to Tref before calling it.</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Temperatures should be shifted to the reference (Tref) before calling this function.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        x (np.ndarray): x data</span>
-<span class="sd">        y (np.ndarray): y data</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        a (float): Baseline</span>
-<span class="sd">        c (float): pre exponential factor</span>
-<span class="sd">        alpha (float): exponential factor</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : array-like</span>
+<span class="sd">        x data</span>
+<span class="sd">    y : array-like</span>
+<span class="sd">        y data</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    a : float</span>
+<span class="sd">        Baseline</span>
+<span class="sd">    c : float</span>
+<span class="sd">        Pre-exponential factor</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Exponential factor</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># convert x and y to numpy arrays, if they are lists</span>
@@ -541,12 +568,19 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">compare_linear_to_quadratic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compare the linear and quadratic fits to the data using an F-test</span>
-<span class="sd">    Args:</span>
-<span class="sd">        x (np.ndarray): x data</span>
-<span class="sd">        y (np.ndarray): y data</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        bool: True if the linear model is better than the quadratic model</span>
+<span class="sd">    Compare the linear and quadratic fits to the data using an F-test.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : array-like</span>
+<span class="sd">        x data</span>
+<span class="sd">    y : array-like</span>
+<span class="sd">        y data</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        True if the linear model is statistically preferable to the quadratic model</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">m</span><span class="p">,</span> <span class="n">b</span>       <span class="o">=</span> <span class="n">fit_line_robust</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -588,25 +622,39 @@
     <span class="n">list_of_oligomer_conc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Fit the thermal unfolding profile of many curves at the same time</span>
-<span class="sd">    Useful function to do global fitting of local and global parameters</span>
+<span class="sd">    Fit the thermal unfolding profile of many curves at the same time.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        list_of_temperatures (list): List of temperatures for each dataset</span>
-<span class="sd">        list_of_signals (list): List of signals for each dataset</span>
-<span class="sd">        initial_parameters (list): Initial guess for the parameters</span>
-<span class="sd">        low_bounds (list): Lower bounds for the parameters</span>
-<span class="sd">        high_bounds (list): Upper bounds for the parameters</span>
-<span class="sd">        signal_fx (function): Function to calculate the signal based on the parameters</span>
-<span class="sd">        Cp (float): Variation of calorific capacity between the two states</span>
-<span class="sd">        fit_slopes (dic): Dictionary stating if a constant, linear or quadratic baseline is to be fitted</span>
-<span class="sd">        list_of_oligomer_conc (list, optional): List of oligomer concentrations for each dataset</span>
+<span class="sd">    This performs global fitting of shared thermodynamic parameters with per-curve baselines.</span>
 
-<span class="sd">    Returns:</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    list_of_temperatures : list of array-like</span>
+<span class="sd">        List of temperature arrays for each dataset</span>
+<span class="sd">    list_of_signals : list of array-like</span>
+<span class="sd">        List of signal arrays for each dataset</span>
+<span class="sd">    initial_parameters : array-like</span>
+<span class="sd">        Initial guess for the parameters</span>
+<span class="sd">    low_bounds : array-like</span>
+<span class="sd">        Lower bounds for the parameters</span>
+<span class="sd">    high_bounds : array-like</span>
+<span class="sd">        Upper bounds for the parameters</span>
+<span class="sd">    signal_fx : callable</span>
+<span class="sd">        Function to calculate the signal based on the parameters</span>
+<span class="sd">    Cp : float</span>
+<span class="sd">        Heat capacity change (passed to `signal_fx`)</span>
+<span class="sd">    fit_slopes : dict</span>
+<span class="sd">        Dictionary indicating which baseline slope/quadratic terms should be fitted</span>
+<span class="sd">    list_of_oligomer_conc : list, optional</span>
+<span class="sd">        List of oligomer concentrations for each dataset (if applicable)</span>
 
-<span class="sd">        The fitting of the melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</span>
-<span class="sd">            slopes and intercept of the folded and unfolded states</span>
-
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    global_fit_params : numpy.ndarray</span>
+<span class="sd">        Fitted global parameters</span>
+<span class="sd">    cov : numpy.ndarray</span>
+<span class="sd">        Covariance matrix of the fitted parameters</span>
+<span class="sd">    predicted_lst : list of numpy.ndarray</span>
+<span class="sd">        Predicted signals for each dataset based on the fitted parameters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">all_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">list_of_signals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -718,24 +766,35 @@
     <span class="n">list_of_oligomer_conc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Fit the thermal unfolding profile of many curves at the same time</span>
-<span class="sd">    Using exponential baselines</span>
-<span class="sd">    Useful function to do global fitting of local and global parameters</span>
+<span class="sd">    Fit the thermal unfolding profile of many curves at the same time using exponential baselines.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        list_of_temperatures (list): List of temperatures for each dataset</span>
-<span class="sd">        list_of_signals (list): List of signals for each dataset</span>
-<span class="sd">        initial_parameters (list): Initial guess for the parameters</span>
-<span class="sd">        low_bounds (list): Lower bounds for the parameters</span>
-<span class="sd">        high_bounds (list): Upper bounds for the parameters</span>
-<span class="sd">        signal_fx (function): Function to calculate the signal based on the parameters</span>
-<span class="sd">        Cp (float): Variation of calorific capacity between the two states</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    list_of_temperatures : list of array-like</span>
+<span class="sd">        List of temperature arrays for each dataset</span>
+<span class="sd">    list_of_signals : list of array-like</span>
+<span class="sd">        List of signal arrays for each dataset</span>
+<span class="sd">    initial_parameters : array-like</span>
+<span class="sd">        Initial guess for the parameters</span>
+<span class="sd">    low_bounds : array-like</span>
+<span class="sd">        Lower bounds for the parameters</span>
+<span class="sd">    high_bounds : array-like</span>
+<span class="sd">        Upper bounds for the parameters</span>
+<span class="sd">    signal_fx : callable</span>
+<span class="sd">        Function to calculate the signal based on the parameters</span>
+<span class="sd">    Cp : float, optional</span>
+<span class="sd">        Heat capacity change (default: 0)</span>
+<span class="sd">    list_of_oligomer_conc : list, optional</span>
+<span class="sd">        List of oligomer concentrations for each dataset (if applicable)</span>
 
-<span class="sd">    Returns:</span>
-
-<span class="sd">        The fitting of the melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</span>
-<span class="sd">            slopes and intercept of the folded and unfolded states</span>
-
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    global_fit_params : numpy.ndarray</span>
+<span class="sd">        Fitted global parameters</span>
+<span class="sd">    cov : numpy.ndarray</span>
+<span class="sd">        Covariance matrix of the fitted parameters</span>
+<span class="sd">    predicted_lst : list of numpy.ndarray</span>
+<span class="sd">        Predicted signals for each dataset based on the fitted parameters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">all_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">list_of_signals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -845,29 +904,38 @@
     <span class="n">dh_value</span>              <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Fit the thermochemical unfolding profile of many curves at the same time</span>
-<span class="sd">    The curves will share thermodynamic parameters but have different baseline and slopes</span>
+<span class="sd">    Fit thermochemical unfolding curves sharing thermodynamic parameters while allowing different baselines.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        list_of_temperatures (list): List of temperatures for each dataset</span>
-<span class="sd">        list_of_signals (list): List of signals for each dataset</span>
-<span class="sd">        denaturant_concentrations (list): List of denaturant concentrations, one per dataset</span>
-<span class="sd">        initial_parameters (list): Initial guess for the parameters</span>
-<span class="sd">        low_bounds (list): Lower bounds for the parameters</span>
-<span class="sd">        high_bounds (list): Upper bounds for the parameters</span>
-<span class="sd">        signal_fx (function): Function to calculate the signal based on the parameters</span>
-<span class="sd">        fit_slopes (dic): Dictionary stating if a constant, linear or quadratic baseline is to be fitted</span>
-<span class="sd">        list_of_oligomer_conc (list, optional): List of oligomer concentrations for each dataset</span>
-<span class="sd">        fit_m1 (bool): Whether to fit the m1 parameter - m-value dependence on temperature</span>
-<span class="sd">        cp_value (float): Fixed Cp0, if None, it will be fitted</span>
-<span class="sd">        tm_value (float): Fixed melting temperature, if None, it will be fitted</span>
-<span class="sd">        dh_value (float): Fixed enthalpy of unfolding, if None, it will be fitted</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    list_of_temperatures : list of array-like</span>
+<span class="sd">        Temperature arrays for each dataset</span>
+<span class="sd">    list_of_signals : list of array-like</span>
+<span class="sd">        Signal arrays for each dataset</span>
+<span class="sd">    denaturant_concentrations : list</span>
+<span class="sd">        Denaturant concentrations (one per dataset)</span>
+<span class="sd">    initial_parameters : array-like</span>
+<span class="sd">        Initial guess for parameters</span>
+<span class="sd">    low_bounds : array-like</span>
+<span class="sd">        Lower bounds for parameters</span>
+<span class="sd">    high_bounds : array-like</span>
+<span class="sd">        Upper bounds for parameters</span>
+<span class="sd">    signal_fx : callable</span>
+<span class="sd">        Signal model function</span>
+<span class="sd">    fit_slopes : dict</span>
+<span class="sd">        Dict indicating which baseline terms to fit</span>
+<span class="sd">    list_of_oligomer_conc : list, optional</span>
+<span class="sd">        Oligomer concentrations per dataset</span>
+<span class="sd">    fit_m1 : bool, optional</span>
+<span class="sd">        Whether to fit temperature dependence of m-value</span>
+<span class="sd">    cp_value, tm_value, dh_value : float or None, optional</span>
+<span class="sd">        Optional fixed thermodynamic parameters</span>
 
-<span class="sd">    Returns:</span>
-
-<span class="sd">        The fitting of the melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</span>
-<span class="sd">            slopes and intercept of the folded and unfolded states</span>
-
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    global_fit_params : numpy.ndarray</span>
+<span class="sd">    cov : numpy.ndarray</span>
+<span class="sd">    predicted_lst : list of numpy.ndarray</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">all_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">list_of_signals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1046,31 +1114,38 @@
     <span class="n">dh_value</span>              <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Fit the thermochemical unfolding profile of many curves at the same time</span>
-<span class="sd">    For different signal types, such as 330nm and 350nm</span>
-<span class="sd">    The curves will share thermodynamic parameters and slopes, but have different baselines</span>
+<span class="sd">    Fit thermochemical unfolding curves for multiple signal types sharing thermodynamic parameters and slopes.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        list_of_temperatures (list): List of temperatures for each dataset</span>
-<span class="sd">        list_of_signals (list): List of signals for each dataset</span>
-<span class="sd">        signal_ids (list): List of signal ids for each dataset, to identify different signals. From 0 to n_signals-1</span>
-<span class="sd">        denaturant_concentrations (list): List of denaturant concentrations, one per dataset</span>
-<span class="sd">        initial_parameters (list): Initial guess for the parameters</span>
-<span class="sd">        low_bounds (list): Lower bounds for the parameters</span>
-<span class="sd">        high_bounds (list): Upper bounds for the parameters</span>
-<span class="sd">        signal_fx (function): Function to calculate the signal based on the parameters</span>
-<span class="sd">        fit_slopes (dic): Dictionary stating if a constant, linear or quadratic baseline is to be fitted</span>
-<span class="sd">        list_of_oligomer_conc (list, optional): List of oligomer concentrations for each dataset</span>
-<span class="sd">        fit_m1 (bool): Whether to fit the m1 parameter - m-value dependence on temperature</span>
-<span class="sd">        cp_value (float): Fixed Cp0, if None, it will be fitted</span>
-<span class="sd">        tm_value (float): Fixed melting temperature, if None, it will be fitted</span>
-<span class="sd">        dh_value (float): Fixed enthalpy of unfolding, if None, it will be fitted</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    list_of_temperatures : list of array-like</span>
+<span class="sd">    list_of_signals : list of array-like</span>
+<span class="sd">    signal_ids : list of int</span>
+<span class="sd">        Signal-type id for each dataset (0..n_signals-1)</span>
+<span class="sd">    denaturant_concentrations : list</span>
+<span class="sd">        Denaturant concentrations for each dataset (flattened across signals)</span>
+<span class="sd">    initial_parameters : array-like</span>
+<span class="sd">        Initial guess for the parameters</span>
+<span class="sd">    low_bounds : array-like</span>
+<span class="sd">        Lower bounds for the parameters</span>
+<span class="sd">    high_bounds : array-like</span>
+<span class="sd">        Upper bounds for the parameters</span>
+<span class="sd">    signal_fx : callable</span>
+<span class="sd">        Signal model function</span>
+<span class="sd">    fit_slopes : dict</span>
+<span class="sd">        Dict indicating which baseline terms to fit</span>
+<span class="sd">    list_of_oligomer_conc : list, optional</span>
+<span class="sd">        Oligomer concentrations per dataset</span>
+<span class="sd">    fit_m1 : bool, optional</span>
+<span class="sd">        Whether to fit temperature dependence of m-value</span>
+<span class="sd">    cp_value, tm_value, dh_value : float or None, optional</span>
+<span class="sd">        Optional fixed thermodynamic parameters</span>
 
-<span class="sd">    Returns:</span>
-
-<span class="sd">        The fitting of the melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</span>
-<span class="sd">            slopes and intercept of the folded and unfolded states</span>
-
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    global_fit_params : numpy.ndarray</span>
+<span class="sd">    cov : numpy.ndarray</span>
+<span class="sd">    predicted_lst : list of numpy.ndarray</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">all_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">list_of_signals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1261,35 +1336,55 @@
         <span class="n">scale_factor_exclude_ids</span> <span class="o">=</span> <span class="p">[]):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Fit the thermochemical unfolding profile of many curves at the same time</span>
-<span class="sd">    For multiple signals, such as 330nm and 350nm</span>
+<span class="sd">    Fit thermochemical unfolding curves for many signals (slow variant).</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        list_of_temperatures (list): List of temperatures for each dataset</span>
-<span class="sd">        list_of_signals (list): List of signals for each dataset</span>
-<span class="sd">        signal_ids (list): List of signal IDs for each dataset to identify different signals. From 0 to n_signals-1</span>
-<span class="sd">        denaturant_concentrations (list): List of denaturant concentrations, one per dataset</span>
-<span class="sd">        initial_parameters (list): Initial guess for the parameters</span>
-<span class="sd">        low_bounds (list): Lower bounds for the parameters</span>
-<span class="sd">        high_bounds (list): Upper bounds for the parameters</span>
-<span class="sd">        signal_fx (function): Function to calculate the signal based on the parameters</span>
-<span class="sd">        fit_slope_native_temp (bool): Whether to fit the slope of the native state with respect to temperature</span>
-<span class="sd">        fit_slope_unfolded_temp (bool): Whether to fit the slope of the unfolded state with respect to temperature</span>
-<span class="sd">        fit_slope_native_den (bool): Whether to fit the slope of the native state with respect to denaturant</span>
-<span class="sd">        fit_slope_unfolded_den (bool): Whether to fit the slope of the unfolded state with respect to denaturant</span>
-<span class="sd">        fit_quadratic_native (bool): Whether to fit the quadratic term of the native state</span>
-<span class="sd">        fit_quadratic_unfolded (bool): Whether to fit the quadratic term of the unfolded state</span>
-<span class="sd">        oligomer_concentrations (list, optional): List of oligomer concentrations for each dataset</span>
-<span class="sd">        fit_m1 (bool): Whether to fit the m1 parameter</span>
-<span class="sd">        model_scale_factor (bool): Whether include a scaling factor for each individual unfolding curve.</span>
-<span class="sd">         The idea is to account for differences in signal intensities due to either error</span>
-<span class="sd">          in the protein concentration or different levels of detection.</span>
-<span class="sd">        scale_factor_exclude_ids (list): List of curves ids to exclude from scaling factor fitting.</span>
-<span class="sd">            Useful when the fitted scaling factors are not meaningful (between 0.99 and 1.01)</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        global_fit_params (list): Fitted parameters</span>
-<span class="sd">        cov (ndarray): Covariance of the fitted parameters</span>
-<span class="sd">        predicted_lst (list): Predicted signals for each dataset based on the fitted parameters</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    list_of_temperatures : list of array-like</span>
+<span class="sd">        List of temperature arrays for each dataset</span>
+<span class="sd">    list_of_signals : list of array-like</span>
+<span class="sd">        List of signal arrays for each dataset</span>
+<span class="sd">    signal_ids : list of int</span>
+<span class="sd">        Signal-type id for each dataset (0..n_signals-1)</span>
+<span class="sd">    denaturant_concentrations : list</span>
+<span class="sd">        Denaturant concentrations for each dataset (flattened across signals)</span>
+<span class="sd">    initial_parameters : array-like</span>
+<span class="sd">        Initial guess for the parameters</span>
+<span class="sd">    low_bounds : array-like</span>
+<span class="sd">        Lower bounds for the parameters</span>
+<span class="sd">    high_bounds : array-like</span>
+<span class="sd">        Upper bounds for the parameters</span>
+<span class="sd">    signal_fx : callable</span>
+<span class="sd">        Signal model function</span>
+<span class="sd">    fit_slope_native_temp : bool, optional</span>
+<span class="sd">        Whether to fit the temperature slope of the native baseline (per-signal)</span>
+<span class="sd">    fit_slope_unfolded_temp : bool, optional</span>
+<span class="sd">        Whether to fit the temperature slope of the unfolded baseline (per-signal)</span>
+<span class="sd">    fit_slope_native_den : bool, optional</span>
+<span class="sd">        Whether to fit the denaturant slope of the native baseline (per-signal)</span>
+<span class="sd">    fit_slope_unfolded_den : bool, optional</span>
+<span class="sd">        Whether to fit the denaturant slope of the unfolded baseline (per-signal)</span>
+<span class="sd">    fit_quadratic_native : bool, optional</span>
+<span class="sd">        Whether to fit a quadratic temperature term for the native baseline (per-signal)</span>
+<span class="sd">    fit_quadratic_unfolded : bool, optional</span>
+<span class="sd">        Whether to fit a quadratic temperature term for the unfolded baseline (per-signal)</span>
+<span class="sd">    oligomer_concentrations : list, optional</span>
+<span class="sd">        Oligomer concentrations per dataset (used by oligomeric models)</span>
+<span class="sd">    fit_m1 : bool, optional</span>
+<span class="sd">        Whether to include and fit temperature dependence of the m-value (m1)</span>
+<span class="sd">    model_scale_factor : bool, optional</span>
+<span class="sd">        If True, include a per-denaturant concentration scale factor to account for intensity differences</span>
+<span class="sd">    scale_factor_exclude_ids : list, optional</span>
+<span class="sd">        IDs of scale factors to exclude / fix to 1 (useful to avoid fitting trivial factors)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    global_fit_params : numpy.ndarray</span>
+<span class="sd">        Fitted global parameters</span>
+<span class="sd">    cov : numpy.ndarray</span>
+<span class="sd">        Covariance matrix of the fitted parameters</span>
+<span class="sd">    predicted_lst : list of numpy.ndarray</span>
+<span class="sd">        Predicted signals for each dataset based on the fitted parameters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">all_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">list_of_signals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1480,36 +1575,52 @@
         <span class="n">cp_value</span><span class="o">=</span><span class="kc">None</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Fit the thermochemical unfolding profile of many curves at the same time</span>
-<span class="sd">    For multiple signals, such as 330nm and 350nm</span>
+<span class="sd">    Fit thermochemical unfolding curves for many signals (optimized variant).</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        list_of_temperatures (list): List of temperatures for each dataset</span>
-<span class="sd">        list_of_signals (list): List of signals for each dataset</span>
-<span class="sd">        signal_ids (list): List of signal IDs for each dataset to identify different signals. From 0 to n_signals-1</span>
-<span class="sd">        denaturant_concentrations (list): List of denaturant concentrations, one per dataset</span>
-<span class="sd">        initial_parameters (list): Initial guess for the parameters</span>
-<span class="sd">        low_bounds (list): Lower bounds for the parameters</span>
-<span class="sd">        high_bounds (list): Upper bounds for the parameters</span>
-<span class="sd">        signal_fx (function): Function to calculate the signal based on the parameters</span>
-<span class="sd">        fit_slope_native_temp (bool): Whether to fit the slope of the native state with respect to temperature</span>
-<span class="sd">        fit_slope_unfolded_temp (bool): Whether to fit the slope of the unfolded state with respect to temperature</span>
-<span class="sd">        fit_slope_native_den (bool): Whether to fit the slope of the native state with respect to denaturant</span>
-<span class="sd">        fit_slope_unfolded_den (bool): Whether to fit the slope of the unfolded state with respect to denaturant</span>
-<span class="sd">        fit_quadratic_native (bool): Whether to fit the quadratic term of the native state</span>
-<span class="sd">        fit_quadratic_unfolded (bool): Whether to fit the quadratic term of the unfolded state</span>
-<span class="sd">        oligomer_concentrations (list, optional): List of oligomer concentrations for each dataset</span>
-<span class="sd">        fit_m1 (bool): Whether to fit the m1 parameter</span>
-<span class="sd">        model_scale_factor (bool): Whether include a scaling factor for each individual unfolding curve.</span>
-<span class="sd">         The idea is to account for differences in signal intensities due to either error</span>
-<span class="sd">          in the protein concentration or different levels of detection.</span>
-<span class="sd">        scale_factor_exclude_ids (list): List of curves ids to exclude from scaling factor fitting.</span>
-<span class="sd">            Useful when the fitted scaling factors are not meaningful (between 0.99 and 1.01)</span>
-<span class="sd">        cp_value (float, optional): Fixed value for the heat capacity change (Cp). If None, Cp is fitted.</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        global_fit_params (list): Fitted parameters</span>
-<span class="sd">        cov (ndarray): Covariance of the fitted parameters</span>
-<span class="sd">        predicted_lst (list): Predicted signals for each dataset based on the fitted parameters</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    list_of_temperatures : list of array-like</span>
+<span class="sd">    list_of_signals : list of array-like</span>
+<span class="sd">    signal_ids : list of int</span>
+<span class="sd">        Signal-type id for each dataset (0..n_signals-1)</span>
+<span class="sd">    denaturant_concentrations : list</span>
+<span class="sd">        Denaturant concentrations for each dataset (flattened across signals)</span>
+<span class="sd">    initial_parameters : array-like</span>
+<span class="sd">        Initial guess for the parameters</span>
+<span class="sd">    low_bounds : array-like</span>
+<span class="sd">        Lower bounds for the parameters</span>
+<span class="sd">    high_bounds : array-like</span>
+<span class="sd">        Upper bounds for the parameters</span>
+<span class="sd">    signal_fx : callable</span>
+<span class="sd">        Signal model function</span>
+<span class="sd">    fit_slope_native_temp : bool, optional</span>
+<span class="sd">        Whether to fit the temperature slope of the native baseline (per-signal)</span>
+<span class="sd">    fit_slope_unfolded_temp : bool, optional</span>
+<span class="sd">        Whether to fit the temperature slope of the unfolded baseline (per-signal)</span>
+<span class="sd">    fit_slope_native_den : bool, optional</span>
+<span class="sd">        Whether to fit the denaturant slope of the native baseline (per-signal)</span>
+<span class="sd">    fit_slope_unfolded_den : bool, optional</span>
+<span class="sd">        Whether to fit the denaturant slope of the unfolded baseline (per-signal)</span>
+<span class="sd">    fit_quadratic_native : bool, optional</span>
+<span class="sd">        Whether to fit a quadratic temperature term for the native baseline (per-signal)</span>
+<span class="sd">    fit_quadratic_unfolded : bool, optional</span>
+<span class="sd">        Whether to fit a quadratic temperature term for the unfolded baseline (per-signal)</span>
+<span class="sd">    oligomer_concentrations : list, optional</span>
+<span class="sd">        Oligomer concentrations per dataset (used by oligomeric models)</span>
+<span class="sd">    fit_m1 : bool, optional</span>
+<span class="sd">        Whether to include and fit temperature dependence of the m-value (m1)</span>
+<span class="sd">    model_scale_factor : bool, optional</span>
+<span class="sd">        If True, include a per-denaturant concentration scale factor to account for intensity differences</span>
+<span class="sd">    scale_factor_exclude_ids : list, optional</span>
+<span class="sd">        IDs of scale factors to exclude / fix to 1</span>
+<span class="sd">    cp_value : float or None, optional</span>
+<span class="sd">        If provided, Cp is fixed to this value and not fitted</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    global_fit_params : numpy.ndarray</span>
+<span class="sd">    cov : numpy.ndarray</span>
+<span class="sd">    predicted_lst : list of numpy.ndarray</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">all_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">list_of_signals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1697,22 +1808,32 @@
         <span class="n">fixed_cp</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Check if the thermodynamic parameters are too close to the boundaries and expand them if necessary</span>
-<span class="sd">    Args:</span>
-<span class="sd">        global_fit_params (list): Fitted parameters</span>
-<span class="sd">        high_bounds (list): Upper bounds for the parameters</span>
-<span class="sd">        low_bounds (list): Lower bounds for the parameters</span>
-<span class="sd">        p0 (list): Initial guess for the parameters</span>
-<span class="sd">        fit_m1 (bool): Whether to fit the m1 parameter - m-value dependence on temperature</span>
-<span class="sd">        check_cp (bool): Whether to check the Cp parameter. If False, the Cp parameter will not be checked.</span>
-<span class="sd">        check_dh (bool): Whether to check the Dh parameter. If False, the Dh parameter will not be checked.</span>
-<span class="sd">        check_tm (bool): Whether to check the Tm parameter. If False, the Tm parameter will not be checked.</span>
-<span class="sd">        fixed_cp (bool): Whether the Cp parameter is fixed. To determine the starting index of other parameters.</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        re_fit (bool): True if the parameters are too close to the boundaries and need to be refitted</span>
-<span class="sd">        p0 (list): Updated initial guess for the parameters</span>
-<span class="sd">        low_bounds (list): Updated lower bounds for the parameters</span>
-<span class="sd">        high_bounds (list): Updated upper bounds for the parameters</span>
+<span class="sd">    Check and expand parameter bounds when fitted parameters are too close to boundaries.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    global_fit_params : array-like</span>
+<span class="sd">        Fitted parameters</span>
+<span class="sd">    high_bounds : array-like</span>
+<span class="sd">        Upper bounds</span>
+<span class="sd">    low_bounds : array-like</span>
+<span class="sd">        Lower bounds</span>
+<span class="sd">    p0 : array-like</span>
+<span class="sd">        Initial guess for parameters</span>
+<span class="sd">    fit_m1 : bool, optional</span>
+<span class="sd">    check_cp, check_dh, check_tm : bool, optional</span>
+<span class="sd">    fixed_cp : bool, optional</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    re_fit : bool</span>
+<span class="sd">        True if a refit is recommended after bounds expansion</span>
+<span class="sd">    p0 : array-like</span>
+<span class="sd">        Updated initial parameters</span>
+<span class="sd">    low_bounds : array-like</span>
+<span class="sd">        Updated lower bounds</span>
+<span class="sd">    high_bounds : array-like</span>
+<span class="sd">        Updated upper bounds</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">re_fit</span> <span class="o">=</span> <span class="kc">False</span>

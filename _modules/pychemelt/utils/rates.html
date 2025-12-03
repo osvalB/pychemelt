@@ -361,13 +361,21 @@
 <span class="sd">    ΔH1, the variation of enthalpy between the two considered states at T1</span>
 <span class="sd">    Cp the variation of calorific capacity between the two states</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        T (np.ndarray): temperature</span>
-<span class="sd">        DH1 (float): variation of enthalpy between the two considered states at T1</span>
-<span class="sd">        T1 (float): temperature at which the equilibrium constant equals one</span>
-<span class="sd">        Cp (float): variation of calorific capacity between the two states</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        np.ndarray: the equilibrium constant at the given temperature</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    T : array-like</span>
+<span class="sd">        Temperature (°C or K)</span>
+<span class="sd">    DH1 : float</span>
+<span class="sd">        Variation of enthalpy between the two considered states at T1 (kcal/mol)</span>
+<span class="sd">    T1 : float</span>
+<span class="sd">        Temperature at which the equilibrium constant equals one (°C or K)</span>
+<span class="sd">    Cp : float</span>
+<span class="sd">        Variation of heat capacity between the two states (kcal/mol/K)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        Equilibrium constant at the given temperature</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">T</span>  <span class="o">=</span> <span class="n">temperature_to_kelvin</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
@@ -379,28 +387,34 @@
     <span class="k">return</span> <span class="n">K</span></div>
 
 
+
 <div class="viewcode-block" id="arrhenius">
 <a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.rates.arrhenius">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">arrhenius</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Tf</span><span class="p">,</span> <span class="n">Ea</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Arrhenius equation: defines dependence of reaction rate constant k on temperature</span>
-<span class="sd">    In this version of the equation we use Tf (a temperature of k=1)</span>
-<span class="sd">    to get rid of instead of pre-exponential constant A</span>
+<span class="sd">    Arrhenius equation: defines dependence of reaction rate constant k on temperature.</span>
+<span class="sd">    In this version of the equation we use Tf (a temperature of k=1) to avoid specifying a pre-exponential constant A.</span>
 
-<span class="sd">    T, Tf, must be given in Kelvin, Ea in kcal units</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    T : array-like</span>
+<span class="sd">        Temperature (°C or K)</span>
+<span class="sd">    Tf : float</span>
+<span class="sd">        Reference temperature at which the reaction rate constant equals 1 (°C or K)</span>
+<span class="sd">    Ea : float</span>
+<span class="sd">        Activation energy (kcal/mol)</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        T (np.ndarray): temperature</span>
-<span class="sd">        Tf (float): temperature at which the reaction rate constant equals 1</span>
-<span class="sd">        Ea (float): activation energy</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        np.ndarray: the reaction rate constant at the given temperature</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        Reaction rate constant at the given temperature</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">T</span>  <span class="o">=</span> <span class="n">temperature_to_kelvin</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
     <span class="n">Tf</span> <span class="o">=</span> <span class="n">temperature_to_kelvin</span><span class="p">(</span><span class="n">Tf</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Ea</span> <span class="o">/</span> <span class="n">R_gas</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">T</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">Tf</span><span class="p">))</span></div>
+
 
 
 <div class="viewcode-block" id="eq_constant_termochem">
@@ -411,16 +425,27 @@
 <span class="sd">    Ref: Louise Hamborg et al., 2020. Global analysis of protein stability by temperature and chemical</span>
 <span class="sd">    denaturation</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        T (np.ndarray): temperature</span>
-<span class="sd">        D (float): denaturant agent concentration</span>
-<span class="sd">        DHm (float): variation of enthalpy between the two considered states at Tm</span>
-<span class="sd">        Tm (float): temperature at which the equilibrium constant equals one</span>
-<span class="sd">        Cp0 (float): variation of calorific capacity between the two states</span>
-<span class="sd">        m0 (float): m-value at the reference temperature (Tref)</span>
-<span class="sd">        m1 (float): variation of calorific capacity between the two states</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        K (np.ndarray): the equilibrium constant at a certain temperature and denaturant agent concentration</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    T : array-like</span>
+<span class="sd">        Temperature (°C or K)</span>
+<span class="sd">    D : float</span>
+<span class="sd">        Denaturant concentration (M)</span>
+<span class="sd">    DHm : float</span>
+<span class="sd">        Enthalpy change at Tm (kcal/mol)</span>
+<span class="sd">    Tm : float</span>
+<span class="sd">        Melting temperature where ΔG = 0 (°C or K)</span>
+<span class="sd">    Cp0 : float</span>
+<span class="sd">        Heat capacity change (kcal/mol/K)</span>
+<span class="sd">    m0 : float</span>
+<span class="sd">        m-value at the reference temperature</span>
+<span class="sd">    m1 : float</span>
+<span class="sd">        Temperature dependence of the m-value</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        Equilibrium constant at a certain temperature and denaturant agent concentration</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">T</span>   <span class="o">=</span> <span class="n">temperature_to_kelvin</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
