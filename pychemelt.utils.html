@@ -394,15 +394,16 @@ The open_workbook function is used so we can handle the error “openpyxl does n
 <dl class="py function">
 <dt class="sig sig-object py" id="pychemelt.utils.files.file_is_of_type_uncle">
 <span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">file_is_of_type_uncle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xlsx_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#file_is_of_type_uncle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.file_is_of_type_uncle" title="Link to this definition">#</a></dt>
-<dd><p>Check if the file is an uncle file
-:param xlsx_file: Path to the xlsx file
-:type xlsx_file: str</p>
+<dd><p>Check if the file is an uncle file</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>True if the file is an uncle file, False otherwise</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>xlsx_file</strong> (<em>str</em>) – Path to the xlsx file</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the file is an uncle file, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -410,15 +411,16 @@ The open_workbook function is used so we can handle the error “openpyxl does n
 <dl class="py function">
 <dt class="sig sig-object py" id="pychemelt.utils.files.detect_file_type">
 <span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">detect_file_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#detect_file_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.detect_file_type" title="Link to this definition">#</a></dt>
-<dd><p>Detect the type of file based on its extension and content.
-:param file: Path to the file
-:type file: str</p>
+<dd><p>Detect the type of file based on its extension and content.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Type of file</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file</strong> (<em>str</em>) – Path to the file</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Type of file (e.g., ‘supr’, ‘csv’, ‘prometheus’, ‘panta’, ‘uncle’, ‘mx3005p’, ‘quantstudio’, etc.) or None if unknown</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str or None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -426,15 +428,16 @@ The open_workbook function is used so we can handle the error “openpyxl does n
 <dl class="py function">
 <dt class="sig sig-object py" id="pychemelt.utils.files.detect_encoding">
 <span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">detect_encoding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#detect_encoding"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.detect_encoding" title="Link to this definition">#</a></dt>
-<dd><p>Detect the encoding of a file by trying common encodings.
-:param file_path: Path to the file
-:type file_path: str</p>
+<dd><p>Detect the encoding of a file by trying common encodings.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Detected encoding or ‘Unknown encoding’</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path to the file</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Detected encoding or the string ‘Unknown encoding’</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -442,18 +445,20 @@ The open_workbook function is used so we can handle the error “openpyxl does n
 <dl class="py function">
 <dt class="sig sig-object py" id="pychemelt.utils.files.find_indexes_of_non_signal_conditions">
 <span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">find_indexes_of_non_signal_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#find_indexes_of_non_signal_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.find_indexes_of_non_signal_conditions" title="Link to this definition">#</a></dt>
-<dd><p>Given the signal data and the conditions, find the indexes of the conditions that are not signal data
-We assume that conditions with the word ‘derivative’ or ‘S.D.’ in it are not signal data
-:param signal_data: 2D array with the signal data
-:type signal_data: np.ndarray
-:param conditions: list of conditions
-:type conditions: list</p>
+<dd><p>Given the signal data and the conditions, find the indexes of the conditions that are not signal data.
+We assume that conditions with the word ‘derivative’ or ‘S.D.’ in it are not signal data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list of indexes to remove</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal_data</strong> (<em>numpy.ndarray</em>) – 2D array with the signal data (shape: temperature x conditions)</p></li>
+<li><p><strong>conditions</strong> (<em>list</em>) – List of condition names</p></li>
+</ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>idx_to_remove (list)</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of indexes to remove</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
 </dd>
 </dl>
 </dd></dl>
@@ -461,16 +466,16 @@ We assume that conditions with the word ‘derivative’ or ‘S.D.’ in it are
 <dl class="py function">
 <dt class="sig sig-object py" id="pychemelt.utils.files.find_repeated_words">
 <span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">find_repeated_words</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string_lst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#find_repeated_words"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.find_repeated_words" title="Link to this definition">#</a></dt>
-<dd><p>Given a list of strings, find the repeated words in the list</p>
+<dd><p>Given a list of strings, find the repeated words in the list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>string_lst</strong> (<em>lst</em>) – list of strings</p>
+<dd class="field-odd"><p><strong>string_lst</strong> (<em>list</em><em> of </em><em>str</em>) – List of strings to analyze</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>list of repeated words</p>
+<dd class="field-even"><p>List of repeated words</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>repeated_words (lst)</p>
+<dd class="field-odd"><p>list</p>
 </dd>
 </dl>
 </dd></dl>
@@ -478,17 +483,19 @@ We assume that conditions with the word ‘derivative’ or ‘S.D.’ in it are
 <dl class="py function">
 <dt class="sig sig-object py" id="pychemelt.utils.files.remove_words_in_string">
 <span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">remove_words_in_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">word_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#remove_words_in_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.remove_words_in_string" title="Link to this definition">#</a></dt>
-<dd><p>Given a string and a list of words, remove the words from the string
-:param input_string: String to be processed
-:type input_string: str
-:param word_list: list of words to remove
-:type word_list: lst</p>
+<dd><p>Given a string and a list of words, remove the words from the string.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Processed string</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_string</strong> (<em>str</em>) – String to be processed</p></li>
+<li><p><strong>word_list</strong> (<em>list</em><em> of </em><em>str</em>) – List of words to remove</p></li>
+</ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Processed string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -496,18 +503,19 @@ We assume that conditions with the word ‘derivative’ or ‘S.D.’ in it are
 <dl class="py function">
 <dt class="sig sig-object py" id="pychemelt.utils.files.load_csv_file">
 <span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">load_csv_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#load_csv_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.load_csv_file" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Load a CSV file containing temperature and signal columns and return structured data.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>file</strong> (<em>str</em>) – Path to the csv file</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Dictionary with signal data
-temp_data_dic (dict): Dictionary with temperature data
-conditions (list): List of conditions
-signals (np.ndarray): List of signal names</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>signal_data_dic (dict)</p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>signal_data_dic</strong> (<em>dict</em>) – Dictionary mapping signal names to lists of 1D numpy arrays (one array per condition)</p></li>
+<li><p><strong>temp_data_dic</strong> (<em>dict</em>) – Dictionary mapping signal names to lists of temperature arrays corresponding to the signals</p></li>
+<li><p><strong>conditions</strong> (<em>list</em>) – List of condition names</p></li>
+<li><p><strong>signals</strong> (<em>numpy.ndarray</em>) – Array of signal name strings</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -515,12 +523,13 @@ signals (np.ndarray): List of signal names</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pychemelt.utils.files.get_start_line_quantstudio_txt">
 <span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">get_start_line_quantstudio_txt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#get_start_line_quantstudio_txt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.get_start_line_quantstudio_txt" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Find the start line for QuantStudio text files (first non-comment data line).</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>file_name</strong> (<em>str</em>) – Path to the QuantStudio txt file</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Number of the first line not starting with “*” + 1</p>
+<dd class="field-even"><p>Number  of the first line not starting with ‘*’ plus one</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
@@ -531,24 +540,19 @@ signals (np.ndarray): List of signal names</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pychemelt.utils.files.load_quantstudio_txt">
 <span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">load_quantstudio_txt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">QSfile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#load_quantstudio_txt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.load_quantstudio_txt" title="Link to this definition">#</a></dt>
-<dd><p>Input: A txt file (‘QSfile’) where column 2 has the well position,
-column 3 the temperature and column 4 the fluorescence signal. Index starts at 1!</p>
-<p>— Caution —
-The first rows of the file are comments that start with ‘*’ and are not readed
-The temperature and signal column have commas that need to be deleted</p>
-<p>Columns are separated by spaces</p>
+<dd><p>Load QuantStudio TXT files (.txt) exported from QuantStudio instruments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>QSfile</strong> (<em>str</em>) – Path to the QuantStudio txt file</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Dictionary with signal data
-temp_data_dic (dict): Dictionary with temperature data
-conditions (list): List of conditions
-signals (np.ndarray): List of signal names</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>signal_data_dic (dict)</p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>signal_data_dic</strong> (<em>dict</em>) – Dictionary with signal data (key: ‘Fluorescence’)</p></li>
+<li><p><strong>temp_data_dic</strong> (<em>dict</em>) – Dictionary with temperature arrays per condition</p></li>
+<li><p><strong>conditions</strong> (<em>list</em>) – List of condition names (well identifiers)</p></li>
+<li><p><strong>signals</strong> (<em>numpy.ndarray</em>) – Array with signal name(s)</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -556,21 +560,18 @@ signals (np.ndarray): List of signal names</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pychemelt.utils.files.load_thermofluor_xlsx">
 <span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">load_thermofluor_xlsx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thermofluor_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#load_thermofluor_xlsx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.load_thermofluor_xlsx" title="Link to this definition">#</a></dt>
-<dd><p>Load DSF Thermofluor xls file and extract data
-The xls file generated by the ThermoFluor assay in a qPCR instrument.
-This file has one sheet called ‘RFU’ where the first row has the sample positions (header), the first column has the temperature data,
-and all subsequent columns store the fluorescence data.</p>
+<dd><p>Load DSF Thermofluor xls file and extract data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>thermofluor_file</strong> (<em>str</em>) – Path to the xls file</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Dictionary with signal data
-temp_data_dic (dict): Dictionary with temperature data
-conditions (list): List of conditions</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>signal_data_dic (dict)</p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>signal_data_dic</strong> (<em>dict</em>) – Dictionary with signal data</p></li>
+<li><p><strong>temp_data_dic</strong> (<em>dict</em>) – Dictionary with temperature data</p></li>
+<li><p><strong>conditions</strong> (<em>list</em>) – List of conditions</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -595,21 +596,19 @@ conditions (list): List of conditions</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pychemelt.utils.files.load_nanoDSF_xlsx">
 <span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">load_nanoDSF_xlsx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processed_dsf_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#load_nanoDSF_xlsx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.load_nanoDSF_xlsx" title="Link to this definition">#</a></dt>
-<dd><p>Load nanotemper processed xlsx file and extract relevant data</p>
+<dd><p>Load nanotemper processed xlsx file and extract relevant data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>processed_dsf_file</strong> (<em>str</em>) – Path to the processed xlsx file</p></li>
-<li><p><strong>sheet_names</strong> (<em>list</em>) – List of sheet names to load</p></li>
-</ul>
+<dd class="field-odd"><p><strong>processed_dsf_file</strong> (<em>str</em>) – Path to the processed xlsx file</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Dictionary with signal data
-temp_data_dic (dict): Dictionary with temperature data
-conditions (list): List of conditions</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>signal_data_dic (dict)</p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>signal_data_dic</strong> (<em>dict</em>) – Dictionary with signal data</p></li>
+<li><p><strong>temp_data_dic</strong> (<em>dict</em>) – Dictionary with temperature data</p></li>
+<li><p><strong>conditions</strong> (<em>list</em>) – List of conditions</p></li>
+<li><p><strong>signals</strong> (<em>numpy.ndarray</em>) – Array of signal names</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -617,25 +616,19 @@ conditions (list): List of conditions</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pychemelt.utils.files.load_panta_xlsx">
 <span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">load_panta_xlsx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pantaFile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#load_panta_xlsx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.load_panta_xlsx" title="Link to this definition">#</a></dt>
-<dd><p>Load the xlsx file generated by a Prometheus Panta instrument.
-This file has one sheet called ‘Overview’ with a column called ‘Sample ID’ with the names of the samples,
-and one sheet called ‘Data Export’ where all the data is stored. The ‘Data Export’ sheet columns should have the following order:</p>
-<p>Temperature capillary 1 ; Ratio capillary 1 ; … ; Temperature capillary 1 ; 350 nm capillary 1 ; … ;
-Temperature capillary 1 ; 330 nm capillary 1 ; … ; Temperature capillary 1 ; scattering capillary 1 ; … ;
-Temperature capillary 2 ; Ratio capillary 2; … ;  Temperature capillary n ; Ratio capillary n.</p>
-<p>Columns whose names include “Derivative” are not read.</p>
+<dd><p>Load the xlsx file generated by a Prometheus Panta instrument.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>pantaFile</strong> (<em>str</em>) – Path to the xlsx file</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Dictionary with signal data
-temp_data_dic (dict): Dictionary with temperature data
-conditions (list): List of conditions
-signals (np.ndarray): List of signal names, such as 330nm and 350nm</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>signal_data_dic (dict)</p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>signal_data_dic</strong> (<em>dict</em>) – Dictionary with signal data</p></li>
+<li><p><strong>temp_data_dic</strong> (<em>dict</em>) – Dictionary with temperature data</p></li>
+<li><p><strong>conditions</strong> (<em>list</em>) – List of conditions</p></li>
+<li><p><strong>signals</strong> (<em>numpy.ndarray</em>) – List of signal names, such as 330nm and 350nm</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -643,33 +636,19 @@ signals (np.ndarray): List of signal names, such as 330nm and 350nm</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pychemelt.utils.files.load_uncle_multi_channel">
 <span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">load_uncle_multi_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uncle_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#load_uncle_multi_channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.load_uncle_multi_channel" title="Link to this definition">#</a></dt>
-<dd><p>Function to load the data from the UNCLE instrument</p>
-<p>Below is an example of the data format:</p>
-<blockquote>
-<div><p>Toms run.uni                    Sample Name     1 mg/ml Protein
-Temp :25, Time:134.9    Temp :25.49, Time:185.4 Temp :25.99, Time:236.4 Temp :26.48, Time:286.2 Temp :27, Time:336.2    Temp :27.48, Time:386.3 Temp :27.98, Time:436.3 Temp :28.46, Time:486.1 Temp :29.02, Time:536.1 Temp :29.5, Time:586    Temp :30, Time:636.2    Temp :30.49, Time:686.2 Temp :31, Time:736.2    Temp :31.5, Time:786.2  Temp :32, Time:836.2    Temp :32.48, Time:886.2 Temp :33, Time:936.1    Temp :33.5, Time:986.2  Temp :34.01, Time:1036.2        Temp :34.49, Time:1086.1        Temp :35, Time:1136.9   Temp :35.5, Time:1187.1
-Wavelength      Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity</p>
-<p>249.182266235352        22.384  22.417  22.45   22.406  22.373  22.362  22.373  22.439  22.384  22.406  22.417  22.406  22.45   22.439  22.483  22.461  22.428  22.395  22.417  22.439  22.439  22.373
-249.664016723633        13.144  14.261  14.458  16.035  16.068  19.025  11.369  14.491  15.969  17.777  23.691  20.57   14.754  20.668  25.137  20.8    22.311  21.293  21.095  19.65   21.128  16.725</p>
-</div></blockquote>
-<p>The line should be discarded
-The second line contains the time and temperature data. We’re interested only in the temperature data
-The third line can be discarded
-The fourth line is empty
-The fifth line contains the first row of the signal data, with the wavelength data in the first column</p>
-<p>The file is a xlsx file with as many sheets as channels</p>
+<dd><p>Function to load the data from the UNCLE instrument.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>uncle_file</strong> (<em>str</em>) – Path to the xlsx file</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Dictionary with signal data
-temp_data_dic (dict): Dictionary with temperature data
-conditions (list): List of conditions
-signals (np.ndarray): List of signal names, such as 330nm and 350nm</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>signal_data_dic (dict)</p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>signal_data_dic</strong> (<em>dict</em>) – Dictionary with signal data (keys: wavelength strings like ‘350 nm’)</p></li>
+<li><p><strong>temp_data_dic</strong> (<em>dict</em>) – Dictionary with temperature arrays per condition</p></li>
+<li><p><strong>conditions</strong> (<em>list</em>) – List of sample names</p></li>
+<li><p><strong>signals</strong> (<em>list</em>) – List of wavelength strings</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -684,13 +663,13 @@ signals (np.ndarray): List of signal names, such as 330nm and 350nm</p>
 the third column the temperature. Wells are separated by rows containing a sentence like this one: ‘Segment  2 Plateau  1 Well  1’</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Dictionary with signal data
-temp_data_dic (dict): Dictionary with temperature data
-conditions (list): List of conditions (well numbers)
-signals (np.ndarray): List of signal names</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>signal_data_dic (dict)</p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>signal_data_dic</strong> (<em>dict</em>) – Dictionary with signal data</p></li>
+<li><p><strong>temp_data_dic</strong> (<em>dict</em>) – Dictionary with temperature data</p></li>
+<li><p><strong>conditions</strong> (<em>list</em>) – List of conditions (well numbers)</p></li>
+<li><p><strong>signals</strong> (<em>numpy.ndarray</em>) – List of signal names</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
