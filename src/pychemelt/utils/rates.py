@@ -24,13 +24,21 @@ def eq_constant_thermo(T,DH1,T1,Cp):
     ΔH1, the variation of enthalpy between the two considered states at T1
     Cp the variation of calorific capacity between the two states
 
-    Args:
-        T (np.ndarray): temperature
-        DH1 (float): variation of enthalpy between the two considered states at T1
-        T1 (float): temperature at which the equilibrium constant equals one
-        Cp (float): variation of calorific capacity between the two states
-    Returns:
-        np.ndarray: the equilibrium constant at the given temperature
+    Parameters
+    ----------
+    T : array-like
+        Temperature (°C or K)
+    DH1 : float
+        Variation of enthalpy between the two considered states at T1 (kcal/mol)
+    T1 : float
+        Temperature at which the equilibrium constant equals one (°C or K)
+    Cp : float
+        Variation of heat capacity between the two states (kcal/mol/K)
+
+    Returns
+    -------
+    numpy.ndarray
+        Equilibrium constant at the given temperature
     """
 
     T  = temperature_to_kelvin(T)
@@ -41,20 +49,25 @@ def eq_constant_thermo(T,DH1,T1,Cp):
 
     return K
 
+
 def arrhenius(T, Tf, Ea):
     """
-    Arrhenius equation: defines dependence of reaction rate constant k on temperature
-    In this version of the equation we use Tf (a temperature of k=1)
-    to get rid of instead of pre-exponential constant A
+    Arrhenius equation: defines dependence of reaction rate constant k on temperature.
+    In this version of the equation we use Tf (a temperature of k=1) to avoid specifying a pre-exponential constant A.
 
-    T, Tf, must be given in Kelvin, Ea in kcal units
+    Parameters
+    ----------
+    T : array-like
+        Temperature (°C or K)
+    Tf : float
+        Reference temperature at which the reaction rate constant equals 1 (°C or K)
+    Ea : float
+        Activation energy (kcal/mol)
 
-    Args:
-        T (np.ndarray): temperature
-        Tf (float): temperature at which the reaction rate constant equals 1
-        Ea (float): activation energy
-    Returns:
-        np.ndarray: the reaction rate constant at the given temperature
+    Returns
+    -------
+    numpy.ndarray
+        Reaction rate constant at the given temperature
     """
 
     T  = temperature_to_kelvin(T)
@@ -62,22 +75,34 @@ def arrhenius(T, Tf, Ea):
 
     return np.exp(-Ea / R_gas * (1 / T - 1 / Tf))
 
+
 def eq_constant_termochem(T,D,DHm,Tm,Cp0,m0,m1):
 
     """
     Ref: Louise Hamborg et al., 2020. Global analysis of protein stability by temperature and chemical
     denaturation
 
-    Args:
-        T (np.ndarray): temperature
-        D (float): denaturant agent concentration
-        DHm (float): variation of enthalpy between the two considered states at Tm
-        Tm (float): temperature at which the equilibrium constant equals one
-        Cp0 (float): variation of calorific capacity between the two states
-        m0 (float): m-value at the reference temperature (Tref)
-        m1 (float): variation of calorific capacity between the two states
-    Returns:
-        K (np.ndarray): the equilibrium constant at a certain temperature and denaturant agent concentration
+    Parameters
+    ----------
+    T : array-like
+        Temperature (°C or K)
+    D : float
+        Denaturant concentration (M)
+    DHm : float
+        Enthalpy change at Tm (kcal/mol)
+    Tm : float
+        Melting temperature where ΔG = 0 (°C or K)
+    Cp0 : float
+        Heat capacity change (kcal/mol/K)
+    m0 : float
+        m-value at the reference temperature
+    m1 : float
+        Temperature dependence of the m-value
+
+    Returns
+    -------
+    numpy.ndarray
+        Equilibrium constant at a certain temperature and denaturant agent concentration
     """
 
     T   = temperature_to_kelvin(T)

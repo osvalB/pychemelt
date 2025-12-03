@@ -16,11 +16,18 @@ def expand_temperature_list(temp_lst,signal_lst):
 
     """
     Expand the temperature list to match the length of the signal list.
-    Args:
-        temp_lst (list): List of temperatures
-        signal_lst (list): List of signals
-    Returns:
-        list: Expanded temperature list
+
+    Parameters
+    ----------
+    temp_lst : list
+        List of temperatures
+    signal_lst : list
+        List of signals
+
+    Returns
+    -------
+    list
+        Expanded temperature list
     """
 
     if len(temp_lst) < len(signal_lst):
@@ -28,15 +35,20 @@ def expand_temperature_list(temp_lst,signal_lst):
 
     return temp_lst
 
+
 def delete_words_appearing_more_than_five_times(strings):
     """
     Deletes words that appear more than 5 times from a list of strings.
 
-    Args:
-        strings (list): List of strings.
+    Parameters
+    ----------
+    strings : list of str
+        List of strings.
 
-    Returns:
-        list: List of strings with frequent words removed.
+    Returns
+    -------
+    list of str
+        List of strings with frequent words removed.
     """
     all_words = " ".join(strings).split()
     word_counts = Counter(all_words)
@@ -47,15 +59,20 @@ def delete_words_appearing_more_than_five_times(strings):
     ]
     return cleaned_strings
 
+
 def remove_letter_number_combinations(text):
     """
     Removes any combination of a single letter followed by one or two digits (e.g., A1, B10, D5) from the input string.
 
-    Args:
-        text (str): The input string from which patterns should be removed.
+    Parameters
+    ----------
+    text : str
+        The input string from which patterns should be removed.
 
-    Returns:
-        str: The cleaned string with all matching patterns removed.
+    Returns
+    -------
+    str
+        The cleaned string with all matching patterns removed.
     """
     # Pattern: one letter (case-insensitive) followed by 1 or 2 digits, as a whole word
     pattern = r'\b[A-Za-z]\d{1,2}\b'
@@ -63,41 +80,58 @@ def remove_letter_number_combinations(text):
     # Optionally remove extra spaces left behind
     return re.sub(r'\s{2,}', ' ', cleaned_text).strip()
 
+
 def remove_numbers_after_letter(text):
     """
     Removes all numbers coming after a letter until an underscore or space appears.
 
-    Args:
-        text (str): The input string.
+    Parameters
+    ----------
+    text : str
+        The input string.
 
-    Returns:
-        str: The cleaned string.
+    Returns
+    -------
+    str
+        The cleaned string.
     """
 
     pattern = r'(?<=[A-Za-z])\d+(?=[_\s])'
 
     return re.sub(pattern, '', text)
 
+
 def remove_non_numeric_char(input_string):
     """
     Remove all non-numeric characters except dots from a string.
-    Args:
-        input_string (str): Input string
-    Returns:
-        str: String with non-numeric characters (except dots) removed
+
+    Parameters
+    ----------
+    input_string : str
+        Input string
+
+    Returns
+    -------
+    str
+        String with non-numeric characters (except dots) removed
     """
 
     return re.sub(r'[^\d.]', '', input_string)
+
 
 def clean_conditions_labels(conditions):
     """
     Clean the conditions labels by removing unwanted characters and patterns.
 
-    Args:
-        conditions (list): List of condition strings.
+    Parameters
+    ----------
+    conditions : list
+        List of condition strings.
 
-    Returns:
-        list: List of cleaned condition strings.
+    Returns
+    -------
+    list
+        List of cleaned condition strings.
     """
     conditions = [text.replace("_", " ") for text in conditions]
     conditions = delete_words_appearing_more_than_five_times(conditions)
@@ -114,17 +148,26 @@ def clean_conditions_labels(conditions):
 
     return conditions
 
+
 def subset_signal_by_temperature(signal_lst, temp_lst, min_temp, max_temp):
     """
     Subset the signal and temperature lists based on the specified temperature range.
 
-    Args:
-        signal (list): List of signal values.
-        temp (list): List of temperature values.
-        min_temp (float): Minimum temperature for subsetting.
-        max_temp (float): Maximum temperature for subsetting.
-    Returns:
-        tuple: Tuple containing the subsetted signal and temperature lists.
+    Parameters
+    ----------
+    signal_lst : list
+        List of signal arrays.
+    temp_lst : list
+        List of temperature arrays.
+    min_temp : float
+        Minimum temperature for subsetting.
+    max_temp : float
+        Maximum temperature for subsetting.
+
+    Returns
+    -------
+    tuple
+        Tuple containing the subsetted signal and temperature lists.
     """
 
     # Limit the signal to the temperature range
@@ -519,7 +562,3 @@ def subset_data(data,max_points):
         do_remove = len(data) >= max_points
 
     return data
-
-
-
-

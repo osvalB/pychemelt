@@ -18,59 +18,93 @@ shift_temperature      = lambda T: temperature_to_kelvin(T) - Tref_cst
 
 def solve_one_root_quadratic(a,b,c):
     """
-    Obtain one root of the quadratic equation of the form ax^2 + bx + c = 0
-    Args:
-        a (float): Coefficient of x^2
-        b (float): Coefficient of x
-        c (float): Constant term
-    Returns:
-        float: One root of the quadratic equation
+    Obtain one root of the quadratic equation of the form ax^2 + bx + c = 0.
+
+    Parameters
+    ----------
+    a : float
+        Coefficient of x^2
+    b : float
+        Coefficient of x
+    c : float
+        Constant term
+
+    Returns
+    -------
+    float
+        One root of the quadratic equation
     """
     return 2*c / (-b - np.sqrt(b**2 - 4*a*c))
+
 
 def solve_one_root_depressed_cubic(p,q):
 
     """
-    Obtain one root of the depressed cubic equation of the form x^3 + px + q = 0
-    Args:
-        p (float): Coefficient of x
-        q (float): Constant term
-    Returns:
-        float: One root of the cubic equation
+    Obtain one root of the depressed cubic equation of the form x^3 + p x + q = 0.
+
+    Parameters
+    ----------
+    p : float
+        Coefficient of x
+    q : float
+        Constant term
+
+    Returns
+    -------
+    float
+        One real root of the cubic equation
     """
 
     delta = np.sqrt((q**2/4) + (p**3/27))
 
     return np.cbrt(-q/2+delta) + np.cbrt(-q/2-delta)
 
+
 def is_evenly_spaced(x, tol = 1e-4):
     """
     Check if x is evenly spaced within a given tolerance.
 
-    Args:
-        x (np.ndarray): x data
-        tol (float): Tolerance for considering spacing equal
+    Parameters
+    ----------
+    x : array-like
+        x data
+    tol : float, optional
+        Tolerance for considering spacing equal (default: 1e-4)
 
-    Returns:
-         bool: True if x is evenly spaced, False otherwise
+    Returns
+    -------
+    bool
+        True if x is evenly spaced, False otherwise
     """
 
     diffs = np.diff(x)
     return np.all(np.abs(diffs - diffs[0]) < tol)
+
 
 def first_derivative_savgol(x, y, window_length=5, polyorder=4):
 
     """
     Estimate the first derivative using Savitzky-Golay filtering.
 
-    Args:
-        x (np.ndarray): x data
-        y (np.ndarray): y data
-        window_length (int): Length of the filter window, in temperature units
-        polyorder (int): Order of the polynomial used to fit the samples
+    Parameters
+    ----------
+    x : array-like
+        x data (must be evenly spaced)
+    y : array-like
+        y data
+    window_length : int, optional
+        Length of the filter window, in temperature units (default: 5)
+    polyorder : int, optional
+        Order of the polynomial used to fit the samples (default: 4)
 
-    Returns:
-        dydx (np.ndarray): First derivative of y with respect to x
+    Returns
+    -------
+    numpy.ndarray
+        First derivative of y with respect to x
+
+    Notes
+    -----
+    This function will raise a ValueError if `x` is not evenly spaced.
     """
 
     # Check if x is evenly spaced
@@ -89,14 +123,22 @@ def first_derivative_savgol(x, y, window_length=5, polyorder=4):
 
     return dydx
 
+
 def relative_errors(params,cov):
     """
     Calculate the relative errors of the fitted parameters.
-    Args:
-        params (np.ndarray): Fitted parameters
-        cov (np.ndarray): Covariance matrix of the fitted parameters
-    Returns:
-        rel_error (np.ndarray): Relative errors of the fitted parameters
+
+    Parameters
+    ----------
+    params : numpy.ndarray
+        Fitted parameters
+    cov : numpy.ndarray
+        Covariance matrix of the fitted parameters
+
+    Returns
+    -------
+    numpy.ndarray
+        Relative errors of the fitted parameters (in percent)
     """
 
     error = np.sqrt(np.diag(cov))
@@ -104,19 +146,28 @@ def relative_errors(params,cov):
 
     return rel_error
 
+
 def find_line_outliers(m,b,x,y,sigma=2.5):
     """
-    Find outliers in a linear fit using the 3-sigma rule.
+    Find outliers in a linear fit using the sigma rule.
 
-    Args:
-        m (float): Slope of the line
-        b (float): Intercept of the line
-        x (np.ndarray): x data
-        y (np.ndarray): y data
-        sigma (float): Number of standard deviations to use for outlier detection
+    Parameters
+    ----------
+    m : float
+        Slope of the line
+    b : float
+        Intercept of the line
+    x : array-like
+        x data
+    y : array-like
+        y data
+    sigma : float, optional
+        Number of standard deviations to use for outlier detection (default: 2.5)
 
-    Returns:
-        outliers (np.ndarray): Indices of the outliers
+    Returns
+    -------
+    numpy.ndarray
+        Indices of the outliers
     """
 
     # Calculate the residuals
@@ -128,21 +179,28 @@ def find_line_outliers(m,b,x,y,sigma=2.5):
     # Calculate the mean of the residuals
     mean_residuals = np.mean(residuals)
 
-    # Identify outliers using the 3-sigma rule
+    # Identify outliers
     outliers = np.where(np.abs(residuals - mean_residuals) > sigma * std_residuals)[0]
 
     return outliers
+
 
 def residuals_squares_sum(y_true,y_pred):
 
     """
     Calculate the residual sum of squares.
 
-    Args:
-        y_true (np.ndarray): True values
-        y_pred (np.ndarray): Predicted values
-    Returns:
-        float : Residual sum of squares
+    Parameters
+    ----------
+    y_true : array-like
+        True values
+    y_pred : array-like
+        Predicted values
+
+    Returns
+    -------
+    float
+        Residual sum of squares
     """
 
     # Convert to numpy arrays if it is a list
@@ -161,11 +219,17 @@ def r_squared(y_true, y_pred):
     """
     Calculate the R-squared value for a regression model.
 
-    Args:
-        y_true (np.ndarray): True values
-        y_pred (np.ndarray): Predicted values
-    Returns:
-        float: R-squared value
+    Parameters
+    ----------
+    y_true : array-like
+        True values
+    y_pred : array-like
+        Predicted values
+
+    Returns
+    -------
+    float
+        R-squared value
     """
 
     ss_total = np.sum((y_true - np.mean(y_true))**2)
@@ -176,12 +240,20 @@ def r_squared(y_true, y_pred):
 def adjusted_r2(r2, n, p):
     """
     Calculate the adjusted R-squared value for a regression model.
-    Args:
-        r2 (float): R-squared value
-        n (int): Number of observations
-        p (int): Number of predictors
-    Returns:
-        float: Adjusted R-squared value
+
+    Parameters
+    ----------
+    r2 : float
+        R-squared value
+    n : int
+        Number of observations
+    p : int
+        Number of predictors
+
+    Returns
+    -------
+    float
+        Adjusted R-squared value
     """
 
     return 1 - (1 - r2) * (n - 1) / (n - p - 1)
@@ -189,12 +261,20 @@ def adjusted_r2(r2, n, p):
 def compute_aic(y_true, y_pred, k):
     """
     Compute the Akaike Information Criterion (AIC) for a regression model.
-    Args:
-        y_true (np.ndarray): True values
-        y_pred (np.ndarray): Predicted values
-        k (int): Number of parameters in the model
-    Returns:
-        float: AIC value
+
+    Parameters
+    ----------
+    y_true : array-like
+        True values
+    y_pred : array-like
+        Predicted values
+    k : int
+        Number of parameters in the model
+
+    Returns
+    -------
+    float
+        AIC value
     """
 
     n = len(y_true)
@@ -257,41 +337,52 @@ def compare_akaikes(akaikes_1, akaikes_2, akaikes_3, akaikes_4, denaturant_conce
     best_model_all = Counter(best_models_ids).most_common(1)[0][0]
     return model_names[best_model_all]
 
+
 def rss_p(rrs0, n, p, alfa):
 
     """
     Given the residuals of the best fitted model,
-    compute the desired residual sum of squares for a 1-alpha confidence interval
-    This is used to compute asymmetric confidence intervals for the fitted parameters
+    compute the desired residual sum of squares for a 1-alpha confidence interval.
+    This is used to compute asymmetric confidence intervals for the fitted parameters.
 
-    Args:
-        rrs0 (float): residual sum of squares of the model with the best fit
-        n (int): number of data points
-        p (int): number of parameters
-        alfa (float): desired confidence interval
+    Parameters
+    ----------
+    rrs0 : float
+        Residual sum of squares of the model with the best fit
+    n : int
+        Number of data points
+    p : int
+        Number of parameters
+    alfa : float
+        Desired significance level (alpha)
 
-    Returns:
-        rss (float): residual sum of squares for the desired confidence interval
+    Returns
+    -------
+    float
+        Residual sum of squares for the desired confidence interval
     """
 
     critical_value = stats.f.ppf(q=1 - alfa, dfn=1, dfd=n - p)
 
     return rrs0 * (1 + critical_value / (n - p))
 
+
 def get_rss(y, y_fit):
 
     """
-    Compute the residual sum of squares
+    Compute the residual sum of squares.
 
-    Args:
+    Parameters
+    ----------
+    y : array-like
+        Observed values
+    y_fit : array-like
+        Fitted values
 
-        y (np.ndarray): observed values
-        y_fit (np.ndarray): fitted values
-
-    Returns:
-
-        rss (np.ndarray): residual sum of squares
-
+    Returns
+    -------
+    float
+        Residual sum of squares
     """
 
     residuals = y - y_fit
@@ -299,23 +390,27 @@ def get_rss(y, y_fit):
 
     return rss
 
+
 def get_desired_rss(y, y_fit, p,alpha=0.05):
 
     """
-    Given the observed and fitted data,
-    find the residual sum of squares required for a 1-alpha confidence interval
+    Given the observed and fitted data, find the residual sum of squares required for a 1-alpha confidence interval.
 
-    Args:
+    Parameters
+    ----------
+    y : array-like
+        Observed values or list of arrays
+    y_fit : array-like
+        Fitted values or list of arrays
+    p : int
+        Number of parameters
+    alpha : float, optional
+        Desired significance level (default: 0.05)
 
-        y (np.ndarray): observed values
-        y_fit (np.ndarray): fitted values
-        p (int): number of parameters
-        alpha (float): desired confidence interval
-
-    Returns:
-
-        rss (np.ndarray): residual sum of squares
-
+    Returns
+    -------
+    float
+        Residual sum of squares corresponding to the desired confidence interval
     """
 
     # If y is of type list, convert it to a numpy array by concatenating
