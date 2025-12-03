@@ -1,0 +1,1872 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pychemelt.utils.fitting &#8212; PyChemelt 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pychemelt/utils/fitting';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyChemelt 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../modules.html">
+    pychemelt
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/osvalB/pychemelt" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../modules.html">
+    pychemelt
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/osvalB/pychemelt" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pychemelt.utils.fitting</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pychemelt.utils.fitting</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module contains helper functions to fit unfolding data</span>
+<span class="sd">Author: Osvaldo Burastero</span>
+
+<span class="sd">The functions description is below:</span>
+
+<span class="sd">fit_line_robust - to fit a line to xy data</span>
+<span class="sd">fit_line_robust_quadratic - to fit a quadratic to xy data</span>
+<span class="sd">fit_exponential_robust - to fit an exponential to xy data</span>
+
+<span class="sd">compare_linear_to_quadratic - fit xy data to linear and quadratic models and compare the results</span>
+
+<span class="sd">fit_thermal_unfolding - to fit unfolding curves with a shared Tm, and DH but different baselines and slopes.</span>
+<span class="sd">No denaturant conocentration is taken into account</span>
+
+<span class="sd">fit_tc_unfolding_single_slopes - to fit unfolding curves with shared Tm, DH, Cp and m.</span>
+<span class="sd">The curves can still have different baseline and slopes</span>
+
+<span class="sd">fit_tc_unfolding_shared_slopes_many_signals - to fit unfolding curves with shared Tm, DH, Cp and m.</span>
+<span class="sd">The slope terms are shared. The intercepts can be different.</span>
+
+<span class="sd">fit_tc_unfolding_many_signals - to fit unfolding curves with shared Tm, DH, Cp and m.</span>
+<span class="sd">The slope terms are shared. The intercepts are defined by a global parameters.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w">     </span><span class="kn">import</span> <span class="n">curve_fit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w">     </span><span class="kn">import</span> <span class="n">least_squares</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">f</span> <span class="k">as</span> <span class="n">f_dist</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..utils.math</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_rss</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..utils.math</span><span class="w"> </span><span class="kn">import</span> <span class="n">temperature_to_kelvin</span>
+
+<div class="viewcode-block" id="fit_line_robust">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.fitting.fit_line_robust">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_line_robust</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fit a line to the data using robust fitting</span>
+<span class="sd">    Args:</span>
+<span class="sd">        x (np.ndarray): x data</span>
+<span class="sd">        y (np.ndarray): y data</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        m (float): Slope of the fitted line</span>
+<span class="sd">        b (float): Intercept of the fitted line</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># convert x and y to numpy arrays, if they are lists</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">linear_model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">params</span><span class="p">):</span>
+        <span class="n">m</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="k">return</span> <span class="n">m</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+
+    <span class="n">p0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Perform robust fitting</span>
+    <span class="n">res_robust</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="n">linear_model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span>
+        <span class="n">p0</span><span class="p">,</span>
+        <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;soft_l1&#39;</span><span class="p">,</span>
+        <span class="n">f_scale</span><span class="o">=</span><span class="mf">0.1</span>
+    <span class="p">)</span>
+
+    <span class="n">m</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">res_robust</span><span class="o">.</span><span class="n">x</span>
+
+    <span class="k">return</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span></div>
+
+
+<div class="viewcode-block" id="fit_quadratic_robust">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.fitting.fit_quadratic_robust">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_quadratic_robust</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fit a qudratic equation to the data using robust fitting</span>
+<span class="sd">    Args:</span>
+<span class="sd">        x (np.ndarray): x data</span>
+<span class="sd">        y (np.ndarray): y data</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        a (float): Quadratic coefficient of the fitted line</span>
+<span class="sd">        b (float): Linear coefficient of the fitted line</span>
+<span class="sd">        c (float): Constant coefficient of the fitted line</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># convert x and y to numpy arrays, if they are lists</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">params</span><span class="p">):</span>
+        <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
+
+    <span class="n">p0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Perform robust fitting</span>
+    <span class="n">res_robust</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span>
+        <span class="n">p0</span><span class="p">,</span>
+        <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;soft_l1&#39;</span><span class="p">,</span>
+        <span class="n">f_scale</span><span class="o">=</span><span class="mf">0.1</span>
+    <span class="p">)</span>
+
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">res_robust</span><span class="o">.</span><span class="n">x</span>
+
+    <span class="k">return</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span></div>
+
+
+<div class="viewcode-block" id="fit_exponential_robust">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.fitting.fit_exponential_robust">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_exponential_robust</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fit a exponential function to the data using robust fitting</span>
+
+<span class="sd">    Remember to shift the temperature to Tref before calling it.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x (np.ndarray): x data</span>
+<span class="sd">        y (np.ndarray): y data</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        a (float): Baseline</span>
+<span class="sd">        c (float): pre exponential factor</span>
+<span class="sd">        alpha (float): exponential factor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># convert x and y to numpy arrays, if they are lists</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">alpha</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">c</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+
+    <span class="c1"># Initial parameter estimation by grid search</span>
+
+    <span class="n">rss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+
+    <span class="n">alpha_seq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+
+    <span class="n">p0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">best_alpha</span> <span class="o">=</span> <span class="n">alpha_seq</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">max_y_abs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+    <span class="n">low_bounds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">max_y_abs</span><span class="p">]</span>
+
+    <span class="n">high_bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">3</span><span class="o">*</span><span class="n">max_y_abs</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="n">alpha_seq</span><span class="p">:</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="k">def</span><span class="w"> </span><span class="nf">fit_fx</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
+
+                <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">c</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+
+            <span class="n">params</span><span class="p">,</span> <span class="n">cov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span>
+                <span class="n">fit_fx</span><span class="p">,</span>
+                <span class="n">x</span><span class="p">,</span>
+                <span class="n">y</span><span class="p">,</span>
+                <span class="n">p0</span><span class="o">=</span><span class="n">p0</span><span class="p">,</span>
+                <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">low_bounds</span><span class="p">,</span> <span class="n">high_bounds</span><span class="p">))</span>
+
+            <span class="n">pred</span> <span class="o">=</span>  <span class="n">fit_fx</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">params</span><span class="p">)</span>
+
+            <span class="n">rss_curr</span> <span class="o">=</span> <span class="n">get_rss</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">rss_curr</span> <span class="o">&lt;</span> <span class="n">rss</span><span class="p">:</span>
+
+                <span class="n">p0</span> <span class="o">=</span> <span class="n">params</span>
+                <span class="n">rss</span> <span class="o">=</span> <span class="n">rss_curr</span>
+                <span class="n">best_alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+        <span class="k">except</span><span class="p">:</span>
+
+            <span class="k">pass</span>
+
+    <span class="n">p0</span> <span class="o">=</span> <span class="n">p0</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">+</span> <span class="p">[</span><span class="n">best_alpha</span><span class="p">]</span>
+
+    <span class="n">low_bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best_alpha</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">high_bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best_alpha</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="c1"># Perform robust fitting</span>
+    <span class="n">res_robust</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">params</span><span class="p">:</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">params</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span>
+        <span class="n">p0</span><span class="p">,</span>
+        <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;soft_l1&#39;</span><span class="p">,</span>
+        <span class="n">f_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">low_bounds</span><span class="p">,</span> <span class="n">high_bounds</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">a</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">res_robust</span><span class="o">.</span><span class="n">x</span>
+
+    <span class="k">return</span> <span class="n">a</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">alpha</span></div>
+
+
+<div class="viewcode-block" id="compare_linear_to_quadratic">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.fitting.compare_linear_to_quadratic">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compare_linear_to_quadratic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compare the linear and quadratic fits to the data using an F-test</span>
+<span class="sd">    Args:</span>
+<span class="sd">        x (np.ndarray): x data</span>
+<span class="sd">        y (np.ndarray): y data</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the linear model is better than the quadratic model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">m</span><span class="p">,</span> <span class="n">b</span>       <span class="o">=</span> <span class="n">fit_line_robust</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">y_pred_lin</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span>     <span class="o">=</span> <span class="n">fit_quadratic_robust</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">y_pred_quad</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
+
+    <span class="c1"># Residual sums</span>
+    <span class="n">rss_lin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_pred_lin</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">rss_quad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_pred_quad</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># R² and Adjusted R²</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">p_lin</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">p_quad</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="c1"># F-test</span>
+    <span class="n">numerator</span>   <span class="o">=</span> <span class="p">(</span><span class="n">rss_lin</span> <span class="o">-</span> <span class="n">rss_quad</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">p_quad</span> <span class="o">-</span> <span class="n">p_lin</span><span class="p">)</span>
+    <span class="n">denominator</span> <span class="o">=</span> <span class="n">rss_quad</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="p">(</span><span class="n">p_quad</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">f_stat</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
+    <span class="n">p_value</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">f_dist</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">f_stat</span><span class="p">,</span> <span class="n">dfn</span><span class="o">=</span><span class="n">p_quad</span> <span class="o">-</span> <span class="n">p_lin</span><span class="p">,</span> <span class="n">dfd</span><span class="o">=</span><span class="n">n</span> <span class="o">-</span> <span class="p">(</span><span class="n">p_quad</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># True if linear model is better</span>
+    <span class="k">return</span> <span class="n">p_value</span> <span class="o">&gt;</span> <span class="mf">0.05</span></div>
+
+
+<div class="viewcode-block" id="fit_thermal_unfolding">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.fitting.fit_thermal_unfolding">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_thermal_unfolding</span><span class="p">(</span>
+    <span class="n">list_of_temperatures</span><span class="p">,</span> 
+    <span class="n">list_of_signals</span><span class="p">,</span>
+    <span class="n">initial_parameters</span><span class="p">,</span>
+    <span class="n">low_bounds</span><span class="p">,</span> 
+    <span class="n">high_bounds</span><span class="p">,</span>
+    <span class="n">signal_fx</span><span class="p">,</span> 
+    <span class="n">Cp</span><span class="p">,</span>
+    <span class="n">fit_slopes</span><span class="p">,</span>
+    <span class="n">list_of_oligomer_conc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fit the thermal unfolding profile of many curves at the same time</span>
+<span class="sd">    Useful function to do global fitting of local and global parameters</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        list_of_temperatures (list): List of temperatures for each dataset</span>
+<span class="sd">        list_of_signals (list): List of signals for each dataset</span>
+<span class="sd">        initial_parameters (list): Initial guess for the parameters</span>
+<span class="sd">        low_bounds (list): Lower bounds for the parameters</span>
+<span class="sd">        high_bounds (list): Upper bounds for the parameters</span>
+<span class="sd">        signal_fx (function): Function to calculate the signal based on the parameters</span>
+<span class="sd">        Cp (float): Variation of calorific capacity between the two states</span>
+<span class="sd">        fit_slopes (dic): Dictionary stating if a constant, linear or quadratic baseline is to be fitted</span>
+<span class="sd">        list_of_oligomer_conc (list, optional): List of oligomer concentrations for each dataset</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">        The fitting of the melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</span>
+<span class="sd">            slopes and intercept of the folded and unfolded states</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">all_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">list_of_signals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">fit_slope_native</span> <span class="o">=</span> <span class="n">fit_slopes</span><span class="p">[</span><span class="s2">&quot;fit_slope_native&quot;</span><span class="p">]</span>
+    <span class="n">fit_slope_unfolded</span> <span class="o">=</span> <span class="n">fit_slopes</span><span class="p">[</span><span class="s2">&quot;fit_slope_unfolded&quot;</span><span class="p">]</span>
+    <span class="n">fit_quadratic_native</span> <span class="o">=</span> <span class="n">fit_slopes</span><span class="p">[</span><span class="s2">&quot;fit_quadratic_native&quot;</span><span class="p">]</span>
+    <span class="n">fit_quadratic_unfolded</span> <span class="o">=</span> <span class="n">fit_slopes</span><span class="p">[</span><span class="s2">&quot;fit_quadratic_unfolded&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">thermal_unfolding</span><span class="p">(</span><span class="n">dummyVariable</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the thermal unfolding profile of many curves at the same time</span>
+
+<span class="sd">        Requires:</span>
+
+<span class="sd">            - The &#39;listOfTemperatures&#39; containing each of them a single dataset</span>
+
+<span class="sd">        The other arguments have to be in the following order:</span>
+
+<span class="sd">            - Global melting temperature</span>
+<span class="sd">            - Global enthalpy of unfolding</span>
+<span class="sd">            - Single intercepts, folded</span>
+<span class="sd">            - Single intercepts, unfolded</span>
+<span class="sd">            - Single slopes, folded</span>
+<span class="sd">            - Single slopes, unfolded</span>
+<span class="sd">            - Single quadratic coefficients, folded</span>
+<span class="sd">            - Single quadratic coefficients, unfolded</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            The melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</span>
+<span class="sd">                slopes and intercept of the folded and unfolded states</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">n_datasets</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_of_temperatures</span><span class="p">)</span>
+        <span class="n">Tm</span><span class="p">,</span> <span class="n">dh</span>     <span class="o">=</span> <span class="n">args</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># Temperature of melting, Enthalpy of unfolding</span>
+
+        <span class="n">intercepts_folded</span>   <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">:(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">n_datasets</span><span class="p">)]</span>
+        <span class="n">intercepts_unfolded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">n_datasets</span><span class="p">):(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">n_datasets</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)]</span>
+
+        <span class="n">id_param_init</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">n_datasets</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">n_params</span>      <span class="o">=</span> <span class="n">n_datasets</span>
+
+        <span class="k">if</span> <span class="n">fit_slope_native</span><span class="p">:</span>
+            <span class="n">slopes_folded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_params</span><span class="p">)]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_params</span>
+
+        <span class="k">if</span> <span class="n">fit_slope_unfolded</span><span class="p">:</span>
+            <span class="n">slopes_unfolded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_params</span><span class="p">)]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_params</span>
+
+        <span class="k">if</span> <span class="n">fit_quadratic_native</span><span class="p">:</span>
+            <span class="n">quadratic_folded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_params</span><span class="p">)]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_params</span>
+
+        <span class="k">if</span> <span class="n">fit_quadratic_unfolded</span><span class="p">:</span>
+            <span class="n">quadratic_unfolded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_params</span><span class="p">)]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_params</span>
+
+        <span class="n">signal</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">T</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_of_temperatures</span><span class="p">):</span>
+
+            <span class="n">b_n</span><span class="p">,</span> <span class="n">b_u</span> <span class="o">=</span> <span class="n">intercepts_folded</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">intercepts_unfolded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">k_n</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">fit_slope_native</span>       <span class="k">else</span> <span class="n">slopes_folded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">k_u</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">fit_slope_unfolded</span>     <span class="k">else</span> <span class="n">slopes_unfolded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">q_n</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">fit_quadratic_native</span>   <span class="k">else</span> <span class="n">quadratic_folded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">q_u</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">fit_quadratic_unfolded</span> <span class="k">else</span> <span class="n">quadratic_unfolded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">list_of_oligomer_conc</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">list_of_oligomer_conc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">y</span> <span class="o">=</span> <span class="n">signal_fx</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Tm</span><span class="p">,</span> <span class="n">dh</span><span class="p">,</span> <span class="n">b_n</span><span class="p">,</span> <span class="n">k_n</span><span class="p">,</span> <span class="n">b_u</span><span class="p">,</span> <span class="n">k_u</span><span class="p">,</span> <span class="n">Cp</span><span class="p">,</span><span class="n">q_n</span><span class="p">,</span><span class="n">q_u</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+            <span class="n">signal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">global_fit_params</span><span class="p">,</span> <span class="n">cov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span>
+        <span class="n">thermal_unfolding</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">all_signal</span><span class="p">,</span>
+        <span class="n">p0</span><span class="o">=</span><span class="n">initial_parameters</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">low_bounds</span><span class="p">,</span> <span class="n">high_bounds</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="n">predicted</span> <span class="o">=</span> <span class="n">thermal_unfolding</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">*</span><span class="n">global_fit_params</span><span class="p">)</span>
+
+    <span class="c1"># Convert predict to list of lists</span>
+    <span class="n">predicted_lst</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">init</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">list_of_temperatures</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">predicted_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">predicted</span><span class="p">[</span><span class="n">init</span><span class="p">:</span><span class="n">init</span><span class="o">+</span><span class="n">n</span><span class="p">])</span>
+        <span class="n">init</span> <span class="o">+=</span> <span class="n">n</span>
+
+    <span class="k">return</span> <span class="n">global_fit_params</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">predicted_lst</span></div>
+
+
+<div class="viewcode-block" id="fit_thermal_unfolding_exponential">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.fitting.fit_thermal_unfolding_exponential">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_thermal_unfolding_exponential</span><span class="p">(</span>
+    <span class="n">list_of_temperatures</span><span class="p">,</span>
+    <span class="n">list_of_signals</span><span class="p">,</span>
+    <span class="n">initial_parameters</span><span class="p">,</span>
+    <span class="n">low_bounds</span><span class="p">,</span>
+    <span class="n">high_bounds</span><span class="p">,</span>
+    <span class="n">signal_fx</span><span class="p">,</span>
+    <span class="n">Cp</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">list_of_oligomer_conc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fit the thermal unfolding profile of many curves at the same time</span>
+<span class="sd">    Using exponential baselines</span>
+<span class="sd">    Useful function to do global fitting of local and global parameters</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        list_of_temperatures (list): List of temperatures for each dataset</span>
+<span class="sd">        list_of_signals (list): List of signals for each dataset</span>
+<span class="sd">        initial_parameters (list): Initial guess for the parameters</span>
+<span class="sd">        low_bounds (list): Lower bounds for the parameters</span>
+<span class="sd">        high_bounds (list): Upper bounds for the parameters</span>
+<span class="sd">        signal_fx (function): Function to calculate the signal based on the parameters</span>
+<span class="sd">        Cp (float): Variation of calorific capacity between the two states</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">        The fitting of the melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</span>
+<span class="sd">            slopes and intercept of the folded and unfolded states</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">all_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">list_of_signals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">thermal_unfolding</span><span class="p">(</span><span class="n">dummyVariable</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the thermal unfolding profile of many curves at the same time</span>
+
+<span class="sd">        Requires:</span>
+
+<span class="sd">            - The &#39;listOfTemperatures&#39; containing each of them a single dataset</span>
+
+<span class="sd">        The other arguments have to be in the following order:</span>
+
+<span class="sd">            - Global melting temperature</span>
+<span class="sd">            - Global enthalpy of unfolding</span>
+<span class="sd">            - Single intercepts, folded</span>
+<span class="sd">            - Single intercepts, unfolded</span>
+<span class="sd">            - Single pre exponential terms, folded</span>
+<span class="sd">            - Single pre exponential terms, unfolded</span>
+<span class="sd">            - Single exponential terms, folded</span>
+<span class="sd">            - Single exponential terms, unfolded</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            The melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</span>
+<span class="sd">                slopes and intercept of the folded and unfolded states</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">n_datasets</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_of_temperatures</span><span class="p">)</span>
+        <span class="n">Tm</span><span class="p">,</span> <span class="n">dh</span>     <span class="o">=</span> <span class="n">args</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># Temperature of melting, Enthalpy of unfolding</span>
+
+        <span class="n">intercepts_folded</span>   <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">:(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">n_datasets</span><span class="p">)]</span>
+        <span class="n">intercepts_unfolded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">n_datasets</span><span class="p">):(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">n_datasets</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)]</span>
+
+        <span class="n">id_param_init</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">n_datasets</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">n_params</span>      <span class="o">=</span> <span class="n">n_datasets</span>
+
+        <span class="n">pre_exp_folded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_params</span><span class="p">)]</span>
+        <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_params</span>
+
+        <span class="n">pre_exp_unfolded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_params</span><span class="p">)]</span>
+        <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_params</span>
+
+        <span class="n">exp_folded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_params</span><span class="p">)]</span>
+        <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_params</span>
+
+        <span class="n">exp_unfolded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_params</span><span class="p">)]</span>
+        <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_params</span>
+
+        <span class="n">signal</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">T</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_of_temperatures</span><span class="p">):</span>
+
+            <span class="n">a_n</span> <span class="o">=</span> <span class="n">intercepts_folded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">a_u</span> <span class="o">=</span> <span class="n">intercepts_unfolded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">c_n</span>     <span class="o">=</span> <span class="n">pre_exp_folded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">c_u</span>     <span class="o">=</span> <span class="n">pre_exp_unfolded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">alpha_n</span> <span class="o">=</span> <span class="n">exp_folded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">alpha_u</span> <span class="o">=</span> <span class="n">exp_unfolded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">list_of_oligomer_conc</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">list_of_oligomer_conc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">y</span> <span class="o">=</span> <span class="n">signal_fx</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Tm</span><span class="p">,</span> <span class="n">dh</span><span class="p">,</span> <span class="n">a_n</span><span class="p">,</span> <span class="n">c_n</span><span class="p">,</span> <span class="n">alpha_n</span><span class="p">,</span> <span class="n">a_u</span><span class="p">,</span> <span class="n">c_u</span><span class="p">,</span> <span class="n">alpha_u</span><span class="p">,</span> <span class="n">Cp</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+
+            <span class="n">signal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">global_fit_params</span><span class="p">,</span> <span class="n">cov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span>
+        <span class="n">thermal_unfolding</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">all_signal</span><span class="p">,</span>
+        <span class="n">p0</span><span class="o">=</span><span class="n">initial_parameters</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">low_bounds</span><span class="p">,</span> <span class="n">high_bounds</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="n">predicted</span> <span class="o">=</span> <span class="n">thermal_unfolding</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">*</span><span class="n">global_fit_params</span><span class="p">)</span>
+
+    <span class="c1"># Convert predict to list of lists</span>
+    <span class="n">predicted_lst</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">init</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">list_of_temperatures</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">predicted_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">predicted</span><span class="p">[</span><span class="n">init</span><span class="p">:</span><span class="n">init</span><span class="o">+</span><span class="n">n</span><span class="p">])</span>
+        <span class="n">init</span> <span class="o">+=</span> <span class="n">n</span>
+
+    <span class="k">return</span> <span class="n">global_fit_params</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">predicted_lst</span></div>
+
+
+<div class="viewcode-block" id="fit_tc_unfolding_single_slopes">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.fitting.fit_tc_unfolding_single_slopes">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_tc_unfolding_single_slopes</span><span class="p">(</span>
+    <span class="n">list_of_temperatures</span><span class="p">,</span> 
+    <span class="n">list_of_signals</span><span class="p">,</span>
+    <span class="n">denaturant_concentrations</span><span class="p">,</span>
+    <span class="n">initial_parameters</span><span class="p">,</span>
+    <span class="n">low_bounds</span><span class="p">,</span> 
+    <span class="n">high_bounds</span><span class="p">,</span>
+    <span class="n">signal_fx</span><span class="p">,</span>
+    <span class="n">fit_slopes</span><span class="p">,</span>
+    <span class="n">list_of_oligomer_conc</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">fit_m1</span>                <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">cp_value</span>              <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">tm_value</span>              <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dh_value</span>              <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fit the thermochemical unfolding profile of many curves at the same time</span>
+<span class="sd">    The curves will share thermodynamic parameters but have different baseline and slopes</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        list_of_temperatures (list): List of temperatures for each dataset</span>
+<span class="sd">        list_of_signals (list): List of signals for each dataset</span>
+<span class="sd">        denaturant_concentrations (list): List of denaturant concentrations, one per dataset</span>
+<span class="sd">        initial_parameters (list): Initial guess for the parameters</span>
+<span class="sd">        low_bounds (list): Lower bounds for the parameters</span>
+<span class="sd">        high_bounds (list): Upper bounds for the parameters</span>
+<span class="sd">        signal_fx (function): Function to calculate the signal based on the parameters</span>
+<span class="sd">        fit_slopes (dic): Dictionary stating if a constant, linear or quadratic baseline is to be fitted</span>
+<span class="sd">        list_of_oligomer_conc (list, optional): List of oligomer concentrations for each dataset</span>
+<span class="sd">        fit_m1 (bool): Whether to fit the m1 parameter - m-value dependence on temperature</span>
+<span class="sd">        cp_value (float): Fixed Cp0, if None, it will be fitted</span>
+<span class="sd">        tm_value (float): Fixed melting temperature, if None, it will be fitted</span>
+<span class="sd">        dh_value (float): Fixed enthalpy of unfolding, if None, it will be fitted</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">        The fitting of the melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</span>
+<span class="sd">            slopes and intercept of the folded and unfolded states</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">all_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">list_of_signals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">n_datasets</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_of_temperatures</span><span class="p">)</span>
+
+    <span class="n">fit_slope_native</span> <span class="o">=</span> <span class="n">fit_slopes</span><span class="p">[</span><span class="s2">&quot;fit_slope_native&quot;</span><span class="p">]</span>
+    <span class="n">fit_slope_unfolded</span> <span class="o">=</span> <span class="n">fit_slopes</span><span class="p">[</span><span class="s2">&quot;fit_slope_unfolded&quot;</span><span class="p">]</span>
+    <span class="n">fit_quadratic_native</span> <span class="o">=</span> <span class="n">fit_slopes</span><span class="p">[</span><span class="s2">&quot;fit_quadratic_native&quot;</span><span class="p">]</span>
+    <span class="n">fit_quadratic_unfolded</span> <span class="o">=</span> <span class="n">fit_slopes</span><span class="p">[</span><span class="s2">&quot;fit_quadratic_unfolded&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">unfolding</span><span class="p">(</span><span class="n">dummyVariable</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the thermal unfolding profile of many curves at the same time</span>
+
+<span class="sd">        Requires:</span>
+
+<span class="sd">            - The &#39;listOfTemperatures&#39; containing each of them a single dataset</span>
+
+<span class="sd">        The other arguments have to be in the following order:</span>
+
+<span class="sd">            - Global melting temperature</span>
+<span class="sd">            - Global enthalpy of unfolding</span>
+<span class="sd">            - Global Cp0</span>
+<span class="sd">            - Global m0</span>
+<span class="sd">            - Global m1 (if fit_m1 is True)</span>
+<span class="sd">            - Single intercepts, folded</span>
+<span class="sd">            - Single intercepts, unfolded</span>
+<span class="sd">            - Single slopes, folded</span>
+<span class="sd">            - Single slopes, unfolded</span>
+<span class="sd">            - Single quadratic coefficients, folded</span>
+<span class="sd">            - Single quadratic coefficients, unfolded</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            The melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</span>
+<span class="sd">                slopes and intercept of the folded and unfolded states</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">id_param_init</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">if</span> <span class="n">tm_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="n">Tm</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Temperature of melting</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">Tm</span> <span class="o">=</span> <span class="n">tm_value</span>
+
+        <span class="k">if</span> <span class="n">dh_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="n">DHm</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">]</span>  <span class="c1"># Enthalpy of unfolding</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">DHm</span> <span class="o">=</span> <span class="n">dh_value</span>
+
+        <span class="k">if</span> <span class="n">cp_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="n">Cp0</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">]</span>  <span class="c1"># Cp0</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">Cp0</span> <span class="o">=</span> <span class="n">cp_value</span>
+
+        <span class="n">m0</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">]</span>  <span class="c1"># m0</span>
+        <span class="n">id_param_init</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">fit_m1</span><span class="p">:</span>
+            
+            <span class="n">m1</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">m1</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># First filter, verify that DG is not lower than 0 at 5C</span>
+        <span class="c1"># In other words, we do not have cold denaturation at 5C</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tfive = temperature_to_kelvin(5)</span>
+<span class="sd">        TmK   = temperature_to_kelvin(Tm)</span>
+
+<span class="sd">        DGfive = DHm * (1 - Tfive / TmK) + Cp0 * (Tfive - TmK - Tfive * np.log(Tfive / TmK))</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">intercepts_folded</span>   <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_datasets</span><span class="p">)]</span>
+        <span class="n">intercepts_unfolded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[(</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_datasets</span><span class="p">):(</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_datasets</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)]</span>
+
+        <span class="n">id_param_init</span> <span class="o">=</span> <span class="p">(</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_datasets</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">n_params</span>      <span class="o">=</span> <span class="n">n_datasets</span>
+
+        <span class="k">if</span> <span class="n">fit_slope_native</span><span class="p">:</span>
+            <span class="n">slopes_folded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_params</span><span class="p">)]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_params</span>
+
+        <span class="k">if</span> <span class="n">fit_slope_unfolded</span><span class="p">:</span>
+            <span class="n">slopes_unfolded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_params</span><span class="p">)]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_params</span>
+
+        <span class="k">if</span> <span class="n">fit_quadratic_native</span><span class="p">:</span>
+            <span class="n">quadratic_folded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_params</span><span class="p">)]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_params</span>
+
+        <span class="k">if</span> <span class="n">fit_quadratic_unfolded</span><span class="p">:</span>
+            <span class="n">quadratic_unfolded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_params</span><span class="p">)]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_params</span>
+
+        <span class="n">signal</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">T</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_of_temperatures</span><span class="p">):</span>
+
+            <span class="n">b_n</span><span class="p">,</span> <span class="n">b_u</span> <span class="o">=</span> <span class="n">intercepts_folded</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">intercepts_unfolded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">k_n</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">fit_slope_native</span>       <span class="k">else</span> <span class="n">slopes_folded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">k_u</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">fit_slope_unfolded</span>     <span class="k">else</span> <span class="n">slopes_unfolded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">q_n</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">fit_quadratic_native</span>   <span class="k">else</span> <span class="n">quadratic_folded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">q_u</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">fit_quadratic_unfolded</span> <span class="k">else</span> <span class="n">quadratic_unfolded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">list_of_oligomer_conc</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">list_of_oligomer_conc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">d</span> <span class="o">=</span> <span class="n">denaturant_concentrations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">y</span> <span class="o">=</span> <span class="n">signal_fx</span><span class="p">(</span>
+                <span class="n">T</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">DHm</span><span class="p">,</span> <span class="n">Tm</span><span class="p">,</span> <span class="n">Cp0</span><span class="p">,</span> <span class="n">m0</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span>
+                <span class="n">b_n</span><span class="p">,</span> <span class="n">k_n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">q_n</span><span class="p">,</span>
+                <span class="n">b_u</span><span class="p">,</span> <span class="n">k_u</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">q_u</span><span class="p">,</span> <span class="n">c</span>
+            <span class="p">)</span>
+
+            <span class="n">signal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">global_fit_params</span><span class="p">,</span> <span class="n">cov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span>
+        <span class="n">unfolding</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">all_signal</span><span class="p">,</span>
+        <span class="n">p0</span><span class="o">=</span><span class="n">initial_parameters</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">low_bounds</span><span class="p">,</span> <span class="n">high_bounds</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">predicted</span> <span class="o">=</span> <span class="n">unfolding</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">*</span><span class="n">global_fit_params</span><span class="p">)</span>
+
+    <span class="c1"># Convert predict to list of lists</span>
+    <span class="n">predicted_lst</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">init</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">list_of_temperatures</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">predicted_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">predicted</span><span class="p">[</span><span class="n">init</span><span class="p">:</span><span class="n">init</span><span class="o">+</span><span class="n">n</span><span class="p">])</span>
+        <span class="n">init</span> <span class="o">+=</span> <span class="n">n</span>
+
+    <span class="k">return</span> <span class="n">global_fit_params</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">predicted_lst</span></div>
+
+
+
+<div class="viewcode-block" id="fit_tc_unfolding_shared_slopes_many_signals">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.fitting.fit_tc_unfolding_shared_slopes_many_signals">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_tc_unfolding_shared_slopes_many_signals</span><span class="p">(</span>
+    <span class="n">list_of_temperatures</span><span class="p">,</span>
+    <span class="n">list_of_signals</span><span class="p">,</span>
+    <span class="n">signal_ids</span><span class="p">,</span>
+    <span class="n">denaturant_concentrations</span><span class="p">,</span>
+    <span class="n">initial_parameters</span><span class="p">,</span>
+    <span class="n">low_bounds</span><span class="p">,</span> 
+    <span class="n">high_bounds</span><span class="p">,</span>
+    <span class="n">signal_fx</span><span class="p">,</span>
+    <span class="n">fit_slopes</span><span class="p">,</span>
+    <span class="n">list_of_oligomer_conc</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">fit_m1</span>                <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">cp_value</span>              <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">tm_value</span>              <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dh_value</span>              <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fit the thermochemical unfolding profile of many curves at the same time</span>
+<span class="sd">    For different signal types, such as 330nm and 350nm</span>
+<span class="sd">    The curves will share thermodynamic parameters and slopes, but have different baselines</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        list_of_temperatures (list): List of temperatures for each dataset</span>
+<span class="sd">        list_of_signals (list): List of signals for each dataset</span>
+<span class="sd">        signal_ids (list): List of signal ids for each dataset, to identify different signals. From 0 to n_signals-1</span>
+<span class="sd">        denaturant_concentrations (list): List of denaturant concentrations, one per dataset</span>
+<span class="sd">        initial_parameters (list): Initial guess for the parameters</span>
+<span class="sd">        low_bounds (list): Lower bounds for the parameters</span>
+<span class="sd">        high_bounds (list): Upper bounds for the parameters</span>
+<span class="sd">        signal_fx (function): Function to calculate the signal based on the parameters</span>
+<span class="sd">        fit_slopes (dic): Dictionary stating if a constant, linear or quadratic baseline is to be fitted</span>
+<span class="sd">        list_of_oligomer_conc (list, optional): List of oligomer concentrations for each dataset</span>
+<span class="sd">        fit_m1 (bool): Whether to fit the m1 parameter - m-value dependence on temperature</span>
+<span class="sd">        cp_value (float): Fixed Cp0, if None, it will be fitted</span>
+<span class="sd">        tm_value (float): Fixed melting temperature, if None, it will be fitted</span>
+<span class="sd">        dh_value (float): Fixed enthalpy of unfolding, if None, it will be fitted</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">        The fitting of the melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</span>
+<span class="sd">            slopes and intercept of the folded and unfolded states</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">all_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">list_of_signals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">n_signals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">signal_ids</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">n_datasets</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_of_temperatures</span><span class="p">)</span>
+
+    <span class="n">fit_slope_native</span> <span class="o">=</span> <span class="n">fit_slopes</span><span class="p">[</span><span class="s2">&quot;fit_slope_native&quot;</span><span class="p">]</span>
+    <span class="n">fit_slope_unfolded</span> <span class="o">=</span> <span class="n">fit_slopes</span><span class="p">[</span><span class="s2">&quot;fit_slope_unfolded&quot;</span><span class="p">]</span>
+    <span class="n">fit_quadratic_native</span> <span class="o">=</span> <span class="n">fit_slopes</span><span class="p">[</span><span class="s2">&quot;fit_quadratic_native&quot;</span><span class="p">]</span>
+    <span class="n">fit_quadratic_unfolded</span> <span class="o">=</span> <span class="n">fit_slopes</span><span class="p">[</span><span class="s2">&quot;fit_quadratic_unfolded&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">unfolding</span><span class="p">(</span><span class="n">dummyVariable</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the thermal unfolding profile of many curves at the same time</span>
+
+<span class="sd">        Requires:</span>
+
+<span class="sd">            - The &#39;listOfTemperatures&#39; containing each of them a single dataset</span>
+
+<span class="sd">        The other arguments have to be in the following order:</span>
+
+<span class="sd">            - Global melting temperature</span>
+<span class="sd">            - Global enthalpy of unfolding</span>
+<span class="sd">            - Global Cp0</span>
+<span class="sd">            - Global m0</span>
+<span class="sd">            - Global m1 (if fit_m1 is True)</span>
+<span class="sd">            - Single intercepts, folded - one per signal</span>
+<span class="sd">            - Single intercepts, unfolded - one per signal</span>
+<span class="sd">            - Single slopes, folded - one per signal</span>
+<span class="sd">            - Single slopes, unfolded - one per signal</span>
+<span class="sd">            - Single quadratic coefficients, folded - one per signal</span>
+<span class="sd">            - Single quadratic coefficients, unfolded - one per signal</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            The melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</span>
+<span class="sd">                slopes and intercept of the folded and unfolded states</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">id_param_init</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">if</span> <span class="n">tm_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="n">Tm</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Temperature of melting</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">Tm</span> <span class="o">=</span> <span class="n">tm_value</span>
+
+        <span class="k">if</span> <span class="n">dh_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="n">DHm</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">]</span>  <span class="c1"># Enthalpy of unfolding</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">DHm</span> <span class="o">=</span> <span class="n">dh_value</span>
+
+        <span class="k">if</span> <span class="n">cp_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="n">Cp0</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">]</span>  <span class="c1"># Cp0</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">Cp0</span> <span class="o">=</span> <span class="n">cp_value</span>
+
+        <span class="n">m0</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">]</span>  <span class="c1"># m0</span>
+        <span class="n">id_param_init</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">fit_m1</span><span class="p">:</span>
+            <span class="n">m1</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">m1</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># First filter, verify that DG is not lower than 0 at 5C</span>
+        <span class="c1"># In other words, we do not have cold denaturation at 5C</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tfive = temperature_to_kelvin(5)</span>
+<span class="sd">        TmK   = temperature_to_kelvin(Tm)</span>
+
+<span class="sd">        DGfive = DHm * (1 - Tfive / TmK) + Cp0 * (Tfive - TmK - Tfive * np.log(Tfive / TmK))</span>
+
+<span class="sd">        if DGfive &lt; 0:</span>
+
+<span class="sd">            return np.zeros(len(all_signal))</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">intercepts_folded</span>   <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_datasets</span><span class="p">)]</span>
+        <span class="n">intercepts_unfolded</span> <span class="o">=</span> <span class="n">args</span><span class="p">[(</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_datasets</span><span class="p">):(</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_datasets</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)]</span>
+
+        <span class="n">id_param_init</span> <span class="o">=</span> <span class="p">(</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_datasets</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">fit_slope_native</span><span class="p">:</span>
+            <span class="n">k_n_s</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_signals</span><span class="p">)]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">k_n_s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">fit_slope_unfolded</span><span class="p">:</span>
+            <span class="n">k_u_s</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_signals</span><span class="p">)]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">k_u_s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">fit_quadratic_native</span><span class="p">:</span>
+            <span class="n">q_n_s</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_signals</span><span class="p">)]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">q_n_s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">fit_quadratic_unfolded</span><span class="p">:</span>
+            <span class="n">q_u_s</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:(</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_signals</span><span class="p">)]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">q_u_s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">n_signals</span>
+
+        <span class="n">signal</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">T</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_of_temperatures</span><span class="p">):</span>
+
+            <span class="n">b_n</span><span class="p">,</span> <span class="n">b_u</span> <span class="o">=</span> <span class="n">intercepts_folded</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">intercepts_unfolded</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">list_of_oligomer_conc</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">list_of_oligomer_conc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">d</span> <span class="o">=</span> <span class="n">denaturant_concentrations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">k_n</span> <span class="o">=</span> <span class="n">k_n_s</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">k_u</span> <span class="o">=</span> <span class="n">k_u_s</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">q_n</span> <span class="o">=</span> <span class="n">q_n_s</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">q_u</span> <span class="o">=</span> <span class="n">q_u_s</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+
+            <span class="n">y</span> <span class="o">=</span> <span class="n">signal_fx</span><span class="p">(</span>
+                <span class="n">T</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">DHm</span><span class="p">,</span> <span class="n">Tm</span><span class="p">,</span> <span class="n">Cp0</span><span class="p">,</span> <span class="n">m0</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span>
+                <span class="n">b_n</span><span class="p">,</span> <span class="n">k_n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">q_n</span><span class="p">,</span>
+                <span class="n">b_u</span><span class="p">,</span> <span class="n">k_u</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">q_u</span><span class="p">,</span> <span class="n">c</span>
+            <span class="p">)</span>
+
+            <span class="n">signal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">global_fit_params</span><span class="p">,</span> <span class="n">cov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span>
+        <span class="n">unfolding</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">all_signal</span><span class="p">,</span>
+        <span class="n">p0</span><span class="o">=</span><span class="n">initial_parameters</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">low_bounds</span><span class="p">,</span> <span class="n">high_bounds</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">predicted</span> <span class="o">=</span> <span class="n">unfolding</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">*</span><span class="n">global_fit_params</span><span class="p">)</span>
+
+    <span class="c1"># Convert predict to list of lists</span>
+    <span class="n">predicted_lst</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">init</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">list_of_temperatures</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">predicted_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">predicted</span><span class="p">[</span><span class="n">init</span><span class="p">:</span><span class="n">init</span><span class="o">+</span><span class="n">n</span><span class="p">])</span>
+        <span class="n">init</span> <span class="o">+=</span> <span class="n">n</span>
+
+    <span class="k">return</span> <span class="n">global_fit_params</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">predicted_lst</span></div>
+
+
+<div class="viewcode-block" id="fit_tc_unfolding_many_signals_slow">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.fitting.fit_tc_unfolding_many_signals_slow">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_tc_unfolding_many_signals_slow</span><span class="p">(</span>
+        <span class="n">list_of_temperatures</span><span class="p">,</span>
+        <span class="n">list_of_signals</span><span class="p">,</span>
+        <span class="n">signal_ids</span><span class="p">,</span>
+        <span class="n">denaturant_concentrations</span><span class="p">,</span>
+        <span class="n">initial_parameters</span><span class="p">,</span>
+        <span class="n">low_bounds</span><span class="p">,</span> <span class="n">high_bounds</span><span class="p">,</span>
+        <span class="n">signal_fx</span><span class="p">,</span>
+        <span class="n">fit_slope_native_temp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">fit_slope_unfolded_temp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">fit_slope_native_den</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">fit_slope_unfolded_den</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">fit_quadratic_native</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">fit_quadratic_unfolded</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">oligomer_concentrations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">fit_m1</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">model_scale_factor</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">scale_factor_exclude_ids</span> <span class="o">=</span> <span class="p">[]):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fit the thermochemical unfolding profile of many curves at the same time</span>
+<span class="sd">    For multiple signals, such as 330nm and 350nm</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        list_of_temperatures (list): List of temperatures for each dataset</span>
+<span class="sd">        list_of_signals (list): List of signals for each dataset</span>
+<span class="sd">        signal_ids (list): List of signal IDs for each dataset to identify different signals. From 0 to n_signals-1</span>
+<span class="sd">        denaturant_concentrations (list): List of denaturant concentrations, one per dataset</span>
+<span class="sd">        initial_parameters (list): Initial guess for the parameters</span>
+<span class="sd">        low_bounds (list): Lower bounds for the parameters</span>
+<span class="sd">        high_bounds (list): Upper bounds for the parameters</span>
+<span class="sd">        signal_fx (function): Function to calculate the signal based on the parameters</span>
+<span class="sd">        fit_slope_native_temp (bool): Whether to fit the slope of the native state with respect to temperature</span>
+<span class="sd">        fit_slope_unfolded_temp (bool): Whether to fit the slope of the unfolded state with respect to temperature</span>
+<span class="sd">        fit_slope_native_den (bool): Whether to fit the slope of the native state with respect to denaturant</span>
+<span class="sd">        fit_slope_unfolded_den (bool): Whether to fit the slope of the unfolded state with respect to denaturant</span>
+<span class="sd">        fit_quadratic_native (bool): Whether to fit the quadratic term of the native state</span>
+<span class="sd">        fit_quadratic_unfolded (bool): Whether to fit the quadratic term of the unfolded state</span>
+<span class="sd">        oligomer_concentrations (list, optional): List of oligomer concentrations for each dataset</span>
+<span class="sd">        fit_m1 (bool): Whether to fit the m1 parameter</span>
+<span class="sd">        model_scale_factor (bool): Whether include a scaling factor for each individual unfolding curve.</span>
+<span class="sd">         The idea is to account for differences in signal intensities due to either error</span>
+<span class="sd">          in the protein concentration or different levels of detection.</span>
+<span class="sd">        scale_factor_exclude_ids (list): List of curves ids to exclude from scaling factor fitting.</span>
+<span class="sd">            Useful when the fitted scaling factors are not meaningful (between 0.99 and 1.01)</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        global_fit_params (list): Fitted parameters</span>
+<span class="sd">        cov (ndarray): Covariance of the fitted parameters</span>
+<span class="sd">        predicted_lst (list): Predicted signals for each dataset based on the fitted parameters</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">all_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">list_of_signals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">n_signals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">signal_ids</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">nr_den</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">denaturant_concentrations</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_signals</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">scale_factor_exclude_ids</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">model_scale_factor</span><span class="p">:</span>
+        <span class="c1"># Sort them in ascending order to avoid issues when inserting</span>
+        <span class="n">scale_factor_exclude_ids</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">scale_factor_exclude_ids</span><span class="p">)</span>
+
+    <span class="c1"># Find if highest concentration of denaturant has a higher signal or not</span>
+    <span class="k">if</span> <span class="n">model_scale_factor</span><span class="p">:</span>
+
+        <span class="n">den_conc_simple</span> <span class="o">=</span> <span class="n">denaturant_concentrations</span><span class="p">[:</span><span class="n">nr_den</span><span class="p">]</span>
+
+        <span class="c1"># Find the index that sorts them in descending order from highest to lowest</span>
+        <span class="n">sort_indeces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">den_conc_simple</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">signal_first</span> <span class="o">=</span> <span class="n">list_of_signals</span><span class="p">[:</span><span class="n">nr_den</span><span class="p">]</span>
+
+        <span class="n">signal_sort</span> <span class="o">=</span> <span class="p">[</span><span class="n">signal_first</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sort_indeces</span><span class="p">]</span>
+
+        <span class="n">higher_den_equal_higher_signal</span> <span class="o">=</span> <span class="n">signal_sort</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">signal_sort</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">unfolding</span><span class="p">(</span><span class="n">dummyVariable</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">Tm</span><span class="p">,</span> <span class="n">DHm</span><span class="p">,</span> <span class="n">Cp0</span><span class="p">,</span> <span class="n">m0</span> <span class="o">=</span> <span class="n">args</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>  <span class="c1"># Enthalpy of unfolding, Temperature of melting, Cp0, m0, m1</span>
+
+        <span class="n">id_param_init</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">fit_m1</span>
+        <span class="n">m1</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="k">if</span> <span class="n">fit_m1</span> <span class="k">else</span> <span class="mi">0</span>
+
+        <span class="c1"># First filter, verify that DG is not lower than 0 at 5C</span>
+        <span class="c1"># In other words, we do not have cold denaturation at 5C</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tfive = temperature_to_kelvin(5)</span>
+<span class="sd">        TmK   = temperature_to_kelvin(Tm)</span>
+
+<span class="sd">        DGfive = DHm * (1 - Tfive / TmK) + Cp0 * (Tfive - TmK - Tfive * np.log(Tfive / TmK))</span>
+
+<span class="sd">        if DGfive &lt; 0:</span>
+
+<span class="sd">            return np.zeros(len(all_signal))</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">a_Ns</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_signals</span><span class="p">]</span>
+        <span class="n">a_Us</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_signals</span><span class="p">:</span><span class="n">id_param_init</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">n_signals</span><span class="p">]</span>
+
+        <span class="n">id_param_init</span> <span class="o">=</span> <span class="n">id_param_init</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">n_signals</span>
+        <span class="k">if</span> <span class="n">fit_slope_native_temp</span><span class="p">:</span>
+            <span class="n">b_Ns</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_signals</span><span class="p">]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b_Ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">fit_slope_unfolded_temp</span><span class="p">:</span>
+            <span class="n">b_Us</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_signals</span><span class="p">]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b_Us</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">fit_slope_native_den</span><span class="p">:</span>
+            <span class="n">c_Ns</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_signals</span><span class="p">]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">c_Ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">fit_slope_unfolded_den</span><span class="p">:</span>
+            <span class="n">c_Us</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_signals</span><span class="p">]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">c_Us</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">fit_quadratic_native</span><span class="p">:</span>
+            <span class="n">d_Ns</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_signals</span><span class="p">]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">d_Ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">fit_quadratic_unfolded</span><span class="p">:</span>
+            <span class="n">d_Us</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span><span class="o">+</span><span class="n">n_signals</span><span class="p">]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">d_Us</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">model_scale_factor</span><span class="p">:</span>
+            <span class="c1"># One per denaturant concentration</span>
+            <span class="n">factors</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="p">(</span><span class="n">nr_den</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">scale_factor_exclude_ids</span><span class="p">))]</span>
+            
+            <span class="k">for</span> <span class="n">id_ex</span> <span class="ow">in</span> <span class="n">scale_factor_exclude_ids</span><span class="p">:</span>
+                <span class="n">factors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">factors</span><span class="p">,</span> <span class="n">id_ex</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># Repeat the list so have the same length as list_of_temperatures, equal to denaturant concentration * number of signals</span>
+            <span class="n">factors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">factors</span><span class="p">,</span> <span class="n">n_signals</span><span class="p">)</span>
+
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">nr_den</span>
+
+        <span class="n">signal</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">T</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_of_temperatures</span><span class="p">):</span>
+
+            <span class="n">a_N</span> <span class="o">=</span> <span class="n">a_Ns</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">b_N</span> <span class="o">=</span> <span class="n">b_Ns</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">c_N</span> <span class="o">=</span> <span class="n">c_Ns</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">d_N</span> <span class="o">=</span> <span class="n">d_Ns</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+
+            <span class="n">a_U</span> <span class="o">=</span> <span class="n">a_Us</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">b_U</span> <span class="o">=</span> <span class="n">b_Us</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">c_U</span> <span class="o">=</span> <span class="n">c_Us</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">d_U</span> <span class="o">=</span> <span class="n">d_Us</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+
+            <span class="n">d</span> <span class="o">=</span> <span class="n">denaturant_concentrations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">oligomer_concentrations</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">oligomer_concentrations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">d_factor</span> <span class="o">=</span> <span class="mi">1</span>
+
+            <span class="n">d</span> <span class="o">=</span> <span class="n">d</span> <span class="o">*</span> <span class="n">d_factor</span>
+
+            <span class="n">y</span> <span class="o">=</span> <span class="n">signal_fx</span><span class="p">(</span>
+                <span class="n">T</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">DHm</span><span class="p">,</span> <span class="n">Tm</span><span class="p">,</span> <span class="n">Cp0</span><span class="p">,</span> <span class="n">m0</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span>
+                <span class="n">a_N</span><span class="p">,</span> <span class="n">b_N</span><span class="p">,</span> <span class="n">c_N</span><span class="p">,</span> <span class="n">d_N</span><span class="p">,</span>
+                <span class="n">a_U</span><span class="p">,</span> <span class="n">b_U</span><span class="p">,</span> <span class="n">c_U</span><span class="p">,</span> <span class="n">d_U</span><span class="p">,</span> <span class="n">c</span>
+            <span class="p">)</span>
+
+            <span class="n">scale_factor</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">model_scale_factor</span> <span class="k">else</span> <span class="n">factors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="n">scale_factor</span>
+
+            <span class="n">signal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="c1"># Second filter, verify that higher_den_equal_higher_signal is same in the raw and fitted signal</span>
+        <span class="k">if</span> <span class="n">model_scale_factor</span><span class="p">:</span>
+
+            <span class="n">signal_first</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[:</span><span class="n">nr_den</span><span class="p">]</span>
+
+            <span class="n">signal_sort</span> <span class="o">=</span> <span class="p">[</span><span class="n">signal_first</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sort_indeces</span><span class="p">]</span>
+
+            <span class="n">pred_higher_den_equal_higher_signal</span> <span class="o">=</span> <span class="n">signal_sort</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">signal_sort</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">pred_higher_den_equal_higher_signal</span> <span class="o">!=</span> <span class="n">higher_den_equal_higher_signal</span><span class="p">:</span>
+
+                <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_signal</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">global_fit_params</span><span class="p">,</span> <span class="n">cov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span>
+        <span class="n">unfolding</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">all_signal</span><span class="p">,</span>
+        <span class="n">p0</span><span class="o">=</span><span class="n">initial_parameters</span><span class="p">,</span>
+        <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">low_bounds</span><span class="p">,</span> <span class="n">high_bounds</span><span class="p">))</span>
+
+    <span class="n">predicted</span> <span class="o">=</span> <span class="n">unfolding</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">*</span><span class="n">global_fit_params</span><span class="p">)</span>
+
+    <span class="c1"># Convert predict to list of lists</span>
+    <span class="n">predicted_lst</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">init</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">list_of_temperatures</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">predicted_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">predicted</span><span class="p">[</span><span class="n">init</span><span class="p">:</span><span class="n">init</span><span class="o">+</span><span class="n">n</span><span class="p">])</span>
+        <span class="n">init</span> <span class="o">+=</span> <span class="n">n</span>
+
+    <span class="k">return</span> <span class="n">global_fit_params</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">predicted_lst</span></div>
+
+
+
+<div class="viewcode-block" id="fit_tc_unfolding_many_signals">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.fitting.fit_tc_unfolding_many_signals">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_tc_unfolding_many_signals</span><span class="p">(</span>
+        <span class="n">list_of_temperatures</span><span class="p">,</span>
+        <span class="n">list_of_signals</span><span class="p">,</span>
+        <span class="n">signal_ids</span><span class="p">,</span>
+        <span class="n">denaturant_concentrations</span><span class="p">,</span>
+        <span class="n">initial_parameters</span><span class="p">,</span>
+        <span class="n">low_bounds</span><span class="p">,</span> <span class="n">high_bounds</span><span class="p">,</span>
+        <span class="n">signal_fx</span><span class="p">,</span>
+        <span class="n">fit_slope_native_temp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">fit_slope_unfolded_temp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">fit_slope_native_den</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">fit_slope_unfolded_den</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">fit_quadratic_native</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">fit_quadratic_unfolded</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">oligomer_concentrations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">fit_m1</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">model_scale_factor</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">scale_factor_exclude_ids</span><span class="o">=</span><span class="p">[],</span>
+        <span class="n">cp_value</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fit the thermochemical unfolding profile of many curves at the same time</span>
+<span class="sd">    For multiple signals, such as 330nm and 350nm</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        list_of_temperatures (list): List of temperatures for each dataset</span>
+<span class="sd">        list_of_signals (list): List of signals for each dataset</span>
+<span class="sd">        signal_ids (list): List of signal IDs for each dataset to identify different signals. From 0 to n_signals-1</span>
+<span class="sd">        denaturant_concentrations (list): List of denaturant concentrations, one per dataset</span>
+<span class="sd">        initial_parameters (list): Initial guess for the parameters</span>
+<span class="sd">        low_bounds (list): Lower bounds for the parameters</span>
+<span class="sd">        high_bounds (list): Upper bounds for the parameters</span>
+<span class="sd">        signal_fx (function): Function to calculate the signal based on the parameters</span>
+<span class="sd">        fit_slope_native_temp (bool): Whether to fit the slope of the native state with respect to temperature</span>
+<span class="sd">        fit_slope_unfolded_temp (bool): Whether to fit the slope of the unfolded state with respect to temperature</span>
+<span class="sd">        fit_slope_native_den (bool): Whether to fit the slope of the native state with respect to denaturant</span>
+<span class="sd">        fit_slope_unfolded_den (bool): Whether to fit the slope of the unfolded state with respect to denaturant</span>
+<span class="sd">        fit_quadratic_native (bool): Whether to fit the quadratic term of the native state</span>
+<span class="sd">        fit_quadratic_unfolded (bool): Whether to fit the quadratic term of the unfolded state</span>
+<span class="sd">        oligomer_concentrations (list, optional): List of oligomer concentrations for each dataset</span>
+<span class="sd">        fit_m1 (bool): Whether to fit the m1 parameter</span>
+<span class="sd">        model_scale_factor (bool): Whether include a scaling factor for each individual unfolding curve.</span>
+<span class="sd">         The idea is to account for differences in signal intensities due to either error</span>
+<span class="sd">          in the protein concentration or different levels of detection.</span>
+<span class="sd">        scale_factor_exclude_ids (list): List of curves ids to exclude from scaling factor fitting.</span>
+<span class="sd">            Useful when the fitted scaling factors are not meaningful (between 0.99 and 1.01)</span>
+<span class="sd">        cp_value (float, optional): Fixed value for the heat capacity change (Cp). If None, Cp is fitted.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        global_fit_params (list): Fitted parameters</span>
+<span class="sd">        cov (ndarray): Covariance of the fitted parameters</span>
+<span class="sd">        predicted_lst (list): Predicted signals for each dataset based on the fitted parameters</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">all_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">list_of_signals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">n_signals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">signal_ids</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">nr_den</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">denaturant_concentrations</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_signals</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">scale_factor_exclude_ids</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">model_scale_factor</span><span class="p">:</span>
+        <span class="c1"># Sort them in ascending order to avoid issues when inserting</span>
+        <span class="n">scale_factor_exclude_ids</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">scale_factor_exclude_ids</span><span class="p">)</span>
+
+    <span class="c1"># Find if highest concentration of denaturant has a higher signal or not</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    if model_scale_factor:</span>
+<span class="sd">        den_conc_simple = denaturant_concentrations[:nr_den]</span>
+
+<span class="sd">        # Find the index that sorts them in descending order from highest to lowest</span>
+<span class="sd">        sort_indeces = np.argsort(den_conc_simple)[::-1]</span>
+
+<span class="sd">        signal_first = list_of_signals[:nr_den]</span>
+
+<span class="sd">        signal_sort = [signal_first[i] for i in sort_indeces]</span>
+
+<span class="sd">        higher_den_equal_higher_signal = signal_sort[0][0] &gt; signal_sort[-1][0]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">unfolding</span><span class="p">(</span><span class="n">dummyVariable</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">cp_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="n">Cp0</span> <span class="o">=</span> <span class="n">cp_value</span>
+            <span class="n">Tm</span><span class="p">,</span> <span class="n">DHm</span><span class="p">,</span> <span class="n">m0</span> <span class="o">=</span> <span class="n">args</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># Enthalpy of unfolding, Temperature of melting, m0, m1</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">Tm</span><span class="p">,</span> <span class="n">DHm</span><span class="p">,</span> <span class="n">Cp0</span><span class="p">,</span> <span class="n">m0</span> <span class="o">=</span> <span class="n">args</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>  <span class="c1"># Enthalpy of unfolding, Temperature of melting, Cp0, m0, m1</span>
+
+        <span class="n">id_param_init</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">fit_m1</span> <span class="o">+</span> <span class="p">(</span><span class="n">cp_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">m1</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">]</span> <span class="k">if</span> <span class="n">fit_m1</span> <span class="k">else</span> <span class="mi">0</span>
+
+        <span class="c1"># First filter, verify that DG is not lower than 0 at 5C</span>
+        <span class="c1"># In other words, we do not have cold denaturation at 5C</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tfive = temperature_to_kelvin(5)</span>
+<span class="sd">        TmK   = temperature_to_kelvin(Tm)</span>
+
+<span class="sd">        DGfive = DHm * (1 - Tfive / TmK) + Cp0 * (Tfive - TmK - Tfive * np.log(Tfive / TmK))</span>
+
+<span class="sd">        if DGfive &lt; 0:</span>
+<span class="sd">            print(&#39;error&#39;)</span>
+<span class="sd">            return np.zeros(len(all_signal))</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">a_Ns</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_signals</span><span class="p">]</span>
+        <span class="n">a_Us</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_signals</span><span class="p">:</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n_signals</span><span class="p">]</span>
+
+        <span class="n">id_param_init</span> <span class="o">=</span> <span class="n">id_param_init</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">fit_slope_native_temp</span><span class="p">:</span>
+            <span class="n">b_Ns</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_signals</span><span class="p">]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b_Ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">fit_slope_unfolded_temp</span><span class="p">:</span>
+
+            <span class="n">b_Us</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_signals</span><span class="p">]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b_Us</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">fit_slope_native_den</span><span class="p">:</span>
+
+            <span class="n">c_Ns</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_signals</span><span class="p">]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">c_Ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">fit_slope_unfolded_den</span><span class="p">:</span>
+
+            <span class="n">c_Us</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_signals</span><span class="p">]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">c_Us</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">fit_quadratic_native</span><span class="p">:</span>
+
+            <span class="n">d_Ns</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_signals</span><span class="p">]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">d_Ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">fit_quadratic_unfolded</span><span class="p">:</span>
+            <span class="n">d_Us</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="n">n_signals</span><span class="p">]</span>
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">n_signals</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">d_Us</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_signals</span>
+
+        <span class="k">if</span> <span class="n">model_scale_factor</span><span class="p">:</span>
+            <span class="c1"># One per denaturant concentration</span>
+            <span class="n">factors</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">id_param_init</span><span class="p">:</span><span class="n">id_param_init</span> <span class="o">+</span> <span class="p">(</span><span class="n">nr_den</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">scale_factor_exclude_ids</span><span class="p">))]</span>
+
+            <span class="k">for</span> <span class="n">id_ex</span> <span class="ow">in</span> <span class="n">scale_factor_exclude_ids</span><span class="p">:</span>
+                <span class="n">factors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">factors</span><span class="p">,</span> <span class="n">id_ex</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># Repeat the list so have the same length as list_of_temperatures, equal to denaturant concentration * number of signals</span>
+            <span class="n">factors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">factors</span><span class="p">,</span> <span class="n">n_signals</span><span class="p">)</span>
+
+            <span class="n">id_param_init</span> <span class="o">+=</span> <span class="n">nr_den</span>
+
+        <span class="n">signal</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">T</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_of_temperatures</span><span class="p">):</span>
+
+            <span class="n">a_N</span> <span class="o">=</span> <span class="n">a_Ns</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">b_N</span> <span class="o">=</span> <span class="n">b_Ns</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">c_N</span> <span class="o">=</span> <span class="n">c_Ns</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">d_N</span> <span class="o">=</span> <span class="n">d_Ns</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+
+            <span class="n">a_U</span> <span class="o">=</span> <span class="n">a_Us</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">b_U</span> <span class="o">=</span> <span class="n">b_Us</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">c_U</span> <span class="o">=</span> <span class="n">c_Us</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">d_U</span> <span class="o">=</span> <span class="n">d_Us</span><span class="p">[</span><span class="n">signal_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+
+            <span class="n">d</span> <span class="o">=</span> <span class="n">denaturant_concentrations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">oligomer_concentrations</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">oligomer_concentrations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">d_factor</span> <span class="o">=</span> <span class="mi">1</span>
+
+            <span class="n">d</span> <span class="o">=</span> <span class="n">d</span> <span class="o">*</span> <span class="n">d_factor</span>
+
+            <span class="n">y</span> <span class="o">=</span> <span class="n">signal_fx</span><span class="p">(</span>
+                <span class="n">T</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">DHm</span><span class="p">,</span> <span class="n">Tm</span><span class="p">,</span> <span class="n">Cp0</span><span class="p">,</span> <span class="n">m0</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span>
+                <span class="n">a_N</span><span class="p">,</span> <span class="n">b_N</span><span class="p">,</span> <span class="n">c_N</span><span class="p">,</span> <span class="n">d_N</span><span class="p">,</span>
+                <span class="n">a_U</span><span class="p">,</span> <span class="n">b_U</span><span class="p">,</span> <span class="n">c_U</span><span class="p">,</span> <span class="n">d_U</span><span class="p">,</span> <span class="n">c</span>
+            <span class="p">)</span>
+
+            <span class="n">scale_factor</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">model_scale_factor</span> <span class="k">else</span> <span class="n">factors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="n">scale_factor</span>
+
+            <span class="n">signal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">global_fit_params</span><span class="p">,</span> <span class="n">cov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span>
+        <span class="n">unfolding</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">all_signal</span><span class="p">,</span>
+        <span class="n">p0</span><span class="o">=</span><span class="n">initial_parameters</span><span class="p">,</span>
+        <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">low_bounds</span><span class="p">,</span> <span class="n">high_bounds</span><span class="p">))</span>
+
+    <span class="n">predicted</span> <span class="o">=</span> <span class="n">unfolding</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">global_fit_params</span><span class="p">)</span>
+
+    <span class="c1"># Convert predict to list of lists</span>
+    <span class="n">predicted_lst</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">init</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">list_of_temperatures</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">predicted_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">predicted</span><span class="p">[</span><span class="n">init</span><span class="p">:</span><span class="n">init</span> <span class="o">+</span> <span class="n">n</span><span class="p">])</span>
+        <span class="n">init</span> <span class="o">+=</span> <span class="n">n</span>
+
+    <span class="k">return</span> <span class="n">global_fit_params</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">predicted_lst</span></div>
+
+
+
+<div class="viewcode-block" id="evaluate_need_to_refit">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.fitting.evaluate_need_to_refit">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluate_need_to_refit</span><span class="p">(</span>
+        <span class="n">global_fit_params</span><span class="p">,</span>
+        <span class="n">high_bounds</span><span class="p">,</span>
+        <span class="n">low_bounds</span><span class="p">,</span>
+        <span class="n">p0</span><span class="p">,</span>
+        <span class="n">fit_m1</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">check_cp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">check_dh</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">check_tm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">fixed_cp</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check if the thermodynamic parameters are too close to the boundaries and expand them if necessary</span>
+<span class="sd">    Args:</span>
+<span class="sd">        global_fit_params (list): Fitted parameters</span>
+<span class="sd">        high_bounds (list): Upper bounds for the parameters</span>
+<span class="sd">        low_bounds (list): Lower bounds for the parameters</span>
+<span class="sd">        p0 (list): Initial guess for the parameters</span>
+<span class="sd">        fit_m1 (bool): Whether to fit the m1 parameter - m-value dependence on temperature</span>
+<span class="sd">        check_cp (bool): Whether to check the Cp parameter. If False, the Cp parameter will not be checked.</span>
+<span class="sd">        check_dh (bool): Whether to check the Dh parameter. If False, the Dh parameter will not be checked.</span>
+<span class="sd">        check_tm (bool): Whether to check the Tm parameter. If False, the Tm parameter will not be checked.</span>
+<span class="sd">        fixed_cp (bool): Whether the Cp parameter is fixed. To determine the starting index of other parameters.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        re_fit (bool): True if the parameters are too close to the boundaries and need to be refitted</span>
+<span class="sd">        p0 (list): Updated initial guess for the parameters</span>
+<span class="sd">        low_bounds (list): Updated lower bounds for the parameters</span>
+<span class="sd">        high_bounds (list): Updated upper bounds for the parameters</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">re_fit</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># Check the Tm boundary - upper</span>
+    <span class="n">tm_diff</span> <span class="o">=</span> <span class="n">high_bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># Expand the boundary if the Tm is too close to the boundary</span>
+    <span class="k">if</span> <span class="n">tm_diff</span> <span class="o">&lt;</span> <span class="mi">6</span> <span class="ow">and</span> <span class="n">check_tm</span><span class="p">:</span>
+        <span class="n">high_bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">12</span>
+        <span class="n">p0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">5</span>
+        <span class="n">re_fit</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Check the Tm boundary - lower</span>
+    <span class="n">tm_diff</span> <span class="o">=</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">low_bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># Expand the boundary if the Tm is too close to the boundary</span>
+    <span class="k">if</span> <span class="n">tm_diff</span> <span class="o">&lt;</span> <span class="mi">6</span> <span class="ow">and</span> <span class="n">check_tm</span><span class="p">:</span>
+        <span class="n">low_bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">12</span>
+        <span class="n">p0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">5</span>
+        <span class="n">re_fit</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Check the Dh boundary</span>
+    <span class="n">dh_diff</span> <span class="o">=</span> <span class="n">high_bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="c1"># Expand the boundary if the Dh is too close to the boundary</span>
+    <span class="k">if</span> <span class="n">dh_diff</span> <span class="o">&lt;</span> <span class="mi">20</span> <span class="ow">and</span> <span class="n">check_dh</span><span class="p">:</span>
+        <span class="n">high_bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">80</span>
+        <span class="n">p0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">50</span>
+        <span class="n">re_fit</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">id_next</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">fixed_cp</span><span class="p">:</span>
+
+        <span class="c1"># Check the Cp boundary</span>
+        <span class="n">cp_diff</span> <span class="o">=</span> <span class="n">high_bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="c1"># Expand the boundary if the Cp is too close to the boundary</span>
+        <span class="k">if</span> <span class="n">cp_diff</span> <span class="o">&lt;</span> <span class="mf">0.25</span> <span class="ow">and</span> <span class="n">check_cp</span><span class="p">:</span>
+            <span class="n">high_bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">p0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span>
+            <span class="n">re_fit</span> <span class="o">=</span> <span class="kc">True</span>
+        
+        <span class="n">id_next</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># Check the m-value boundary</span>
+    <span class="n">m_diff</span> <span class="o">=</span> <span class="n">high_bounds</span><span class="p">[</span><span class="n">id_next</span><span class="p">]</span> <span class="o">-</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="n">id_next</span><span class="p">]</span>
+    <span class="c1"># Expand the boundary if the m-value is too close to the boundary</span>
+    <span class="k">if</span> <span class="n">m_diff</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+        <span class="n">high_bounds</span><span class="p">[</span><span class="n">id_next</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="n">id_next</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="n">p0</span><span class="p">[</span><span class="n">id_next</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="n">id_next</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span>
+        <span class="n">re_fit</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Evaluate if m1 is fitted</span>
+    <span class="n">id_start</span> <span class="o">=</span> <span class="n">id_next</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">fit_m1</span><span class="p">:</span>
+
+        <span class="n">m1_diff</span> <span class="o">=</span> <span class="n">high_bounds</span><span class="p">[</span><span class="n">id_start</span><span class="p">]</span> <span class="o">-</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="n">id_start</span><span class="p">]</span>
+        <span class="c1"># Expand the boundary if the m-value is too close to the boundary</span>
+        <span class="k">if</span> <span class="n">m1_diff</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">:</span>
+            <span class="n">high_bounds</span><span class="p">[</span><span class="n">id_start</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="n">id_start</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">re_fit</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">m1_diff</span> <span class="o">=</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="n">id_start</span><span class="p">]</span> <span class="o">-</span> <span class="n">low_bounds</span><span class="p">[</span><span class="n">id_start</span><span class="p">]</span>
+        <span class="c1"># Expand the boundary if the m-value is too close to the boundary</span>
+        <span class="k">if</span> <span class="n">m1_diff</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">:</span>
+            <span class="n">low_bounds</span><span class="p">[</span><span class="n">id_start</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="n">id_start</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="n">re_fit</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">id_start</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># Evaluate all the other parameters</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">id_start</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">global_fit_params</span><span class="p">)):</span>
+
+        <span class="n">diff_to_high</span> <span class="o">=</span> <span class="n">high_bounds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">diff_to_low</span>  <span class="o">=</span> <span class="n">global_fit_params</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">low_bounds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">diff_to_high</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">high_bounds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">high_bounds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">50</span>
+            <span class="n">re_fit</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">diff_to_low</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">low_bounds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">low_bounds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">50</span>
+            <span class="n">re_fit</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="n">re_fit</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">low_bounds</span><span class="p">,</span> <span class="n">high_bounds</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, osvalB.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

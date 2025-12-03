@@ -1,0 +1,2025 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pychemelt.utils package &#8212; PyChemelt 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pychemelt.utils';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="pychemelt package" href="pychemelt.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyChemelt 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="modules.html">
+    pychemelt
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/osvalB/pychemelt" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="modules.html">
+    pychemelt
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/osvalB/pychemelt" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="pychemelt.html">pychemelt package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">pychemelt.utils package</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">pychemelt</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="pychemelt.html" class="nav-link">pychemelt package</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pychemelt.utils package</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-pychemelt.utils">
+<span id="pychemelt-utils-package"></span><h1>pychemelt.utils package<a class="headerlink" href="#module-pychemelt.utils" title="Link to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-pychemelt.utils.constants">
+<span id="pychemelt-utils-constants-module"></span><h2>pychemelt.utils.constants module<a class="headerlink" href="#module-pychemelt.utils.constants" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-pychemelt.utils.files">
+<span id="pychemelt-utils-files-module"></span><h2>pychemelt.utils.files module<a class="headerlink" href="#module-pychemelt.utils.files" title="Link to this heading">#</a></h2>
+<p>This module contains helper functions to parse Differential Scanning Fluorimetry files from different instrument providers
+Author: Osvaldo Burastero</p>
+<p>All functions that import files should return:
+- signal_data_dic: dictionary with the signal data, one entry per signal
+- temp_data_dic: dictionary with the temperature data, one entry per signal
+- conditions: list with the names of the samples
+- signals: list with the names of the signals</p>
+<p>A signal can be “350nm”, “330nm”, “Scattering”, “Ratio”, “Turbidity”, “Ratio 350nm/330nm”, etc.
+The length of the lists in signal_data_dic and temp_data_dic should be the same as the length of conditions</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.get_sheet_names_of_xlsx">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">get_sheet_names_of_xlsx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#get_sheet_names_of_xlsx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.get_sheet_names_of_xlsx" title="Link to this definition">#</a></dt>
+<dd><p>Get the sheet names of a xls or xlsx file without loading it.
+The open_workbook function is used so we can handle the error “openpyxl does not support the old .xls file format”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filepath</strong> (<em>str</em>) – Path to the xls or xlsx file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of sheet names</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.file_is_of_type_uncle">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">file_is_of_type_uncle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xlsx_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#file_is_of_type_uncle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.file_is_of_type_uncle" title="Link to this definition">#</a></dt>
+<dd><p>Check if the file is an uncle file
+:param xlsx_file: Path to the xlsx file
+:type xlsx_file: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the file is an uncle file, False otherwise</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.detect_file_type">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">detect_file_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#detect_file_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.detect_file_type" title="Link to this definition">#</a></dt>
+<dd><p>Detect the type of file based on its extension and content.
+:param file: Path to the file
+:type file: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of file</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.detect_encoding">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">detect_encoding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#detect_encoding"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.detect_encoding" title="Link to this definition">#</a></dt>
+<dd><p>Detect the encoding of a file by trying common encodings.
+:param file_path: Path to the file
+:type file_path: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Detected encoding or ‘Unknown encoding’</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.find_indexes_of_non_signal_conditions">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">find_indexes_of_non_signal_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#find_indexes_of_non_signal_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.find_indexes_of_non_signal_conditions" title="Link to this definition">#</a></dt>
+<dd><p>Given the signal data and the conditions, find the indexes of the conditions that are not signal data
+We assume that conditions with the word ‘derivative’ or ‘S.D.’ in it are not signal data
+:param signal_data: 2D array with the signal data
+:type signal_data: np.ndarray
+:param conditions: list of conditions
+:type conditions: list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of indexes to remove</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>idx_to_remove (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.find_repeated_words">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">find_repeated_words</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string_lst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#find_repeated_words"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.find_repeated_words" title="Link to this definition">#</a></dt>
+<dd><p>Given a list of strings, find the repeated words in the list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>string_lst</strong> (<em>lst</em>) – list of strings</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of repeated words</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>repeated_words (lst)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.remove_words_in_string">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">remove_words_in_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">word_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#remove_words_in_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.remove_words_in_string" title="Link to this definition">#</a></dt>
+<dd><p>Given a string and a list of words, remove the words from the string
+:param input_string: String to be processed
+:type input_string: str
+:param word_list: list of words to remove
+:type word_list: lst</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Processed string</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.load_csv_file">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">load_csv_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#load_csv_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.load_csv_file" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file</strong> (<em>str</em>) – Path to the csv file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with signal data
+temp_data_dic (dict): Dictionary with temperature data
+conditions (list): List of conditions
+signals (np.ndarray): List of signal names</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>signal_data_dic (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.get_start_line_quantstudio_txt">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">get_start_line_quantstudio_txt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#get_start_line_quantstudio_txt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.get_start_line_quantstudio_txt" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_name</strong> (<em>str</em>) – Path to the QuantStudio txt file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Number of the first line not starting with “*” + 1</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.load_quantstudio_txt">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">load_quantstudio_txt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">QSfile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#load_quantstudio_txt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.load_quantstudio_txt" title="Link to this definition">#</a></dt>
+<dd><p>Input: A txt file (‘QSfile’) where column 2 has the well position,
+column 3 the temperature and column 4 the fluorescence signal. Index starts at 1!</p>
+<p>— Caution —
+The first rows of the file are comments that start with ‘*’ and are not readed
+The temperature and signal column have commas that need to be deleted</p>
+<p>Columns are separated by spaces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>QSfile</strong> (<em>str</em>) – Path to the QuantStudio txt file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with signal data
+temp_data_dic (dict): Dictionary with temperature data
+conditions (list): List of conditions
+signals (np.ndarray): List of signal names</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>signal_data_dic (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.load_thermofluor_xlsx">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">load_thermofluor_xlsx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thermofluor_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#load_thermofluor_xlsx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.load_thermofluor_xlsx" title="Link to this definition">#</a></dt>
+<dd><p>Load DSF Thermofluor xls file and extract data
+The xls file generated by the ThermoFluor assay in a qPCR instrument.
+This file has one sheet called ‘RFU’ where the first row has the sample positions (header), the first column has the temperature data,
+and all subsequent columns store the fluorescence data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>thermofluor_file</strong> (<em>str</em>) – Path to the xls file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with signal data
+temp_data_dic (dict): Dictionary with temperature data
+conditions (list): List of conditions</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>signal_data_dic (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.space_combinations">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">space_combinations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">word</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#space_combinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.space_combinations" title="Link to this definition">#</a></dt>
+<dd><p>Generate all combinations of a word with 0, 1, or 2 spaces before and/or after the word.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>word</strong> (<em>str</em>) – The word to generate combinations for.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of strings with all combinations of spaces before and after the word.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.load_nanoDSF_xlsx">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">load_nanoDSF_xlsx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processed_dsf_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#load_nanoDSF_xlsx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.load_nanoDSF_xlsx" title="Link to this definition">#</a></dt>
+<dd><p>Load nanotemper processed xlsx file and extract relevant data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>processed_dsf_file</strong> (<em>str</em>) – Path to the processed xlsx file</p></li>
+<li><p><strong>sheet_names</strong> (<em>list</em>) – List of sheet names to load</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with signal data
+temp_data_dic (dict): Dictionary with temperature data
+conditions (list): List of conditions</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>signal_data_dic (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.load_panta_xlsx">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">load_panta_xlsx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pantaFile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#load_panta_xlsx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.load_panta_xlsx" title="Link to this definition">#</a></dt>
+<dd><p>Load the xlsx file generated by a Prometheus Panta instrument.
+This file has one sheet called ‘Overview’ with a column called ‘Sample ID’ with the names of the samples,
+and one sheet called ‘Data Export’ where all the data is stored. The ‘Data Export’ sheet columns should have the following order:</p>
+<p>Temperature capillary 1 ; Ratio capillary 1 ; … ; Temperature capillary 1 ; 350 nm capillary 1 ; … ;
+Temperature capillary 1 ; 330 nm capillary 1 ; … ; Temperature capillary 1 ; scattering capillary 1 ; … ;
+Temperature capillary 2 ; Ratio capillary 2; … ;  Temperature capillary n ; Ratio capillary n.</p>
+<p>Columns whose names include “Derivative” are not read.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pantaFile</strong> (<em>str</em>) – Path to the xlsx file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with signal data
+temp_data_dic (dict): Dictionary with temperature data
+conditions (list): List of conditions
+signals (np.ndarray): List of signal names, such as 330nm and 350nm</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>signal_data_dic (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.load_uncle_multi_channel">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">load_uncle_multi_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uncle_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#load_uncle_multi_channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.load_uncle_multi_channel" title="Link to this definition">#</a></dt>
+<dd><p>Function to load the data from the UNCLE instrument</p>
+<p>Below is an example of the data format:</p>
+<blockquote>
+<div><p>Toms run.uni                    Sample Name     1 mg/ml Protein
+Temp :25, Time:134.9    Temp :25.49, Time:185.4 Temp :25.99, Time:236.4 Temp :26.48, Time:286.2 Temp :27, Time:336.2    Temp :27.48, Time:386.3 Temp :27.98, Time:436.3 Temp :28.46, Time:486.1 Temp :29.02, Time:536.1 Temp :29.5, Time:586    Temp :30, Time:636.2    Temp :30.49, Time:686.2 Temp :31, Time:736.2    Temp :31.5, Time:786.2  Temp :32, Time:836.2    Temp :32.48, Time:886.2 Temp :33, Time:936.1    Temp :33.5, Time:986.2  Temp :34.01, Time:1036.2        Temp :34.49, Time:1086.1        Temp :35, Time:1136.9   Temp :35.5, Time:1187.1
+Wavelength      Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity       Intensity</p>
+<p>249.182266235352        22.384  22.417  22.45   22.406  22.373  22.362  22.373  22.439  22.384  22.406  22.417  22.406  22.45   22.439  22.483  22.461  22.428  22.395  22.417  22.439  22.439  22.373
+249.664016723633        13.144  14.261  14.458  16.035  16.068  19.025  11.369  14.491  15.969  17.777  23.691  20.57   14.754  20.668  25.137  20.8    22.311  21.293  21.095  19.65   21.128  16.725</p>
+</div></blockquote>
+<p>The line should be discarded
+The second line contains the time and temperature data. We’re interested only in the temperature data
+The third line can be discarded
+The fourth line is empty
+The fifth line contains the first row of the signal data, with the wavelength data in the first column</p>
+<p>The file is a xlsx file with as many sheets as channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uncle_file</strong> (<em>str</em>) – Path to the xlsx file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with signal data
+temp_data_dic (dict): Dictionary with temperature data
+conditions (list): List of conditions
+signals (np.ndarray): List of signal names, such as 330nm and 350nm</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>signal_data_dic (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.load_mx3005p_txt">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">load_mx3005p_txt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#load_mx3005p_txt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.load_mx3005p_txt" title="Link to this definition">#</a></dt>
+<dd><p>Load Agilent MX3005P qPCR txt file and extract data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Path to the MX3005P txt file. The second column has the fluorescence data, and
+the third column the temperature. Wells are separated by rows containing a sentence like this one: ‘Segment  2 Plateau  1 Well  1’</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with signal data
+temp_data_dic (dict): Dictionary with temperature data
+conditions (list): List of conditions (well numbers)
+signals (np.ndarray): List of signal names</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>signal_data_dic (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.files.load_supr_dsf">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.files.</span></span><span class="sig-name descname"><span class="pre">load_supr_dsf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">JSON_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/files.html#load_supr_dsf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.files.load_supr_dsf" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-pychemelt.utils.fitting">
+<span id="pychemelt-utils-fitting-module"></span><h2>pychemelt.utils.fitting module<a class="headerlink" href="#module-pychemelt.utils.fitting" title="Link to this heading">#</a></h2>
+<p>This module contains helper functions to fit unfolding data
+Author: Osvaldo Burastero</p>
+<p>The functions description is below:</p>
+<p>fit_line_robust - to fit a line to xy data
+fit_line_robust_quadratic - to fit a quadratic to xy data
+fit_exponential_robust - to fit an exponential to xy data</p>
+<p>compare_linear_to_quadratic - fit xy data to linear and quadratic models and compare the results</p>
+<p>fit_thermal_unfolding - to fit unfolding curves with a shared Tm, and DH but different baselines and slopes.
+No denaturant conocentration is taken into account</p>
+<p>fit_tc_unfolding_single_slopes - to fit unfolding curves with shared Tm, DH, Cp and m.
+The curves can still have different baseline and slopes</p>
+<p>fit_tc_unfolding_shared_slopes_many_signals - to fit unfolding curves with shared Tm, DH, Cp and m.
+The slope terms are shared. The intercepts can be different.</p>
+<p>fit_tc_unfolding_many_signals - to fit unfolding curves with shared Tm, DH, Cp and m.
+The slope terms are shared. The intercepts are defined by a global parameters.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.fitting.fit_line_robust">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.fitting.</span></span><span class="sig-name descname"><span class="pre">fit_line_robust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/fitting.html#fit_line_robust"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.fitting.fit_line_robust" title="Link to this definition">#</a></dt>
+<dd><p>Fit a line to the data using robust fitting
+:param x: x data
+:type x: np.ndarray
+:param y: y data
+:type y: np.ndarray</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Slope of the fitted line
+b (float): Intercept of the fitted line</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>m (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.fitting.fit_quadratic_robust">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.fitting.</span></span><span class="sig-name descname"><span class="pre">fit_quadratic_robust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/fitting.html#fit_quadratic_robust"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.fitting.fit_quadratic_robust" title="Link to this definition">#</a></dt>
+<dd><p>Fit a qudratic equation to the data using robust fitting
+:param x: x data
+:type x: np.ndarray
+:param y: y data
+:type y: np.ndarray</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Quadratic coefficient of the fitted line
+b (float): Linear coefficient of the fitted line
+c (float): Constant coefficient of the fitted line</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>a (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.fitting.fit_exponential_robust">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.fitting.</span></span><span class="sig-name descname"><span class="pre">fit_exponential_robust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/fitting.html#fit_exponential_robust"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.fitting.fit_exponential_robust" title="Link to this definition">#</a></dt>
+<dd><p>Fit a exponential function to the data using robust fitting</p>
+<p>Remember to shift the temperature to Tref before calling it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – x data</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – y data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Baseline
+c (float): pre exponential factor
+alpha (float): exponential factor</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.fitting.compare_linear_to_quadratic">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.fitting.</span></span><span class="sig-name descname"><span class="pre">compare_linear_to_quadratic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/fitting.html#compare_linear_to_quadratic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.fitting.compare_linear_to_quadratic" title="Link to this definition">#</a></dt>
+<dd><p>Compare the linear and quadratic fits to the data using an F-test
+:param x: x data
+:type x: np.ndarray
+:param y: y data
+:type y: np.ndarray</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the linear model is better than the quadratic model</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.fitting.fit_thermal_unfolding">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.fitting.</span></span><span class="sig-name descname"><span class="pre">fit_thermal_unfolding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_temperatures</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_signals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_fx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_slopes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_oligomer_conc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/fitting.html#fit_thermal_unfolding"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.fitting.fit_thermal_unfolding" title="Link to this definition">#</a></dt>
+<dd><p>Fit the thermal unfolding profile of many curves at the same time
+Useful function to do global fitting of local and global parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list_of_temperatures</strong> (<em>list</em>) – List of temperatures for each dataset</p></li>
+<li><p><strong>list_of_signals</strong> (<em>list</em>) – List of signals for each dataset</p></li>
+<li><p><strong>initial_parameters</strong> (<em>list</em>) – Initial guess for the parameters</p></li>
+<li><p><strong>low_bounds</strong> (<em>list</em>) – Lower bounds for the parameters</p></li>
+<li><p><strong>high_bounds</strong> (<em>list</em>) – Upper bounds for the parameters</p></li>
+<li><p><strong>signal_fx</strong> (<em>function</em>) – Function to calculate the signal based on the parameters</p></li>
+<li><p><strong>Cp</strong> (<em>float</em>) – Variation of calorific capacity between the two states</p></li>
+<li><p><strong>fit_slopes</strong> (<em>dic</em>) – Dictionary stating if a constant, linear or quadratic baseline is to be fitted</p></li>
+<li><p><strong>list_of_oligomer_conc</strong> (<em>list</em><em>, </em><em>optional</em>) – List of oligomer concentrations for each dataset</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>The fitting of the melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</dt><dd><p>slopes and intercept of the folded and unfolded states</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.fitting.fit_thermal_unfolding_exponential">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.fitting.</span></span><span class="sig-name descname"><span class="pre">fit_thermal_unfolding_exponential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_temperatures</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_signals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_fx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_oligomer_conc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/fitting.html#fit_thermal_unfolding_exponential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.fitting.fit_thermal_unfolding_exponential" title="Link to this definition">#</a></dt>
+<dd><p>Fit the thermal unfolding profile of many curves at the same time
+Using exponential baselines
+Useful function to do global fitting of local and global parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list_of_temperatures</strong> (<em>list</em>) – List of temperatures for each dataset</p></li>
+<li><p><strong>list_of_signals</strong> (<em>list</em>) – List of signals for each dataset</p></li>
+<li><p><strong>initial_parameters</strong> (<em>list</em>) – Initial guess for the parameters</p></li>
+<li><p><strong>low_bounds</strong> (<em>list</em>) – Lower bounds for the parameters</p></li>
+<li><p><strong>high_bounds</strong> (<em>list</em>) – Upper bounds for the parameters</p></li>
+<li><p><strong>signal_fx</strong> (<em>function</em>) – Function to calculate the signal based on the parameters</p></li>
+<li><p><strong>Cp</strong> (<em>float</em>) – Variation of calorific capacity between the two states</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>The fitting of the melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</dt><dd><p>slopes and intercept of the folded and unfolded states</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.fitting.fit_tc_unfolding_single_slopes">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.fitting.</span></span><span class="sig-name descname"><span class="pre">fit_tc_unfolding_single_slopes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_temperatures</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_signals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denaturant_concentrations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_fx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_slopes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_oligomer_conc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_m1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tm_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dh_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/fitting.html#fit_tc_unfolding_single_slopes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.fitting.fit_tc_unfolding_single_slopes" title="Link to this definition">#</a></dt>
+<dd><p>Fit the thermochemical unfolding profile of many curves at the same time
+The curves will share thermodynamic parameters but have different baseline and slopes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list_of_temperatures</strong> (<em>list</em>) – List of temperatures for each dataset</p></li>
+<li><p><strong>list_of_signals</strong> (<em>list</em>) – List of signals for each dataset</p></li>
+<li><p><strong>denaturant_concentrations</strong> (<em>list</em>) – List of denaturant concentrations, one per dataset</p></li>
+<li><p><strong>initial_parameters</strong> (<em>list</em>) – Initial guess for the parameters</p></li>
+<li><p><strong>low_bounds</strong> (<em>list</em>) – Lower bounds for the parameters</p></li>
+<li><p><strong>high_bounds</strong> (<em>list</em>) – Upper bounds for the parameters</p></li>
+<li><p><strong>signal_fx</strong> (<em>function</em>) – Function to calculate the signal based on the parameters</p></li>
+<li><p><strong>fit_slopes</strong> (<em>dic</em>) – Dictionary stating if a constant, linear or quadratic baseline is to be fitted</p></li>
+<li><p><strong>list_of_oligomer_conc</strong> (<em>list</em><em>, </em><em>optional</em>) – List of oligomer concentrations for each dataset</p></li>
+<li><p><strong>fit_m1</strong> (<em>bool</em>) – Whether to fit the m1 parameter - m-value dependence on temperature</p></li>
+<li><p><strong>cp_value</strong> (<em>float</em>) – Fixed Cp0, if None, it will be fitted</p></li>
+<li><p><strong>tm_value</strong> (<em>float</em>) – Fixed melting temperature, if None, it will be fitted</p></li>
+<li><p><strong>dh_value</strong> (<em>float</em>) – Fixed enthalpy of unfolding, if None, it will be fitted</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>The fitting of the melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</dt><dd><p>slopes and intercept of the folded and unfolded states</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.fitting.fit_tc_unfolding_shared_slopes_many_signals">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.fitting.</span></span><span class="sig-name descname"><span class="pre">fit_tc_unfolding_shared_slopes_many_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_temperatures</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_signals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denaturant_concentrations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_fx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_slopes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_oligomer_conc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_m1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tm_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dh_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/fitting.html#fit_tc_unfolding_shared_slopes_many_signals"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.fitting.fit_tc_unfolding_shared_slopes_many_signals" title="Link to this definition">#</a></dt>
+<dd><p>Fit the thermochemical unfolding profile of many curves at the same time
+For different signal types, such as 330nm and 350nm
+The curves will share thermodynamic parameters and slopes, but have different baselines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list_of_temperatures</strong> (<em>list</em>) – List of temperatures for each dataset</p></li>
+<li><p><strong>list_of_signals</strong> (<em>list</em>) – List of signals for each dataset</p></li>
+<li><p><strong>signal_ids</strong> (<em>list</em>) – List of signal ids for each dataset, to identify different signals. From 0 to n_signals-1</p></li>
+<li><p><strong>denaturant_concentrations</strong> (<em>list</em>) – List of denaturant concentrations, one per dataset</p></li>
+<li><p><strong>initial_parameters</strong> (<em>list</em>) – Initial guess for the parameters</p></li>
+<li><p><strong>low_bounds</strong> (<em>list</em>) – Lower bounds for the parameters</p></li>
+<li><p><strong>high_bounds</strong> (<em>list</em>) – Upper bounds for the parameters</p></li>
+<li><p><strong>signal_fx</strong> (<em>function</em>) – Function to calculate the signal based on the parameters</p></li>
+<li><p><strong>fit_slopes</strong> (<em>dic</em>) – Dictionary stating if a constant, linear or quadratic baseline is to be fitted</p></li>
+<li><p><strong>list_of_oligomer_conc</strong> (<em>list</em><em>, </em><em>optional</em>) – List of oligomer concentrations for each dataset</p></li>
+<li><p><strong>fit_m1</strong> (<em>bool</em>) – Whether to fit the m1 parameter - m-value dependence on temperature</p></li>
+<li><p><strong>cp_value</strong> (<em>float</em>) – Fixed Cp0, if None, it will be fitted</p></li>
+<li><p><strong>tm_value</strong> (<em>float</em>) – Fixed melting temperature, if None, it will be fitted</p></li>
+<li><p><strong>dh_value</strong> (<em>float</em>) – Fixed enthalpy of unfolding, if None, it will be fitted</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>The fitting of the melting curves based on the parameters Temperature of melting, enthalpy of unfolding,</dt><dd><p>slopes and intercept of the folded and unfolded states</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.fitting.fit_tc_unfolding_many_signals_slow">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.fitting.</span></span><span class="sig-name descname"><span class="pre">fit_tc_unfolding_many_signals_slow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_temperatures</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_signals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denaturant_concentrations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_fx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_slope_native_temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_slope_unfolded_temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_slope_native_den</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_slope_unfolded_den</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_quadratic_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_quadratic_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oligomer_concentrations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_m1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_scale_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_factor_exclude_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/fitting.html#fit_tc_unfolding_many_signals_slow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.fitting.fit_tc_unfolding_many_signals_slow" title="Link to this definition">#</a></dt>
+<dd><p>Fit the thermochemical unfolding profile of many curves at the same time
+For multiple signals, such as 330nm and 350nm</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list_of_temperatures</strong> (<em>list</em>) – List of temperatures for each dataset</p></li>
+<li><p><strong>list_of_signals</strong> (<em>list</em>) – List of signals for each dataset</p></li>
+<li><p><strong>signal_ids</strong> (<em>list</em>) – List of signal IDs for each dataset to identify different signals. From 0 to n_signals-1</p></li>
+<li><p><strong>denaturant_concentrations</strong> (<em>list</em>) – List of denaturant concentrations, one per dataset</p></li>
+<li><p><strong>initial_parameters</strong> (<em>list</em>) – Initial guess for the parameters</p></li>
+<li><p><strong>low_bounds</strong> (<em>list</em>) – Lower bounds for the parameters</p></li>
+<li><p><strong>high_bounds</strong> (<em>list</em>) – Upper bounds for the parameters</p></li>
+<li><p><strong>signal_fx</strong> (<em>function</em>) – Function to calculate the signal based on the parameters</p></li>
+<li><p><strong>fit_slope_native_temp</strong> (<em>bool</em>) – Whether to fit the slope of the native state with respect to temperature</p></li>
+<li><p><strong>fit_slope_unfolded_temp</strong> (<em>bool</em>) – Whether to fit the slope of the unfolded state with respect to temperature</p></li>
+<li><p><strong>fit_slope_native_den</strong> (<em>bool</em>) – Whether to fit the slope of the native state with respect to denaturant</p></li>
+<li><p><strong>fit_slope_unfolded_den</strong> (<em>bool</em>) – Whether to fit the slope of the unfolded state with respect to denaturant</p></li>
+<li><p><strong>fit_quadratic_native</strong> (<em>bool</em>) – Whether to fit the quadratic term of the native state</p></li>
+<li><p><strong>fit_quadratic_unfolded</strong> (<em>bool</em>) – Whether to fit the quadratic term of the unfolded state</p></li>
+<li><p><strong>oligomer_concentrations</strong> (<em>list</em><em>, </em><em>optional</em>) – List of oligomer concentrations for each dataset</p></li>
+<li><p><strong>fit_m1</strong> (<em>bool</em>) – Whether to fit the m1 parameter</p></li>
+<li><p><strong>model_scale_factor</strong> (<em>bool</em>) – <p>Whether include a scaling factor for each individual unfolding curve.
+The idea is to account for differences in signal intensities due to either error</p>
+<blockquote>
+<div><p>in the protein concentration or different levels of detection.</p>
+</div></blockquote>
+</p></li>
+<li><p><strong>scale_factor_exclude_ids</strong> (<em>list</em>) – List of curves ids to exclude from scaling factor fitting.
+Useful when the fitted scaling factors are not meaningful (between 0.99 and 1.01)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Fitted parameters
+cov (ndarray): Covariance of the fitted parameters
+predicted_lst (list): Predicted signals for each dataset based on the fitted parameters</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>global_fit_params (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.fitting.fit_tc_unfolding_many_signals">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.fitting.</span></span><span class="sig-name descname"><span class="pre">fit_tc_unfolding_many_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_temperatures</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_signals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denaturant_concentrations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_fx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_slope_native_temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_slope_unfolded_temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_slope_native_den</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_slope_unfolded_den</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_quadratic_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_quadratic_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oligomer_concentrations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_m1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_scale_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_factor_exclude_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/fitting.html#fit_tc_unfolding_many_signals"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.fitting.fit_tc_unfolding_many_signals" title="Link to this definition">#</a></dt>
+<dd><p>Fit the thermochemical unfolding profile of many curves at the same time
+For multiple signals, such as 330nm and 350nm</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list_of_temperatures</strong> (<em>list</em>) – List of temperatures for each dataset</p></li>
+<li><p><strong>list_of_signals</strong> (<em>list</em>) – List of signals for each dataset</p></li>
+<li><p><strong>signal_ids</strong> (<em>list</em>) – List of signal IDs for each dataset to identify different signals. From 0 to n_signals-1</p></li>
+<li><p><strong>denaturant_concentrations</strong> (<em>list</em>) – List of denaturant concentrations, one per dataset</p></li>
+<li><p><strong>initial_parameters</strong> (<em>list</em>) – Initial guess for the parameters</p></li>
+<li><p><strong>low_bounds</strong> (<em>list</em>) – Lower bounds for the parameters</p></li>
+<li><p><strong>high_bounds</strong> (<em>list</em>) – Upper bounds for the parameters</p></li>
+<li><p><strong>signal_fx</strong> (<em>function</em>) – Function to calculate the signal based on the parameters</p></li>
+<li><p><strong>fit_slope_native_temp</strong> (<em>bool</em>) – Whether to fit the slope of the native state with respect to temperature</p></li>
+<li><p><strong>fit_slope_unfolded_temp</strong> (<em>bool</em>) – Whether to fit the slope of the unfolded state with respect to temperature</p></li>
+<li><p><strong>fit_slope_native_den</strong> (<em>bool</em>) – Whether to fit the slope of the native state with respect to denaturant</p></li>
+<li><p><strong>fit_slope_unfolded_den</strong> (<em>bool</em>) – Whether to fit the slope of the unfolded state with respect to denaturant</p></li>
+<li><p><strong>fit_quadratic_native</strong> (<em>bool</em>) – Whether to fit the quadratic term of the native state</p></li>
+<li><p><strong>fit_quadratic_unfolded</strong> (<em>bool</em>) – Whether to fit the quadratic term of the unfolded state</p></li>
+<li><p><strong>oligomer_concentrations</strong> (<em>list</em><em>, </em><em>optional</em>) – List of oligomer concentrations for each dataset</p></li>
+<li><p><strong>fit_m1</strong> (<em>bool</em>) – Whether to fit the m1 parameter</p></li>
+<li><p><strong>model_scale_factor</strong> (<em>bool</em>) – <p>Whether include a scaling factor for each individual unfolding curve.
+The idea is to account for differences in signal intensities due to either error</p>
+<blockquote>
+<div><p>in the protein concentration or different levels of detection.</p>
+</div></blockquote>
+</p></li>
+<li><p><strong>scale_factor_exclude_ids</strong> (<em>list</em>) – List of curves ids to exclude from scaling factor fitting.
+Useful when the fitted scaling factors are not meaningful (between 0.99 and 1.01)</p></li>
+<li><p><strong>cp_value</strong> (<em>float</em><em>, </em><em>optional</em>) – Fixed value for the heat capacity change (Cp). If None, Cp is fitted.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Fitted parameters
+cov (ndarray): Covariance of the fitted parameters
+predicted_lst (list): Predicted signals for each dataset based on the fitted parameters</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>global_fit_params (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.fitting.evaluate_need_to_refit">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.fitting.</span></span><span class="sig-name descname"><span class="pre">evaluate_need_to_refit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">global_fit_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_m1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_cp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_dh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_tm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_cp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/fitting.html#evaluate_need_to_refit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.fitting.evaluate_need_to_refit" title="Link to this definition">#</a></dt>
+<dd><p>Check if the thermodynamic parameters are too close to the boundaries and expand them if necessary
+:param global_fit_params: Fitted parameters
+:type global_fit_params: list
+:param high_bounds: Upper bounds for the parameters
+:type high_bounds: list
+:param low_bounds: Lower bounds for the parameters
+:type low_bounds: list
+:param p0: Initial guess for the parameters
+:type p0: list
+:param fit_m1: Whether to fit the m1 parameter - m-value dependence on temperature
+:type fit_m1: bool
+:param check_cp: Whether to check the Cp parameter. If False, the Cp parameter will not be checked.
+:type check_cp: bool
+:param check_dh: Whether to check the Dh parameter. If False, the Dh parameter will not be checked.
+:type check_dh: bool
+:param check_tm: Whether to check the Tm parameter. If False, the Tm parameter will not be checked.
+:type check_tm: bool
+:param fixed_cp: Whether the Cp parameter is fixed. To determine the starting index of other parameters.
+:type fixed_cp: bool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the parameters are too close to the boundaries and need to be refitted
+p0 (list): Updated initial guess for the parameters
+low_bounds (list): Updated lower bounds for the parameters
+high_bounds (list): Updated upper bounds for the parameters</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>re_fit (bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pychemelt.utils.fractions">
+<span id="pychemelt-utils-fractions-module"></span><h2>pychemelt.utils.fractions module<a class="headerlink" href="#module-pychemelt.utils.fractions" title="Link to this heading">#</a></h2>
+<p>This module contains helper functions to obtain the amount of folded/intermediate/unfolded (etc.) protein
+Author: Osvaldo Burastero</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.fractions.fn_two_state_monomer">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.fractions.</span></span><span class="sig-name descname"><span class="pre">fn_two_state_monomer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/fractions.html#fn_two_state_monomer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.fractions.fn_two_state_monomer" title="Link to this definition">#</a></dt>
+<dd><p>Given the equilibrium constant K, of N &lt;-&gt; U, return the fraction of folded protein</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>K</strong> (<em>float</em>) – Equilibrium constant of the reaction N &lt;-&gt; U</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Fraction of FOLDED protein</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.fractions.fu_two_state_dimer">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.fractions.</span></span><span class="sig-name descname"><span class="pre">fu_two_state_dimer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/fractions.html#fu_two_state_dimer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.fractions.fu_two_state_dimer" title="Link to this definition">#</a></dt>
+<dd><p>Given the equilibrium constant K, of N2 &lt;-&gt; 2U,
+and the concentration of dimer equivalent C, return the fraction of unfolded protein</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>K</strong> (<em>float</em>) – Equilibrium constant of the reaction N2 &lt;-&gt; 2U</p></li>
+<li><p><strong>C</strong> (<em>float</em>) – Concentration of dimer equivalent</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Fraction of UNFOLDED protein</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pychemelt.utils.math">
+<span id="pychemelt-utils-math-module"></span><h2>pychemelt.utils.math module<a class="headerlink" href="#module-pychemelt.utils.math" title="Link to this heading">#</a></h2>
+<p>This module contains helper functions for mathematical operations
+Author: Osvaldo Burastero</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.temperature_to_kelvin">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">temperature_to_kelvin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pychemelt.utils.math.temperature_to_kelvin" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.temperature_to_celsius">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">temperature_to_celsius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pychemelt.utils.math.temperature_to_celsius" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.shift_temperature">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">shift_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pychemelt.utils.math.shift_temperature" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.solve_one_root_quadratic">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">solve_one_root_quadratic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/math.html#solve_one_root_quadratic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.math.solve_one_root_quadratic" title="Link to this definition">#</a></dt>
+<dd><p>Obtain one root of the quadratic equation of the form ax^2 + bx + c = 0
+:param a: Coefficient of x^2
+:type a: float
+:param b: Coefficient of x
+:type b: float
+:param c: Constant term
+:type c: float</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>One root of the quadratic equation</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.solve_one_root_depressed_cubic">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">solve_one_root_depressed_cubic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/math.html#solve_one_root_depressed_cubic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.math.solve_one_root_depressed_cubic" title="Link to this definition">#</a></dt>
+<dd><p>Obtain one root of the depressed cubic equation of the form x^3 + px + q = 0
+:param p: Coefficient of x
+:type p: float
+:param q: Constant term
+:type q: float</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>One root of the cubic equation</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.is_evenly_spaced">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">is_evenly_spaced</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/math.html#is_evenly_spaced"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.math.is_evenly_spaced" title="Link to this definition">#</a></dt>
+<dd><p>Check if x is evenly spaced within a given tolerance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – x data</p></li>
+<li><p><strong>tol</strong> (<em>float</em>) – Tolerance for considering spacing equal</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if x is evenly spaced, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.first_derivative_savgol">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">first_derivative_savgol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polyorder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/math.html#first_derivative_savgol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.math.first_derivative_savgol" title="Link to this definition">#</a></dt>
+<dd><p>Estimate the first derivative using Savitzky-Golay filtering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – x data</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – y data</p></li>
+<li><p><strong>window_length</strong> (<em>int</em>) – Length of the filter window, in temperature units</p></li>
+<li><p><strong>polyorder</strong> (<em>int</em>) – Order of the polynomial used to fit the samples</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>First derivative of y with respect to x</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dydx (np.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.relative_errors">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">relative_errors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cov</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/math.html#relative_errors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.math.relative_errors" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the relative errors of the fitted parameters.
+:param params: Fitted parameters
+:type params: np.ndarray
+:param cov: Covariance matrix of the fitted parameters
+:type cov: np.ndarray</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Relative errors of the fitted parameters</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>rel_error (np.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.find_line_outliers">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">find_line_outliers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/math.html#find_line_outliers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.math.find_line_outliers" title="Link to this definition">#</a></dt>
+<dd><p>Find outliers in a linear fit using the 3-sigma rule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>m</strong> (<em>float</em>) – Slope of the line</p></li>
+<li><p><strong>b</strong> (<em>float</em>) – Intercept of the line</p></li>
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – x data</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – y data</p></li>
+<li><p><strong>sigma</strong> (<em>float</em>) – Number of standard deviations to use for outlier detection</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Indices of the outliers</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>outliers (np.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.residuals_squares_sum">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">residuals_squares_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/math.html#residuals_squares_sum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.math.residuals_squares_sum" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the residual sum of squares.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<em>np.ndarray</em>) – True values</p></li>
+<li><p><strong>y_pred</strong> (<em>np.ndarray</em>) – Predicted values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Residual sum of squares</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.r_squared">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">r_squared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/math.html#r_squared"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.math.r_squared" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the R-squared value for a regression model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<em>np.ndarray</em>) – True values</p></li>
+<li><p><strong>y_pred</strong> (<em>np.ndarray</em>) – Predicted values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>R-squared value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.adjusted_r2">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">adjusted_r2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/math.html#adjusted_r2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.math.adjusted_r2" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the adjusted R-squared value for a regression model.
+:param r2: R-squared value
+:type r2: float
+:param n: Number of observations
+:type n: int
+:param p: Number of predictors
+:type p: int</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Adjusted R-squared value</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.compute_aic">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">compute_aic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/math.html#compute_aic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.math.compute_aic" title="Link to this definition">#</a></dt>
+<dd><p>Compute the Akaike Information Criterion (AIC) for a regression model.
+:param y_true: True values
+:type y_true: np.ndarray
+:param y_pred: Predicted values
+:type y_pred: np.ndarray
+:param k: Number of parameters in the model
+:type k: int</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AIC value</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.compare_akaikes">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">compare_akaikes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">akaikes_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">akaikes_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">akaikes_3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">akaikes_4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denaturant_concentrations</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/math.html#compare_akaikes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.math.compare_akaikes" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.rss_p">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">rss_p</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rrs0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alfa</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/math.html#rss_p"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.math.rss_p" title="Link to this definition">#</a></dt>
+<dd><p>Given the residuals of the best fitted model,
+compute the desired residual sum of squares for a 1-alpha confidence interval
+This is used to compute asymmetric confidence intervals for the fitted parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rrs0</strong> (<em>float</em>) – residual sum of squares of the model with the best fit</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – number of data points</p></li>
+<li><p><strong>p</strong> (<em>int</em>) – number of parameters</p></li>
+<li><p><strong>alfa</strong> (<em>float</em>) – desired confidence interval</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>residual sum of squares for the desired confidence interval</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>rss (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.get_rss">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">get_rss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_fit</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/math.html#get_rss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.math.get_rss" title="Link to this definition">#</a></dt>
+<dd><p>Compute the residual sum of squares</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – observed values</p></li>
+<li><p><strong>y_fit</strong> (<em>np.ndarray</em>) – fitted values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>residual sum of squares</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>rss (np.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.math.get_desired_rss">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.math.</span></span><span class="sig-name descname"><span class="pre">get_desired_rss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_fit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/math.html#get_desired_rss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.math.get_desired_rss" title="Link to this definition">#</a></dt>
+<dd><p>Given the observed and fitted data,
+find the residual sum of squares required for a 1-alpha confidence interval</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – observed values</p></li>
+<li><p><strong>y_fit</strong> (<em>np.ndarray</em>) – fitted values</p></li>
+<li><p><strong>p</strong> (<em>int</em>) – number of parameters</p></li>
+<li><p><strong>alpha</strong> (<em>float</em>) – desired confidence interval</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>residual sum of squares</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>rss (np.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pychemelt.utils.processing">
+<span id="pychemelt-utils-processing-module"></span><h2>pychemelt.utils.processing module<a class="headerlink" href="#module-pychemelt.utils.processing" title="Link to this heading">#</a></h2>
+<p>This module contains helper functions to process data
+Author: Osvaldo Burastero</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.expand_temperature_list">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">expand_temperature_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temp_lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_lst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#expand_temperature_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.expand_temperature_list" title="Link to this definition">#</a></dt>
+<dd><p>Expand the temperature list to match the length of the signal list.
+:param temp_lst: List of temperatures
+:type temp_lst: list
+:param signal_lst: List of signals
+:type signal_lst: list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Expanded temperature list</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.delete_words_appearing_more_than_five_times">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">delete_words_appearing_more_than_five_times</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#delete_words_appearing_more_than_five_times"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.delete_words_appearing_more_than_five_times" title="Link to this definition">#</a></dt>
+<dd><p>Deletes words that appear more than 5 times from a list of strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>strings</strong> (<em>list</em>) – List of strings.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of strings with frequent words removed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.remove_letter_number_combinations">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">remove_letter_number_combinations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#remove_letter_number_combinations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.remove_letter_number_combinations" title="Link to this definition">#</a></dt>
+<dd><p>Removes any combination of a single letter followed by one or two digits (e.g., A1, B10, D5) from the input string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – The input string from which patterns should be removed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The cleaned string with all matching patterns removed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.remove_numbers_after_letter">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">remove_numbers_after_letter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#remove_numbers_after_letter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.remove_numbers_after_letter" title="Link to this definition">#</a></dt>
+<dd><p>Removes all numbers coming after a letter until an underscore or space appears.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – The input string.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The cleaned string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.remove_non_numeric_char">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">remove_non_numeric_char</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#remove_non_numeric_char"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.remove_non_numeric_char" title="Link to this definition">#</a></dt>
+<dd><p>Remove all non-numeric characters except dots from a string.
+:param input_string: Input string
+:type input_string: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>String with non-numeric characters (except dots) removed</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.clean_conditions_labels">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">clean_conditions_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#clean_conditions_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.clean_conditions_labels" title="Link to this definition">#</a></dt>
+<dd><p>Clean the conditions labels by removing unwanted characters and patterns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>conditions</strong> (<em>list</em>) – List of condition strings.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of cleaned condition strings.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.subset_signal_by_temperature">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">subset_signal_by_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal_lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_temp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_temp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#subset_signal_by_temperature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.subset_signal_by_temperature" title="Link to this definition">#</a></dt>
+<dd><p>Subset the signal and temperature lists based on the specified temperature range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal</strong> (<em>list</em>) – List of signal values.</p></li>
+<li><p><strong>temp</strong> (<em>list</em>) – List of temperature values.</p></li>
+<li><p><strong>min_temp</strong> (<em>float</em>) – Minimum temperature for subsetting.</p></li>
+<li><p><strong>max_temp</strong> (<em>float</em>) – Maximum temperature for subsetting.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple containing the subsetted signal and temperature lists.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.guess_Tm_from_derivative">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">guess_Tm_from_derivative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temp_lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deriv_lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#guess_Tm_from_derivative"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.guess_Tm_from_derivative" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.estimate_signal_baseline_params">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">estimate_signal_baseline_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal_lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_range_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_range_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_order_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_order_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#estimate_signal_baseline_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.estimate_signal_baseline_params" title="Link to this definition">#</a></dt>
+<dd><p>Estimate the baseline parameters for the sample
+:param window_range_native: Range of the window (in degrees) to estimate the baselines and slopes of the native state
+:type window_range_native: int
+:param window_range_unfolded: Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state
+:type window_range_unfolded: int
+:param poly_order_native: Order of the polynomial to fit the native state baseline (0, 1 or 2)
+:type poly_order_native: int
+:param poly_order_unfolded: Order of the polynomial to fit the unfolded state baseline (0, 1 or 2)
+:type poly_order_unfolded: int</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of native state baselines
+bUs (list): List of unfolded state baselines
+kNs (list): List of native state slopes
+kUs (list): List of unfolded state slopes</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bNs (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.estimate_signal_baseline_params_exponential">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">estimate_signal_baseline_params_exponential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal_lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_range_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_range_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#estimate_signal_baseline_params_exponential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.estimate_signal_baseline_params_exponential" title="Link to this definition">#</a></dt>
+<dd><p>Estimate the baseline parameters for the sample using exponential functions
+:param window_range_native: Range of the window (in degrees) to estimate the baselines and slopes of the native state
+:type window_range_native: int
+:param window_range_unfolded: Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state
+:type window_range_unfolded: int</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of native state baselines
+aUs (list): List of unfolded state baselines
+cNs (list): List of native state pre exponential factor
+cUs (list): List of unfolded state  pre exponential factor
+alphaNs (list): List of native state exponential factors
+alphaUs (list): List of unfolded state exponential factors</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>aNs (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.fit_local_thermal_unfolding_to_signal_lst">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">fit_local_thermal_unfolding_to_signal_lst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal_lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_melting_init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bNs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bUs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kNs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kUs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qNs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qUs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_order_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_order_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#fit_local_thermal_unfolding_to_signal_lst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.fit_local_thermal_unfolding_to_signal_lst" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.fit_local_thermal_unfolding_to_signal_lst_exponential">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">fit_local_thermal_unfolding_to_signal_lst_exponential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal_lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_melting_init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aNs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aUs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cNs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cUs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alphaNs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alphaUs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#fit_local_thermal_unfolding_to_signal_lst_exponential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.fit_local_thermal_unfolding_to_signal_lst_exponential" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.re_arrange_predictions">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">re_arrange_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicted_lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_signals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_denaturants</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#re_arrange_predictions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.re_arrange_predictions" title="Link to this definition">#</a></dt>
+<dd><p>Re-arrange the flattened predictions to match the original signal list with sublists
+:param predicted_lst: Flattened list of predicted signals of length n_signals * n_denaturants
+:type predicted_lst: list
+:param n_signals: Number of signals
+:type n_signals: int
+:param n_denaturants: Number of denaturants
+:type n_denaturants: int</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Re-arranged list of predicted signals to be of length n_signals with sublists of length n_denaturants</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.re_arrange_params">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">re_arrange_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_signals</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#re_arrange_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.re_arrange_params" title="Link to this definition">#</a></dt>
+<dd><p>Re arrange the flattened parameters to be a list with sublists, as many sublists  as n_signals
+:param params: Flattened list of parameters
+:type params: list
+:param n_signals: Number of signals
+:type n_signals: int</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Re-arranged list of parameters to be of length n_signals with sublists</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.subset_data">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">subset_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_points</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#subset_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.subset_data" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>np.ndarray</em>) – Input data array</p></li>
+<li><p><strong>max_points</strong> (<em>int</em>) – Maximum number of points to keep</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Subsetted data array</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pychemelt.utils.rates">
+<span id="pychemelt-utils-rates-module"></span><h2>pychemelt.utils.rates module<a class="headerlink" href="#module-pychemelt.utils.rates" title="Link to this heading">#</a></h2>
+<p>This module contains helper functions to obtain equilibrium constants
+Author: Osvaldo Burastero</p>
+<dl class="simple">
+<dt>Useful references for unfolding models:</dt><dd><ul class="simple">
+<li><p>Rumfeldt, Jessica AO, et al. “Conformational stability and folding mechanisms of dimeric proteins.” Progress in biophysics and molecular biology 98.1 (2008): 61-84.</p></li>
+<li><p>Bedouelle, Hugues. “Principles and equations for measuring and interpreting protein stability: From monomer to tetramer.” Biochimie 121 (2016): 29-37.</p></li>
+<li><p>Mazurenko, Stanislav, et al. “Exploration of protein unfolding by modelling calorimetry data from reheating.” Scientific reports 7.1 (2017): 16321.</p></li>
+</ul>
+</dd>
+</dl>
+<p>All thermodynamic parameters are used in kcal mol units</p>
+<p>Unfolding functions for monomers have an argument called ‘extra_arg’ that is not used.
+This is because unfolding functions for oligomers require the protein concentration in that position</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.rates.eq_constant_thermo">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.rates.</span></span><span class="sig-name descname"><span class="pre">eq_constant_thermo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DH1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/rates.html#eq_constant_thermo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.rates.eq_constant_thermo" title="Link to this definition">#</a></dt>
+<dd><p>T1 is the temperature at which ΔG(T) = 0
+ΔH1, the variation of enthalpy between the two considered states at T1
+Cp the variation of calorific capacity between the two states</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> (<em>np.ndarray</em>) – temperature</p></li>
+<li><p><strong>DH1</strong> (<em>float</em>) – variation of enthalpy between the two considered states at T1</p></li>
+<li><p><strong>T1</strong> (<em>float</em>) – temperature at which the equilibrium constant equals one</p></li>
+<li><p><strong>Cp</strong> (<em>float</em>) – variation of calorific capacity between the two states</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the equilibrium constant at the given temperature</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.rates.arrhenius">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.rates.</span></span><span class="sig-name descname"><span class="pre">arrhenius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Tf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ea</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/rates.html#arrhenius"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.rates.arrhenius" title="Link to this definition">#</a></dt>
+<dd><p>Arrhenius equation: defines dependence of reaction rate constant k on temperature
+In this version of the equation we use Tf (a temperature of k=1)
+to get rid of instead of pre-exponential constant A</p>
+<p>T, Tf, must be given in Kelvin, Ea in kcal units</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> (<em>np.ndarray</em>) – temperature</p></li>
+<li><p><strong>Tf</strong> (<em>float</em>) – temperature at which the reaction rate constant equals 1</p></li>
+<li><p><strong>Ea</strong> (<em>float</em>) – activation energy</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the reaction rate constant at the given temperature</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.rates.eq_constant_termochem">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.rates.</span></span><span class="sig-name descname"><span class="pre">eq_constant_termochem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DHm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Tm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cp0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/rates.html#eq_constant_termochem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.rates.eq_constant_termochem" title="Link to this definition">#</a></dt>
+<dd><p>Ref: Louise Hamborg et al., 2020. Global analysis of protein stability by temperature and chemical
+denaturation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> (<em>np.ndarray</em>) – temperature</p></li>
+<li><p><strong>D</strong> (<em>float</em>) – denaturant agent concentration</p></li>
+<li><p><strong>DHm</strong> (<em>float</em>) – variation of enthalpy between the two considered states at Tm</p></li>
+<li><p><strong>Tm</strong> (<em>float</em>) – temperature at which the equilibrium constant equals one</p></li>
+<li><p><strong>Cp0</strong> (<em>float</em>) – variation of calorific capacity between the two states</p></li>
+<li><p><strong>m0</strong> (<em>float</em>) – m-value at the reference temperature (Tref)</p></li>
+<li><p><strong>m1</strong> (<em>float</em>) – variation of calorific capacity between the two states</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the equilibrium constant at a certain temperature and denaturant agent concentration</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>K (np.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pychemelt.utils.signals">
+<span id="pychemelt-utils-signals-module"></span><h2>pychemelt.utils.signals module<a class="headerlink" href="#module-pychemelt.utils.signals" title="Link to this heading">#</a></h2>
+<p>This module contains helper functions to obtain the signal, given certain parameters
+Author: Osvaldo Burastero</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.signals.signal_two_state_tc_unfolding_monomer">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.signals.</span></span><span class="sig-name descname"><span class="pre">signal_two_state_tc_unfolding_monomer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DHm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Tm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cp0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a_N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b_N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a_U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b_U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_arg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/signals.html#signal_two_state_tc_unfolding_monomer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.signals.signal_two_state_tc_unfolding_monomer" title="Link to this definition">#</a></dt>
+<dd><p>Ref: Louise Hamborg et al., 2020. Global analysis of protein stability by temperature and chemical
+denaturation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> (<em>np.ndarray</em>) – temperature</p></li>
+<li><p><strong>D</strong> (<em>np.ndarray</em>) – denaturant agent concentration</p></li>
+<li><p><strong>DHm</strong> (<em>float</em>) – variation of enthalpy between the two considered states at Tm</p></li>
+<li><p><strong>Tm</strong> (<em>float</em>) – temperature at which the equilibrium constant equals one</p></li>
+<li><p><strong>Cp0</strong> (<em>float</em>) – variation of calorific capacity between the two states</p></li>
+<li><p><strong>m0</strong> (<em>float</em>) – m-value at the reference temperature (Tref)</p></li>
+<li><p><strong>m1</strong> (<em>float</em>) – variation of calorific capacity between the two states</p></li>
+<li><p><strong>a_N</strong> (<em>float</em>) – intercept of the native state signal</p></li>
+<li><p><strong>b_N</strong> (<em>float</em>) – slope of the native state signal  - temperature</p></li>
+<li><p><strong>c_N</strong> (<em>float</em>) – slope of the native state signal  - denaturant agent concentration</p></li>
+<li><p><strong>d_N</strong> (<em>float</em>) – quadratic term of the native state signal - temperature</p></li>
+<li><p><strong>a_U</strong> (<em>float</em>) – intercept of the unfolded state signal</p></li>
+<li><p><strong>b_U</strong> (<em>float</em>) – slope of the unfolded state signal - temperature</p></li>
+<li><p><strong>c_U</strong> (<em>float</em>) – slope of the unfolded state signal - denaturant agent concentration</p></li>
+<li><p><strong>d_U</strong> (<em>float</em>) – quadratic term of the unfolded state signal - temperature</p></li>
+<li><p><strong>extra_arg</strong> (<em>None</em>) – not used but required</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Signal at the given temperatures and denaturant agent concentration, given the parameters</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.signals.signal_two_state_t_unfolding_monomer">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.signals.</span></span><span class="sig-name descname"><span class="pre">signal_two_state_t_unfolding_monomer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Tm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dHm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bU</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kU</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qN</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qU</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_arg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/signals.html#signal_two_state_t_unfolding_monomer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.signals.signal_two_state_t_unfolding_monomer" title="Link to this definition">#</a></dt>
+<dd><p>N ⇔ U</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> (<em>np.ndarray</em>) – temperature</p></li>
+<li><p><strong>Tm</strong> (<em>float</em>) – temperature at which the equilibrium constant equals one</p></li>
+<li><p><strong>dHm</strong> (<em>float</em>) – variation of enthalpy between the two considered states at Tm</p></li>
+<li><p><strong>bN</strong> (<em>float</em>) – intercept of the native state signal  - temperature</p></li>
+<li><p><strong>kN</strong> (<em>float</em>) – slope of the native state signal</p></li>
+<li><p><strong>bU</strong> (<em>float</em>) – intercept of the unfolded state signal  - temperature</p></li>
+<li><p><strong>kU</strong> (<em>float</em>) – slope of the unfolded state signal</p></li>
+<li><p><strong>extra_arg</strong> (<em>None</em>) – not used but required</p></li>
+<li><p><strong>Cp</strong> (<em>float</em>) – variation of calorific capacity between the two states</p></li>
+<li><p><strong>qN</strong> (<em>float</em>) – quadratic dependence for the native state</p></li>
+<li><p><strong>qU</strong> (<em>float</em>) – quadratic dependence for the unfolded state</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Signal at the given temperatures, given the parameters</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.signals.signal_two_state_t_unfolding_monomer_exponential">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.signals.</span></span><span class="sig-name descname"><span class="pre">signal_two_state_t_unfolding_monomer_exponential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Tm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dHm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aU</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cU</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_u</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_arg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/signals.html#signal_two_state_t_unfolding_monomer_exponential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.signals.signal_two_state_t_unfolding_monomer_exponential" title="Link to this definition">#</a></dt>
+<dd><p>N ⇔ U</p>
+<p>We use an exponential function to model the signal dependence on temperature</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> (<em>np.ndarray</em>) – temperature</p></li>
+<li><p><strong>Tm</strong> (<em>float</em>) – temperature at which the equilibrium constant equals one</p></li>
+<li><p><strong>dHm</strong> (<em>float</em>) – variation of enthalpy between the two considered states at Tm</p></li>
+<li><p><strong>aN</strong> (<em>float</em>) – intercept of the native state signal</p></li>
+<li><p><strong>cN</strong> (<em>float</em>) – pre exponential factor of the native state signal</p></li>
+<li><p><strong>alpha_n</strong> (<em>float</em>) – exponential factor of the native state signal</p></li>
+<li><p><strong>aU</strong> (<em>float</em>) – intercept of the unfolded state signal</p></li>
+<li><p><strong>cU</strong> (<em>float</em>) – pre exponential factor of the unfolded state signal</p></li>
+<li><p><strong>alpha_u</strong> (<em>float</em>) – exponential factor of the unfolded state signal</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Signal at the given temperatures, given the parameters</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pychemelt.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">pychemelt package</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pychemelt.utils.constants">pychemelt.utils.constants module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pychemelt.utils.files">pychemelt.utils.files module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.get_sheet_names_of_xlsx"><code class="docutils literal notranslate"><span class="pre">get_sheet_names_of_xlsx()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.file_is_of_type_uncle"><code class="docutils literal notranslate"><span class="pre">file_is_of_type_uncle()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.detect_file_type"><code class="docutils literal notranslate"><span class="pre">detect_file_type()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.detect_encoding"><code class="docutils literal notranslate"><span class="pre">detect_encoding()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.find_indexes_of_non_signal_conditions"><code class="docutils literal notranslate"><span class="pre">find_indexes_of_non_signal_conditions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.find_repeated_words"><code class="docutils literal notranslate"><span class="pre">find_repeated_words()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.remove_words_in_string"><code class="docutils literal notranslate"><span class="pre">remove_words_in_string()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.load_csv_file"><code class="docutils literal notranslate"><span class="pre">load_csv_file()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.get_start_line_quantstudio_txt"><code class="docutils literal notranslate"><span class="pre">get_start_line_quantstudio_txt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.load_quantstudio_txt"><code class="docutils literal notranslate"><span class="pre">load_quantstudio_txt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.load_thermofluor_xlsx"><code class="docutils literal notranslate"><span class="pre">load_thermofluor_xlsx()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.space_combinations"><code class="docutils literal notranslate"><span class="pre">space_combinations()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.load_nanoDSF_xlsx"><code class="docutils literal notranslate"><span class="pre">load_nanoDSF_xlsx()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.load_panta_xlsx"><code class="docutils literal notranslate"><span class="pre">load_panta_xlsx()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.load_uncle_multi_channel"><code class="docutils literal notranslate"><span class="pre">load_uncle_multi_channel()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.load_mx3005p_txt"><code class="docutils literal notranslate"><span class="pre">load_mx3005p_txt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.files.load_supr_dsf"><code class="docutils literal notranslate"><span class="pre">load_supr_dsf()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pychemelt.utils.fitting">pychemelt.utils.fitting module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.fitting.fit_line_robust"><code class="docutils literal notranslate"><span class="pre">fit_line_robust()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.fitting.fit_quadratic_robust"><code class="docutils literal notranslate"><span class="pre">fit_quadratic_robust()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.fitting.fit_exponential_robust"><code class="docutils literal notranslate"><span class="pre">fit_exponential_robust()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.fitting.compare_linear_to_quadratic"><code class="docutils literal notranslate"><span class="pre">compare_linear_to_quadratic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.fitting.fit_thermal_unfolding"><code class="docutils literal notranslate"><span class="pre">fit_thermal_unfolding()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.fitting.fit_thermal_unfolding_exponential"><code class="docutils literal notranslate"><span class="pre">fit_thermal_unfolding_exponential()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.fitting.fit_tc_unfolding_single_slopes"><code class="docutils literal notranslate"><span class="pre">fit_tc_unfolding_single_slopes()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.fitting.fit_tc_unfolding_shared_slopes_many_signals"><code class="docutils literal notranslate"><span class="pre">fit_tc_unfolding_shared_slopes_many_signals()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.fitting.fit_tc_unfolding_many_signals_slow"><code class="docutils literal notranslate"><span class="pre">fit_tc_unfolding_many_signals_slow()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.fitting.fit_tc_unfolding_many_signals"><code class="docutils literal notranslate"><span class="pre">fit_tc_unfolding_many_signals()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.fitting.evaluate_need_to_refit"><code class="docutils literal notranslate"><span class="pre">evaluate_need_to_refit()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pychemelt.utils.fractions">pychemelt.utils.fractions module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.fractions.fn_two_state_monomer"><code class="docutils literal notranslate"><span class="pre">fn_two_state_monomer()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.fractions.fu_two_state_dimer"><code class="docutils literal notranslate"><span class="pre">fu_two_state_dimer()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pychemelt.utils.math">pychemelt.utils.math module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.temperature_to_kelvin"><code class="docutils literal notranslate"><span class="pre">temperature_to_kelvin()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.temperature_to_celsius"><code class="docutils literal notranslate"><span class="pre">temperature_to_celsius()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.shift_temperature"><code class="docutils literal notranslate"><span class="pre">shift_temperature()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.solve_one_root_quadratic"><code class="docutils literal notranslate"><span class="pre">solve_one_root_quadratic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.solve_one_root_depressed_cubic"><code class="docutils literal notranslate"><span class="pre">solve_one_root_depressed_cubic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.is_evenly_spaced"><code class="docutils literal notranslate"><span class="pre">is_evenly_spaced()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.first_derivative_savgol"><code class="docutils literal notranslate"><span class="pre">first_derivative_savgol()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.relative_errors"><code class="docutils literal notranslate"><span class="pre">relative_errors()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.find_line_outliers"><code class="docutils literal notranslate"><span class="pre">find_line_outliers()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.residuals_squares_sum"><code class="docutils literal notranslate"><span class="pre">residuals_squares_sum()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.r_squared"><code class="docutils literal notranslate"><span class="pre">r_squared()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.adjusted_r2"><code class="docutils literal notranslate"><span class="pre">adjusted_r2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.compute_aic"><code class="docutils literal notranslate"><span class="pre">compute_aic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.compare_akaikes"><code class="docutils literal notranslate"><span class="pre">compare_akaikes()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.rss_p"><code class="docutils literal notranslate"><span class="pre">rss_p()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.get_rss"><code class="docutils literal notranslate"><span class="pre">get_rss()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.get_desired_rss"><code class="docutils literal notranslate"><span class="pre">get_desired_rss()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pychemelt.utils.processing">pychemelt.utils.processing module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.expand_temperature_list"><code class="docutils literal notranslate"><span class="pre">expand_temperature_list()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.delete_words_appearing_more_than_five_times"><code class="docutils literal notranslate"><span class="pre">delete_words_appearing_more_than_five_times()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.remove_letter_number_combinations"><code class="docutils literal notranslate"><span class="pre">remove_letter_number_combinations()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.remove_numbers_after_letter"><code class="docutils literal notranslate"><span class="pre">remove_numbers_after_letter()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.remove_non_numeric_char"><code class="docutils literal notranslate"><span class="pre">remove_non_numeric_char()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.clean_conditions_labels"><code class="docutils literal notranslate"><span class="pre">clean_conditions_labels()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.subset_signal_by_temperature"><code class="docutils literal notranslate"><span class="pre">subset_signal_by_temperature()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.guess_Tm_from_derivative"><code class="docutils literal notranslate"><span class="pre">guess_Tm_from_derivative()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.estimate_signal_baseline_params"><code class="docutils literal notranslate"><span class="pre">estimate_signal_baseline_params()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.estimate_signal_baseline_params_exponential"><code class="docutils literal notranslate"><span class="pre">estimate_signal_baseline_params_exponential()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.fit_local_thermal_unfolding_to_signal_lst"><code class="docutils literal notranslate"><span class="pre">fit_local_thermal_unfolding_to_signal_lst()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.fit_local_thermal_unfolding_to_signal_lst_exponential"><code class="docutils literal notranslate"><span class="pre">fit_local_thermal_unfolding_to_signal_lst_exponential()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.re_arrange_predictions"><code class="docutils literal notranslate"><span class="pre">re_arrange_predictions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.re_arrange_params"><code class="docutils literal notranslate"><span class="pre">re_arrange_params()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.subset_data"><code class="docutils literal notranslate"><span class="pre">subset_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pychemelt.utils.rates">pychemelt.utils.rates module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.rates.eq_constant_thermo"><code class="docutils literal notranslate"><span class="pre">eq_constant_thermo()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.rates.arrhenius"><code class="docutils literal notranslate"><span class="pre">arrhenius()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.rates.eq_constant_termochem"><code class="docutils literal notranslate"><span class="pre">eq_constant_termochem()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pychemelt.utils.signals">pychemelt.utils.signals module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.signals.signal_two_state_tc_unfolding_monomer"><code class="docutils literal notranslate"><span class="pre">signal_two_state_tc_unfolding_monomer()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.signals.signal_two_state_t_unfolding_monomer"><code class="docutils literal notranslate"><span class="pre">signal_two_state_t_unfolding_monomer()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.signals.signal_two_state_t_unfolding_monomer_exponential"><code class="docutils literal notranslate"><span class="pre">signal_two_state_t_unfolding_monomer_exponential()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pychemelt.utils.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, osvalB.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

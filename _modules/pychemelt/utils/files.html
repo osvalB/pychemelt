@@ -1,0 +1,1401 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pychemelt.utils.files &#8212; PyChemelt 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pychemelt/utils/files';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyChemelt 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../modules.html">
+    pychemelt
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/osvalB/pychemelt" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../modules.html">
+    pychemelt
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/osvalB/pychemelt" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pychemelt.utils.files</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pychemelt.utils.files</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module contains helper functions to parse Differential Scanning Fluorimetry files from different instrument providers</span>
+<span class="sd">Author: Osvaldo Burastero</span>
+
+<span class="sd">All functions that import files should return:</span>
+<span class="sd">- signal_data_dic: dictionary with the signal data, one entry per signal</span>
+<span class="sd">- temp_data_dic: dictionary with the temperature data, one entry per signal</span>
+<span class="sd">- conditions: list with the names of the samples</span>
+<span class="sd">- signals: list with the names of the signals</span>
+
+<span class="sd">A signal can be &quot;350nm&quot;, &quot;330nm&quot;, &quot;Scattering&quot;, &quot;Ratio&quot;, &quot;Turbidity&quot;, &quot;Ratio 350nm/330nm&quot;, etc.</span>
+<span class="sd">The length of the lists in signal_data_dic and temp_data_dic should be the same as the length of conditions</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w">  </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">codecs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">openpyxl</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_workbook</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">xlrd</span><span class="w">     </span><span class="kn">import</span> <span class="n">open_workbook</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..utils.processing</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<div class="viewcode-block" id="get_sheet_names_of_xlsx">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.get_sheet_names_of_xlsx">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_sheet_names_of_xlsx</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Get the sheet names of a xls or xlsx file without loading it.</span>
+<span class="sd">    The open_workbook function is used so we can handle the error &quot;openpyxl does not support the old .xls file format&quot;</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filepath (str): Path to the xls or xlsx file</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        list: List of sheet names</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+
+        <span class="n">wb</span> <span class="o">=</span> <span class="n">load_workbook</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">read_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">keep_links</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">sheetnames</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">sheetnames</span>
+
+    <span class="k">except</span><span class="p">:</span>
+
+        <span class="n">xls</span> <span class="o">=</span> <span class="n">open_workbook</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">on_demand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">sheetnames</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">sheetnames</span></div>
+
+
+<div class="viewcode-block" id="file_is_of_type_uncle">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.file_is_of_type_uncle">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">file_is_of_type_uncle</span><span class="p">(</span><span class="n">xlsx_file</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check if the file is an uncle file</span>
+<span class="sd">    Args:</span>
+<span class="sd">        xlsx_file (str): Path to the xlsx file</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the file is an uncle file, False otherwise</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+
+        <span class="c1"># Read the first sheet of the xlsx file</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">xlsx_file</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">nrows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="c1"># Extrac the first row</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">:]</span>
+
+        <span class="c1"># concatenate the row into a string</span>
+        <span class="n">row_str</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">row</span><span class="p">])</span>
+
+        <span class="c1"># count the number of times we have word &#39;Time&#39; and &#39;Temp&#39;</span>
+        <span class="n">count_time</span> <span class="o">=</span> <span class="n">row_str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+        <span class="n">count_temp</span> <span class="o">=</span> <span class="n">row_str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;Temp&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">count_time</span> <span class="o">&gt;</span> <span class="mi">20</span> <span class="ow">and</span> <span class="n">count_temp</span> <span class="o">&gt;</span> <span class="mi">20</span> <span class="ow">and</span> <span class="n">count_temp</span> <span class="o">==</span> <span class="n">count_time</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="detect_file_type">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.detect_file_type">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">detect_file_type</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Detect the type of file based on its extension and content.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        file (str): Path to the file</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Type of file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">file_extension</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">file_extension</span> <span class="o">==</span> <span class="s1">&#39;supr&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;supr&#39;</span>
+
+    <span class="k">if</span> <span class="n">file_extension</span> <span class="o">==</span> <span class="s1">&#39;csv&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;csv&#39;</span>
+
+    <span class="k">if</span> <span class="n">file_extension</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;xlsx&quot;</span><span class="p">,</span> <span class="s2">&quot;xls&quot;</span><span class="p">]:</span>
+        <span class="c1"># Get file type: DSF or nDSF</span>
+        <span class="n">sheet_names</span> <span class="o">=</span> <span class="n">get_sheet_names_of_xlsx</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+        <span class="c1"># Load the data to the Python class</span>
+        <span class="k">if</span> <span class="s2">&quot;RFU&quot;</span> <span class="ow">in</span> <span class="n">sheet_names</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;thermofluor&#39;</span>
+        <span class="k">elif</span> <span class="s2">&quot;Data Export&quot;</span> <span class="ow">in</span> <span class="n">sheet_names</span> <span class="ow">or</span> <span class="s2">&quot;melting-scan&quot;</span> <span class="ow">in</span> <span class="n">sheet_names</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;panta&#39;</span>
+        <span class="k">elif</span> <span class="s2">&quot;Profiles_raw&quot;</span> <span class="ow">in</span> <span class="n">sheet_names</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;tycho&#39;</span>
+        <span class="k">elif</span> <span class="n">file_is_of_type_uncle</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s1">&#39;uncle&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;prometheus&#39;</span>
+
+    <span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span><span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rf</span><span class="p">:</span>
+        <span class="n">ls</span>       <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">ls</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Segment&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;Well&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;mx3005p&#39;</span>
+
+            <span class="n">splittedLine</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="k">if</span> <span class="s1">&#39;Well&#39;</span> <span class="ow">in</span> <span class="n">splittedLine</span> <span class="ow">and</span> <span class="s1">&#39;Target&#39;</span> <span class="ow">in</span> <span class="n">splittedLine</span> <span class="ow">and</span> <span class="s1">&#39;Reading&#39;</span> <span class="ow">in</span> <span class="n">splittedLine</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;quantstudio&#39;</span>
+
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="detect_encoding">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.detect_encoding">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">detect_encoding</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Detect the encoding of a file by trying common encodings.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        file_path (str): Path to the file</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Detected encoding or &#39;Unknown encoding&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">encodings</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="s2">&quot;latin1&quot;</span><span class="p">,</span> <span class="s2">&quot;iso-8859-1&quot;</span><span class="p">,</span> <span class="s2">&quot;cp1252&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">enc</span> <span class="ow">in</span> <span class="n">encodings</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">enc</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;strict&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">enc</span>
+        <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+            <span class="k">continue</span>
+    <span class="k">return</span> <span class="s2">&quot;Unknown encoding&quot;</span></div>
+
+
+<div class="viewcode-block" id="find_indexes_of_non_signal_conditions">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.find_indexes_of_non_signal_conditions">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_indexes_of_non_signal_conditions</span><span class="p">(</span><span class="n">signal_data</span><span class="p">,</span><span class="n">conditions</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Given the signal data and the conditions, find the indexes of the conditions that are not signal data</span>
+<span class="sd">    We assume that conditions with the word &#39;derivative&#39; or &#39;S.D.&#39; in it are not signal data</span>
+<span class="sd">    Args:</span>
+<span class="sd">        signal_data (np.ndarray): 2D array with the signal data</span>
+<span class="sd">        conditions (list): list of conditions</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        idx_to_remove (list): list of indexes to remove</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Find the indexes of conditions with derivative in it, or &#39;S.D.&#39; in it</span>
+    <span class="n">idx_to_remove1</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cond</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;derivative&#39;</span> <span class="ow">in</span> <span class="n">cond</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s1">&#39;s.d.&#39;</span> <span class="ow">in</span> <span class="n">cond</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+
+    <span class="c1"># Find indexes empty signal_data columns</span>
+    <span class="n">idx_to_remove2</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">signal_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">signal_data</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span>
+
+    <span class="c1"># Find columns where all values are NaN</span>
+    <span class="n">nan_columns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">signal_data</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Get the column indices</span>
+    <span class="n">idx_to_remove3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">nan_columns</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="c1"># Find unique indexes to remove</span>
+    <span class="n">idx_to_remove</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">idx_to_remove1</span> <span class="o">+</span> <span class="n">idx_to_remove2</span> <span class="o">+</span> <span class="n">idx_to_remove3</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">idx_to_remove</span></div>
+
+
+<div class="viewcode-block" id="find_repeated_words">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.find_repeated_words">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_repeated_words</span><span class="p">(</span><span class="n">string_lst</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Given a list of strings, find the repeated words in the list</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        string_lst (lst): list of strings</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        repeated_words (lst): list of repeated words</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Repeated words</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">string_lst</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+    <span class="c1"># Count the occurrences of each word</span>
+    <span class="n">word_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+    <span class="c1"># Find words that are repeated (appear, at least, as many times as elements in string_lst)</span>
+    <span class="n">repeated_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">word_counts</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">string_lst</span><span class="p">)]</span>
+
+    <span class="k">return</span> <span class="n">repeated_words</span></div>
+
+
+<div class="viewcode-block" id="remove_words_in_string">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.remove_words_in_string">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">remove_words_in_string</span><span class="p">(</span><span class="n">input_string</span><span class="p">,</span><span class="n">word_list</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Given a string and a list of words, remove the words from the string</span>
+<span class="sd">    Args:</span>
+<span class="sd">        input_string (str): String to be processed</span>
+<span class="sd">        word_list (lst): list of words to remove</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str : Processed string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Split the string into words</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="n">input_string</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+    <span class="c1"># Replace words from the list with an empty string</span>
+    <span class="n">filtered_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word_list</span><span class="p">]</span>
+
+    <span class="c1"># Join the words back into a single string</span>
+    <span class="n">output_string</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">filtered_words</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">output_string</span></div>
+
+
+<div class="viewcode-block" id="load_csv_file">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.load_csv_file">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_csv_file</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">        file (str): Path to the csv file</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        signal_data_dic (dict): Dictionary with signal data</span>
+<span class="sd">        temp_data_dic (dict): Dictionary with temperature data</span>
+<span class="sd">        conditions (list): List of conditions</span>
+<span class="sd">        signals (np.ndarray): List of signal names</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">signal_data_dic</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">temp_data_dic</span>   <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">signals</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">encoding</span> <span class="o">=</span> <span class="n">detect_encoding</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+    <span class="c1"># Try common delimiters</span>
+    <span class="k">for</span> <span class="n">delimiter</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">]:</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="n">dat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+
+            <span class="c1"># Convert non-numeric columns to NaN</span>
+            <span class="n">dat</span> <span class="o">=</span> <span class="n">dat</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+
+            <span class="c1"># Produce error if we don&#39;t have 2 or more columns</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dat</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;File does not have enough columns&#39;</span><span class="p">)</span>
+
+            <span class="c1"># Set the conditions names and start index for the signal data</span>
+            <span class="k">if</span> <span class="s1">&#39;time&#39;</span> <span class="ow">in</span> <span class="n">dat</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">dat</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">:]]</span>
+                <span class="n">idx_start</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">dat</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+                <span class="n">idx_start</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="n">signal_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">(</span><span class="n">idx_start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+            <span class="n">temperature_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">idx_start</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+
+            <span class="c1"># Produce error if signal data is empty</span>
+            <span class="k">if</span> <span class="n">signal_data</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Signal data is empty&#39;</span><span class="p">)</span>
+
+            <span class="c1"># Produce error if temperature data  is non-numeric</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">temperature_data</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Temperature data is non-numeric&#39;</span><span class="p">)</span>
+
+            <span class="k">break</span>
+
+        <span class="k">except</span><span class="p">:</span>
+
+            <span class="k">pass</span>
+
+    <span class="n">idx_to_remove</span> <span class="o">=</span> <span class="n">find_indexes_of_non_signal_conditions</span><span class="p">(</span><span class="n">signal_data</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+
+    <span class="c1"># Remove the elements from the conditions array</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span><span class="n">cond</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cond</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">idx_to_remove</span><span class="p">]</span>
+
+    <span class="c1"># Remove the columns from the signal data</span>
+    <span class="n">signal_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">signal_data</span><span class="p">,</span> <span class="n">idx_to_remove</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Divide the conditions into groups, according to the presence of the words &#39;350&#39;, &#39;330&#39;, &#39;ratio&#39;, &#39;scattering&#39;</span>
+    <span class="n">conditions_350nm</span> <span class="o">=</span> <span class="p">[</span><span class="n">cond</span> <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">conditions</span> <span class="k">if</span> <span class="s1">&#39;350&#39;</span> <span class="ow">in</span> <span class="n">cond</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">&#39;ratio&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cond</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+    <span class="n">conditions_330nm</span> <span class="o">=</span> <span class="p">[</span><span class="n">cond</span> <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">conditions</span> <span class="k">if</span> <span class="s1">&#39;330&#39;</span> <span class="ow">in</span> <span class="n">cond</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">&#39;ratio&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cond</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+    <span class="n">conditions_ratio</span> <span class="o">=</span> <span class="p">[</span><span class="n">cond</span> <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">conditions</span> <span class="k">if</span> <span class="s1">&#39;ratio&#39;</span> <span class="ow">in</span> <span class="n">cond</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+    <span class="n">conditions_scatt</span> <span class="o">=</span> <span class="p">[</span><span class="n">cond</span> <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">conditions</span> <span class="k">if</span> <span class="s1">&#39;scattering&#39;</span> <span class="ow">in</span> <span class="n">cond</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+
+    <span class="c1"># Check that the number of conditions is the same for all groups</span>
+    <span class="n">conditions_lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">conditions_350nm</span><span class="p">,</span> <span class="n">conditions_330nm</span><span class="p">,</span> <span class="n">conditions_ratio</span><span class="p">,</span> <span class="n">conditions_scatt</span><span class="p">]</span>
+    <span class="n">sel_cond_lst</span>   <span class="o">=</span> <span class="p">[</span><span class="n">cond</span> <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">conditions_lst</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cond</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">n_conditions</span>   <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">cond</span><span class="p">)</span> <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">conditions_lst</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cond</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">possible_rep_conditions</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">n_conditions</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span>
+
+    <span class="c1"># case where the CSV corresponds to a nDSF csv</span>
+    <span class="k">if</span> <span class="n">possible_rep_conditions</span><span class="p">:</span>
+
+        <span class="c1"># For each group, store the signal data and the temperature data</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">conditions_350nm</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">signal_350</span> <span class="o">=</span> <span class="n">signal_data</span><span class="p">[:,</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cond</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span> <span class="k">if</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">conditions_350nm</span><span class="p">]]</span>
+            <span class="n">signal_data_as_list</span> <span class="o">=</span> <span class="n">signal_350</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="n">signal_data_dic</span><span class="p">[</span><span class="s2">&quot;350nm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signal_data_as_list</span>
+            <span class="n">temp_data_dic</span><span class="p">[</span><span class="s2">&quot;350nm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">expand_temperature_list</span><span class="p">([</span><span class="n">temperature_data</span><span class="p">],</span><span class="n">signal_data_as_list</span><span class="p">)</span>
+            <span class="n">signals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;350nm&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">conditions_330nm</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">signal_330</span> <span class="o">=</span> <span class="n">signal_data</span><span class="p">[:,</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cond</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span> <span class="k">if</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">conditions_330nm</span><span class="p">]]</span>
+            <span class="n">signal_data_as_list</span> <span class="o">=</span> <span class="n">signal_330</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="n">signal_data_dic</span><span class="p">[</span><span class="s2">&quot;330nm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signal_data_as_list</span>
+            <span class="n">temp_data_dic</span><span class="p">[</span><span class="s2">&quot;330nm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">expand_temperature_list</span><span class="p">([</span><span class="n">temperature_data</span><span class="p">],</span><span class="n">signal_data_as_list</span><span class="p">)</span>
+            <span class="n">signals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;330nm&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">conditions_ratio</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">signal_ratio</span> <span class="o">=</span> <span class="n">signal_data</span><span class="p">[:,</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cond</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span> <span class="k">if</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">conditions_ratio</span><span class="p">]]</span>
+            <span class="n">signal_data_as_list</span> <span class="o">=</span> <span class="n">signal_ratio</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="n">signal_data_dic</span><span class="p">[</span><span class="s2">&quot;Ratio 350 nm / 330 nm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signal_data_as_list</span>
+            <span class="n">temp_data_dic</span><span class="p">[</span><span class="s2">&quot;Ratio 350 nm / 330 nm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">expand_temperature_list</span><span class="p">([</span><span class="n">temperature_data</span><span class="p">],</span><span class="n">signal_data_as_list</span><span class="p">)</span>
+            <span class="n">signals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Ratio 350 nm / 330 nm&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">conditions_scatt</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">signal_scatt</span> <span class="o">=</span> <span class="n">signal_data</span><span class="p">[:,</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cond</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span> <span class="k">if</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">conditions_scatt</span><span class="p">]]</span>
+            <span class="n">signal_data_as_list</span> <span class="o">=</span> <span class="n">signal_scatt</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="n">signal_data_dic</span><span class="p">[</span><span class="s2">&quot;Scattering&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signal_data_as_list</span>
+            <span class="n">temp_data_dic</span><span class="p">[</span><span class="s2">&quot;Scattering&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">expand_temperature_list</span><span class="p">([</span><span class="n">temperature_data</span><span class="p">],</span><span class="n">signal_data_as_list</span><span class="p">)</span>
+            <span class="n">signals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Scattering&quot;</span><span class="p">)</span>
+
+        <span class="n">cond_temp</span> <span class="o">=</span> <span class="n">sel_cond_lst</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cond_temp</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+
+            <span class="n">repeated_words</span> <span class="o">=</span> <span class="n">find_repeated_words</span><span class="p">(</span><span class="n">cond_temp</span><span class="p">)</span>
+            <span class="n">cond_temp</span> <span class="o">=</span> <span class="p">[</span><span class="n">remove_words_in_string</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="n">repeated_words</span><span class="p">)</span> <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">cond_temp</span><span class="p">]</span>
+            <span class="n">conditions</span> <span class="o">=</span> <span class="n">cond_temp</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">conditions</span> <span class="o">=</span> <span class="n">cond_temp</span>
+
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="c1"># If we only have one condition, use the condition as signal name</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">signal_name</span> <span class="o">=</span> <span class="n">conditions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># Default signal name</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">signal_name</span> <span class="o">=</span> <span class="s2">&quot;Fluorescence&quot;</span>
+
+        <span class="n">signal_data_as_list</span> <span class="o">=</span> <span class="n">signal_data</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">signal_data_dic</span><span class="p">[</span><span class="n">signal_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">signal_data_as_list</span>
+        <span class="n">temp_data_dic</span><span class="p">[</span><span class="n">signal_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">expand_temperature_list</span><span class="p">([</span><span class="n">temperature_data</span><span class="p">],</span><span class="n">signal_data_as_list</span><span class="p">)</span>
+        <span class="n">signals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signal_name</span><span class="p">)</span>
+
+    <span class="n">signals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">signals</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">signal_data_dic</span><span class="p">,</span> <span class="n">temp_data_dic</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">signals</span></div>
+
+
+<div class="viewcode-block" id="get_start_line_quantstudio_txt">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.get_start_line_quantstudio_txt">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_start_line_quantstudio_txt</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">        file_name (str): Path to the QuantStudio txt file</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        int: Number of the first line not starting with &quot;*&quot; + 1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span><span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rf</span><span class="p">:</span>
+        <span class="n">ls</span>       <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+        <span class="n">splitted</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">ls</span><span class="p">]</span>
+        
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">splitted</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="s2">&quot;*&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">start_row</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+                <span class="k">break</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">start_row</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_quantstudio_txt">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.load_quantstudio_txt">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_quantstudio_txt</span><span class="p">(</span><span class="n">QSfile</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Input: A txt file (&#39;QSfile&#39;) where column 2 has the well position, </span>
+<span class="sd">    column 3 the temperature and column 4 the fluorescence signal. Index starts at 1!</span>
+
+<span class="sd">    --- Caution ---</span>
+<span class="sd">    The first rows of the file are comments that start with &#39;*&#39; and are not readed</span>
+<span class="sd">    The temperature and signal column have commas that need to be deleted</span>
+
+<span class="sd">    Columns are separated by spaces</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        QSfile (str): Path to the QuantStudio txt file</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        signal_data_dic (dict): Dictionary with signal data</span>
+<span class="sd">        temp_data_dic (dict): Dictionary with temperature data</span>
+<span class="sd">        conditions (list): List of conditions</span>
+<span class="sd">        signals (np.ndarray): List of signal names</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">start_row</span> <span class="o">=</span> <span class="n">get_start_line_quantstudio_txt</span><span class="p">(</span><span class="n">QSfile</span><span class="p">)</span>
+    <span class="n">data</span>      <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">QSfile</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="n">start_row</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">signal_data_dic</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Fluorescence&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+    <span class="n">temp_data_dic</span>   <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Fluorescence&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+
+    <span class="n">u</span><span class="p">,</span> <span class="n">ind</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">return_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">u</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">ind</span><span class="p">)]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="n">signal</span> <span class="o">=</span> <span class="s2">&quot;Fluorescence&quot;</span>
+
+    <span class="c1"># Process each group directly without creating DataFrames</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+        
+        <span class="c1"># Extract temperature and signal columns (columns 3 and 4, 0-indexed)</span>
+        <span class="n">temp_data</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">signal_data</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+        
+        <span class="c1"># Sort by temperature</span>
+        <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">temp_data</span><span class="p">)</span>
+        <span class="n">temp_data</span> <span class="o">=</span> <span class="n">temp_data</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+        <span class="n">signal_data</span> <span class="o">=</span> <span class="n">signal_data</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+
+        <span class="n">signal_data_dic</span><span class="p">[</span><span class="n">signal</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signal_data</span><span class="p">)</span>
+        <span class="n">temp_data_dic</span><span class="p">[</span><span class="n">signal</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_data</span><span class="p">)</span>
+
+    <span class="n">signals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">signal</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">signal_data_dic</span><span class="p">,</span> <span class="n">temp_data_dic</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">signals</span></div>
+
+
+<div class="viewcode-block" id="load_thermofluor_xlsx">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.load_thermofluor_xlsx">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_thermofluor_xlsx</span><span class="p">(</span><span class="n">thermofluor_file</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load DSF Thermofluor xls file and extract data</span>
+<span class="sd">    The xls file generated by the ThermoFluor assay in a qPCR instrument.</span>
+<span class="sd">    This file has one sheet called &#39;RFU&#39; where the first row has the sample positions (header), the first column has the temperature data,</span>
+<span class="sd">    and all subsequent columns store the fluorescence data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        thermofluor_file (str): Path to the xls file</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        signal_data_dic (dict): Dictionary with signal data</span>
+<span class="sd">        temp_data_dic (dict): Dictionary with temperature data</span>
+<span class="sd">        conditions (list): List of conditions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">xls</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="n">thermofluor_file</span><span class="p">)</span>
+    <span class="n">dat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">xls</span><span class="p">,</span> <span class="s2">&quot;RFU&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="n">signal_data_dic</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">temp_data_dic</span>   <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">signal</span> <span class="o">=</span> <span class="s2">&quot;DSF_RFU&quot;</span>
+
+    <span class="n">fluo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span><span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)]</span>
+
+    <span class="n">signal_data_dic</span><span class="p">[</span><span class="n">signal</span><span class="p">]</span> <span class="o">=</span> <span class="n">fluo</span>
+    <span class="n">temp_data_dic</span><span class="p">[</span><span class="n">signal</span><span class="p">]</span> <span class="o">=</span> <span class="n">expand_temperature_list</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">fluo</span><span class="p">)</span>
+
+    <span class="n">signals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">signal</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;str&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">signal_data_dic</span><span class="p">,</span> <span class="n">temp_data_dic</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">signals</span></div>
+
+
+<div class="viewcode-block" id="space_combinations">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.space_combinations">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">space_combinations</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate all combinations of a word with 0, 1, or 2 spaces before and/or after the word.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        word (str): The word to generate combinations for.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: List of strings with all combinations of spaces before and after the word.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">spaces</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;  &#39;</span><span class="p">,</span> <span class="s1">&#39;   &#39;</span><span class="p">]</span>
+    <span class="n">combos</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">before</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">spaces</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">after</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">spaces</span><span class="p">]:</span>
+            <span class="n">combos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">before</span><span class="si">}{</span><span class="n">word</span><span class="si">}{</span><span class="n">after</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">combos</span></div>
+
+
+<div class="viewcode-block" id="load_nanoDSF_xlsx">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.load_nanoDSF_xlsx">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_nanoDSF_xlsx</span><span class="p">(</span><span class="n">processed_dsf_file</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load nanotemper processed xlsx file and extract relevant data</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        processed_dsf_file (str): Path to the processed xlsx file</span>
+<span class="sd">        sheet_names (list): List of sheet names to load</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        signal_data_dic (dict): Dictionary with signal data</span>
+<span class="sd">        temp_data_dic (dict): Dictionary with temperature data</span>
+<span class="sd">        conditions (list): List of conditions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sheet_names</span> <span class="o">=</span> <span class="n">get_sheet_names_of_xlsx</span><span class="p">(</span><span class="n">processed_dsf_file</span><span class="p">)</span>
+
+    <span class="n">signal_data_dic</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">temp_data_dic</span>   <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># this needs to be the processed file!</span>
+    <span class="n">xls</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="n">processed_dsf_file</span><span class="p">)</span>
+
+    <span class="n">conditions_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">xls</span><span class="p">,</span> <span class="s2">&quot;Overview&quot;</span><span class="p">)</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">conditions_df</span><span class="p">[</span><span class="s1">&#39;Sample ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="c1"># Add position index to avoid problems with empty names</span>
+
+    <span class="n">possible_signals</span> <span class="o">=</span> <span class="n">space_combinations</span><span class="p">(</span><span class="s1">&#39;350nm&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">space_combinations</span><span class="p">(</span><span class="s1">&#39;330nm&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">space_combinations</span><span class="p">(</span><span class="s1">&#39;Ratio&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">space_combinations</span><span class="p">(</span><span class="s1">&#39;Scattering&#39;</span><span class="p">)</span>
+
+    <span class="n">include</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Change signal name if unfolding curve is present</span>
+    <span class="k">for</span> <span class="n">sn</span> <span class="ow">in</span> <span class="n">sheet_names</span><span class="p">:</span>
+        <span class="n">include_value</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">ps</span> <span class="ow">in</span> <span class="n">sn</span> <span class="ow">and</span> <span class="s2">&quot;deriv&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sn</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">and</span> <span class="s2">&quot;fold&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sn</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">ps</span> <span class="ow">in</span> <span class="n">possible_signals</span><span class="p">])</span>
+
+        <span class="n">include</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">include_value</span><span class="p">)</span>
+
+    <span class="n">sheet_names_to_load</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">s</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">include</span><span class="p">,</span> <span class="n">sheet_names</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span><span class="p">])</span>
+
+    <span class="n">signals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sn</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="k">for</span> <span class="n">sn</span> <span class="ow">in</span> <span class="n">sheet_names_to_load</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">sn</span><span class="p">,</span> <span class="n">signal</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sheet_names_to_load</span><span class="p">,</span> <span class="n">signals</span><span class="p">):</span>
+
+        <span class="n">dat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">xls</span><span class="p">,</span> <span class="n">sn</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">indices</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">dat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">==</span> <span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
+        <span class="n">first_row</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">indices</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="c1"># Find all the columns with the word temperature</span>
+        <span class="n">column_headers</span> <span class="o">=</span> <span class="n">dat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">first_row</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="n">ids_temperature</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">column_headers</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;temperature&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+        <span class="n">ids_time</span>        <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">column_headers</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;time&#39;</span>        <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+
+        <span class="c1"># If we have more than one temperature column, remove the extra temperature and time columns</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ids_temperature</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">ids_temperature</span> <span class="o">=</span> <span class="n">ids_temperature</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># We keep the first temperature colummn</span>
+            <span class="n">ids_time</span>        <span class="o">=</span> <span class="n">ids_time</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># We keep the first time column</span>
+
+            <span class="c1"># Remove columns of dataframe by index</span>
+            <span class="n">dat</span> <span class="o">=</span> <span class="n">dat</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">dat</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">ids_temperature</span> <span class="o">+</span> <span class="n">ids_time</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">fluo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">first_row</span><span class="p">:,</span> <span class="mi">2</span><span class="p">:])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">first_row</span><span class="p">:,</span> <span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)]</span>
+
+        <span class="n">signal_data_dic</span><span class="p">[</span><span class="n">signal</span><span class="p">]</span> <span class="o">=</span> <span class="n">fluo</span>
+        <span class="n">temp_data_dic</span><span class="p">[</span><span class="n">signal</span><span class="p">]</span>   <span class="o">=</span> <span class="n">expand_temperature_list</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="n">fluo</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">signal_data_dic</span><span class="p">,</span> <span class="n">temp_data_dic</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">signals</span></div>
+
+
+<div class="viewcode-block" id="load_panta_xlsx">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.load_panta_xlsx">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_panta_xlsx</span><span class="p">(</span><span class="n">pantaFile</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load the xlsx file generated by a Prometheus Panta instrument.</span>
+<span class="sd">    This file has one sheet called ‘Overview’ with a column called &#39;Sample ID&#39; with the names of the samples,</span>
+<span class="sd">    and one sheet called ‘Data Export’ where all the data is stored. The ‘Data Export’ sheet columns should have the following order:</span>
+
+<span class="sd">    Temperature capillary 1 ; Ratio capillary 1 ; … ; Temperature capillary 1 ; 350 nm capillary 1 ; … ;</span>
+<span class="sd">    Temperature capillary 1 ; 330 nm capillary 1 ; … ; Temperature capillary 1 ; scattering capillary 1 ; … ;</span>
+<span class="sd">    Temperature capillary 2 ; Ratio capillary 2; … ;  Temperature capillary n ; Ratio capillary n.</span>
+
+<span class="sd">    Columns whose names include &quot;Derivative&quot; are not read.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        pantaFile (str): Path to the xlsx file</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        signal_data_dic (dict): Dictionary with signal data</span>
+<span class="sd">        temp_data_dic (dict): Dictionary with temperature data</span>
+<span class="sd">        conditions (list): List of conditions</span>
+<span class="sd">        signals (np.ndarray): List of signal names, such as 330nm and 350nm</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+
+        <span class="n">data</span>          <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">pantaFile</span><span class="p">,</span> <span class="s2">&quot;Data Export&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span><span class="p">:</span>
+
+        <span class="n">data</span>          <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">pantaFile</span><span class="p">,</span> <span class="s2">&quot;melting-scan&quot;</span><span class="p">)</span> <span class="c1"># Alternative format of PANTA</span>
+
+    <span class="n">signal_data_dic</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">temp_data_dic</span>   <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">column_names</span>  <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+
+    <span class="n">pos_350</span>       <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">column_names</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;350&quot;</span>        <span class="ow">in</span> <span class="n">x</span> <span class="ow">and</span> <span class="s2">&quot;deriv&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span> <span class="ow">and</span> <span class="s2">&quot;330&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+    <span class="n">pos_330</span>       <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">column_names</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;330&quot;</span>        <span class="ow">in</span> <span class="n">x</span> <span class="ow">and</span> <span class="s2">&quot;deriv&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span> <span class="ow">and</span> <span class="s2">&quot;350&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+    <span class="n">scattering</span>    <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">column_names</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;scattering&quot;</span> <span class="ow">in</span> <span class="n">x</span> <span class="ow">and</span> <span class="s2">&quot;deriv&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+    <span class="n">pos_ratio</span>     <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">column_names</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;ratio&quot;</span>      <span class="ow">in</span> <span class="n">x</span> <span class="ow">and</span> <span class="s2">&quot;deriv&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+    <span class="n">pos_turb</span>      <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">column_names</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;turbidity&quot;</span>  <span class="ow">in</span> <span class="n">x</span> <span class="ow">and</span> <span class="s2">&quot;deriv&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+
+    <span class="n">possible_signals</span>    <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;350 nm&quot;</span><span class="p">,</span><span class="s2">&quot;330 nm&quot;</span><span class="p">,</span><span class="s2">&quot;Scattering&quot;</span><span class="p">,</span><span class="s2">&quot;Ratio&quot;</span><span class="p">,</span><span class="s2">&quot;Turbidity&quot;</span><span class="p">]</span>
+    <span class="n">signals</span>             <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">all_positions</span> <span class="o">=</span> <span class="p">[</span><span class="n">pos_350</span><span class="p">,</span><span class="n">pos_330</span><span class="p">,</span><span class="n">scattering</span><span class="p">,</span><span class="n">pos_ratio</span><span class="p">,</span><span class="n">pos_turb</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">positions</span><span class="p">,</span><span class="n">signal</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">all_positions</span><span class="p">,</span><span class="n">possible_signals</span><span class="p">):</span>
+
+        <span class="n">signal_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">temp_data</span>   <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="k">for</span> <span class="n">position</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">:</span>
+
+                <span class="c1"># Find the index of the previous column with the word temperature</span>
+                <span class="n">temp_col</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">column_names</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;temperature&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">position</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                <span class="c1"># If the temperature column has the word &quot;refolding&quot;, exclude it</span>
+                <span class="k">if</span> <span class="s2">&quot;refolding&quot;</span> <span class="ow">in</span> <span class="n">column_names</span><span class="p">[</span><span class="n">temp_col</span><span class="p">]:</span>
+                    <span class="k">continue</span>
+
+                <span class="c1"># round to two digits the temperature values</span>
+                <span class="n">temperature_values</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">temp_col</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+                <span class="n">temperature_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">temperature_values</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+                <span class="n">signal_values</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">position</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+
+                <span class="c1"># Sort the temperature values and signal values together, according to the temperature values</span>
+                <span class="n">sorted_indices</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">temperature_values</span><span class="p">)</span>
+                <span class="n">temperature_values</span> <span class="o">=</span> <span class="n">temperature_values</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+                <span class="n">signal_values</span>      <span class="o">=</span> <span class="n">signal_values</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+
+                <span class="c1"># Extract the temperature data and signal data</span>
+                <span class="n">temp_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temperature_values</span><span class="p">)</span>
+                <span class="n">signal_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signal_values</span><span class="p">)</span>
+
+            <span class="n">signal_data_dic</span><span class="p">[</span><span class="n">signal</span><span class="p">]</span>   <span class="o">=</span> <span class="n">signal_data</span>
+            <span class="n">temp_data_dic</span><span class="p">[</span><span class="n">signal</span><span class="p">]</span>     <span class="o">=</span> <span class="n">temp_data</span>
+
+            <span class="n">signals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+
+    <span class="n">signals</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">signals</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+
+        <span class="n">conditions_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">pantaFile</span><span class="p">,</span> <span class="s2">&quot;Overview&quot;</span><span class="p">)</span>
+        <span class="n">conditions</span>    <span class="o">=</span> <span class="n">conditions_df</span><span class="p">[[</span><span class="s1">&#39;Sample ID&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="k">except</span><span class="p">:</span>
+
+        <span class="n">conditions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">signal_data</span><span class="p">))</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">signal_data_dic</span><span class="p">,</span> <span class="n">temp_data_dic</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">signals</span></div>
+
+
+<div class="viewcode-block" id="load_uncle_multi_channel">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.load_uncle_multi_channel">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_uncle_multi_channel</span><span class="p">(</span><span class="n">uncle_file</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Function to load the data from the UNCLE instrument</span>
+
+<span class="sd">    Below is an example of the data format:</span>
+
+<span class="sd">        Toms run.uni			Sample Name	1 mg/ml Protein</span>
+<span class="sd">        Temp :25, Time:134.9	Temp :25.49, Time:185.4	Temp :25.99, Time:236.4	Temp :26.48, Time:286.2	Temp :27, Time:336.2	Temp :27.48, Time:386.3	Temp :27.98, Time:436.3	Temp :28.46, Time:486.1	Temp :29.02, Time:536.1	Temp :29.5, Time:586	Temp :30, Time:636.2	Temp :30.49, Time:686.2	Temp :31, Time:736.2	Temp :31.5, Time:786.2	Temp :32, Time:836.2	Temp :32.48, Time:886.2	Temp :33, Time:936.1	Temp :33.5, Time:986.2	Temp :34.01, Time:1036.2	Temp :34.49, Time:1086.1	Temp :35, Time:1136.9	Temp :35.5, Time:1187.1</span>
+<span class="sd">        Wavelength	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity	Intensity</span>
+
+<span class="sd">        249.182266235352	22.384	22.417	22.45	22.406	22.373	22.362	22.373	22.439	22.384	22.406	22.417	22.406	22.45	22.439	22.483	22.461	22.428	22.395	22.417	22.439	22.439	22.373</span>
+<span class="sd">        249.664016723633	13.144	14.261	14.458	16.035	16.068	19.025	11.369	14.491	15.969	17.777	23.691	20.57	14.754	20.668	25.137	20.8	22.311	21.293	21.095	19.65	21.128	16.725</span>
+
+<span class="sd">    The line should be discarded</span>
+<span class="sd">    The second line contains the time and temperature data. We&#39;re interested only in the temperature data</span>
+<span class="sd">    The third line can be discarded</span>
+<span class="sd">    The fourth line is empty</span>
+<span class="sd">    The fifth line contains the first row of the signal data, with the wavelength data in the first column</span>
+
+<span class="sd">    The file is a xlsx file with as many sheets as channels</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        uncle_file (str): Path to the xlsx file</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        signal_data_dic (dict): Dictionary with signal data</span>
+<span class="sd">        temp_data_dic (dict): Dictionary with temperature data</span>
+<span class="sd">        conditions (list): List of conditions</span>
+<span class="sd">        signals (np.ndarray): List of signal names, such as 330nm and 350nm</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Get the names of the sheets</span>
+    <span class="n">sheet_names</span> <span class="o">=</span> <span class="n">get_sheet_names_of_xlsx</span><span class="p">(</span><span class="n">uncle_file</span><span class="p">)</span>
+
+    <span class="n">wavelengths</span>       <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">temperatures</span>      <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">conditions</span>        <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">signals_data</span>      <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">signal_data_dic</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">temp_data_dic</span>   <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Loop through each sheet and read the data</span>
+    <span class="k">for</span> <span class="n">sheet_name</span> <span class="ow">in</span> <span class="n">sheet_names</span><span class="p">:</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="c1"># Read the data from the sheet</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
+                <span class="n">uncle_file</span><span class="p">,</span> 
+                <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span>
+                <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">skiprows</span><span class="o">=</span><span class="mi">0</span>
+                <span class="p">)</span>
+
+            <span class="c1"># Extract the sample name, from the first row, fitfh column</span>
+            <span class="n">sample_name</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+            <span class="c1"># Remove the first row</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:]</span>
+
+            <span class="c1"># Extract the time/temperature data</span>
+            <span class="n">temperature_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span>
+
+            <span class="c1"># Select the temperature data</span>
+            <span class="n">temperature_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">temperature_data</span><span class="p">]</span>
+            <span class="n">temperature_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">temperature_data</span><span class="p">]</span>
+            <span class="n">temperature_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">temperature_data</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+            <span class="c1"># Check that we have temperature data</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">temperature_data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># Extract the signal data</span>
+            <span class="c1"># It contains one column per temperature and one row per wavelength</span>
+            <span class="n">signal_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span>
+                <span class="p">)</span>
+
+            <span class="c1"># Check that we have non nan signal data</span>
+            <span class="n">non_nas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">signal_data</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">non_nas</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># Assign the wavelength data if wavelengths is None</span>
+            <span class="k">if</span> <span class="n">wavelengths</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">wavelengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+                        <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                        <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span>
+                        <span class="p">),</span>
+                    <span class="n">decimals</span><span class="o">=</span><span class="mi">1</span>
+                    <span class="p">)</span>
+
+            <span class="n">signals_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signal_data</span><span class="p">)</span> <span class="c1"># List of 2D arrays, one per condition</span>
+            <span class="n">temperatures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temperature_data</span><span class="p">)</span> <span class="c1"># List of 1D arrays, one per condition</span>
+            <span class="n">conditions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample_name</span><span class="p">)</span>
+
+        <span class="k">except</span><span class="p">:</span>
+
+            <span class="k">pass</span>
+
+    <span class="c1"># Iterate over the wavelengths</span>
+    <span class="n">named_wls</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">wl</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; nm&#39;</span> <span class="k">for</span> <span class="n">wl</span> <span class="ow">in</span> <span class="n">wavelengths</span><span class="p">]</span>
+
+    <span class="c1"># We require one signal matrix per wavelength</span>
+    <span class="c1"># with one column per condition</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">)):</span>
+
+        <span class="c1"># Extract the signal data for the current wavelength</span>
+        <span class="c1"># signal_temp has one row per condition and one column per wavelength</span>
+        <span class="n">signal_data_i</span> <span class="o">=</span> <span class="p">[</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="k">for</span> <span class="n">arr</span> <span class="ow">in</span> <span class="n">signals_data</span><span class="p">]</span>
+
+        <span class="n">wl</span> <span class="o">=</span> <span class="n">named_wls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="n">signal_data_dic</span><span class="p">[</span><span class="n">wl</span><span class="p">]</span> <span class="o">=</span> <span class="n">signal_data_i</span>
+        <span class="n">temp_data_dic</span><span class="p">[</span><span class="n">wl</span><span class="p">]</span>   <span class="o">=</span> <span class="n">temperatures</span>
+
+    <span class="k">return</span> <span class="n">signal_data_dic</span><span class="p">,</span> <span class="n">temp_data_dic</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">named_wls</span></div>
+
+
+<div class="viewcode-block" id="load_mx3005p_txt">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.load_mx3005p_txt">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_mx3005p_txt</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load Agilent MX3005P qPCR txt file and extract data</span>
+<span class="sd">        </span>
+<span class="sd">    Args:</span>
+<span class="sd">        filename (str): Path to the MX3005P txt file. The second column has the fluorescence data, and </span>
+<span class="sd">                        the third column the temperature. Wells are separated by rows containing a sentence like this one: &#39;Segment  2 Plateau  1 Well  1&#39;</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        signal_data_dic (dict): Dictionary with signal data</span>
+<span class="sd">        temp_data_dic (dict): Dictionary with temperature data</span>
+<span class="sd">        conditions (list): List of conditions (well numbers)</span>
+<span class="sd">        signals (np.ndarray): List of signal names</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">signal_data_dic</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Fluorescence&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+    <span class="n">temp_data_dic</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Fluorescence&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">ls</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ls</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Segment&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;Well&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="c1"># Get the well number</span>
+                <span class="n">well_num</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">conditions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">well_num</span><span class="p">)</span>
+
+                <span class="n">fluorescence</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">temperature</span> <span class="o">=</span> <span class="p">[]</span>
+
+                <span class="c1"># Read data for this well</span>
+                <span class="k">for</span> <span class="n">line2</span> <span class="ow">in</span> <span class="n">ls</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">:]:</span>
+                    <span class="k">if</span> <span class="n">line2</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Segment&#39;</span><span class="p">):</span>
+                        <span class="k">break</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">data</span> <span class="o">=</span> <span class="n">line2</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+                            <span class="n">fluorescence</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+                            <span class="n">temperature</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+
+                <span class="c1"># Convert to arrays and sort by temperature</span>
+                <span class="n">temp_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
+                <span class="n">fluo_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fluorescence</span><span class="p">)</span>
+                
+                <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">temp_array</span><span class="p">)</span>
+                <span class="n">temp_array</span> <span class="o">=</span> <span class="n">temp_array</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+                <span class="n">fluo_array</span> <span class="o">=</span> <span class="n">fluo_array</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+                
+                <span class="n">signal_data_dic</span><span class="p">[</span><span class="s1">&#39;Fluorescence&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fluo_array</span><span class="p">)</span>
+                <span class="n">temp_data_dic</span><span class="p">[</span><span class="s1">&#39;Fluorescence&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_array</span><span class="p">)</span>
+
+    <span class="n">signals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;Fluorescence&#39;</span><span class="p">])</span>
+    
+    <span class="k">return</span> <span class="n">signal_data_dic</span><span class="p">,</span> <span class="n">temp_data_dic</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">signals</span></div>
+
+
+<div class="viewcode-block" id="load_supr_dsf">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.files.load_supr_dsf">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_supr_dsf</span><span class="p">(</span> <span class="n">JSON_file</span><span class="p">):</span>
+
+    <span class="n">signal_data_dic</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">temp_data_dic</span>   <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Read JSON data from a file</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">JSON_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">json_data</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c1"># Parse JSON data into a dictionary</span>
+    <span class="n">data_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+
+    <span class="n">samples_name</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;SampleName&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data_dict</span><span class="p">[</span><span class="s1">&#39;Samples&#39;</span><span class="p">]]</span>
+    <span class="n">samples_well</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;WellLocations&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data_dict</span><span class="p">[</span><span class="s1">&#39;Samples&#39;</span><span class="p">]]</span>
+
+    <span class="n">samples_name_simple</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">samples_well_simple</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">sn</span><span class="p">,</span> <span class="n">sw</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">samples_name</span><span class="p">,</span> <span class="n">samples_well</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="s1">&#39;,&#39;</span> <span class="ow">in</span> <span class="n">sw</span><span class="p">:</span>
+
+            <span class="n">sw</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+            <span class="n">sn</span> <span class="o">=</span> <span class="p">[</span><span class="n">sn</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">sw</span><span class="p">]</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">sw</span> <span class="o">=</span> <span class="p">[</span><span class="n">sw</span><span class="p">]</span>
+            <span class="n">sn</span> <span class="o">=</span> <span class="p">[</span><span class="n">sn</span><span class="p">]</span>
+
+        <span class="n">samples_name_simple</span> <span class="o">+=</span> <span class="n">sn</span>
+        <span class="n">samples_well_simple</span> <span class="o">+=</span> <span class="n">sw</span>
+
+    <span class="n">name_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s1">&#39;well&#39;</span><span class="p">:</span> <span class="n">samples_well_simple</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">samples_name_simple</span><span class="p">})</span>
+
+    <span class="n">scans</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;_scans&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data_dict</span><span class="p">[</span><span class="s1">&#39;Wells&#39;</span><span class="p">]]</span>
+    <span class="n">n_scans</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">scans</span><span class="p">)</span>
+
+    <span class="n">wavelengths</span> <span class="o">=</span> <span class="n">data_dict</span><span class="p">[</span><span class="s1">&#39;Wavelengths&#39;</span><span class="p">]</span>
+    <span class="n">wavelengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">n_wavelengths</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">)</span>
+
+    <span class="n">temperatures</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">signals</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">well</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;PhysicalLocation&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data_dict</span><span class="p">[</span><span class="s1">&#39;Wells&#39;</span><span class="p">]]</span>
+
+    <span class="c1"># Create a categorical data type with the custom order</span>
+    <span class="n">cat_type</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="n">well</span><span class="p">,</span> <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Convert the column to the categorical data type</span>
+    <span class="n">name_df</span><span class="p">[</span><span class="s1">&#39;well&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name_df</span><span class="p">[</span><span class="s1">&#39;well&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">cat_type</span><span class="p">)</span>
+
+    <span class="c1"># Sort the DataFrame based on the custom order</span>
+    <span class="n">name_df</span> <span class="o">=</span> <span class="n">name_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;well&#39;</span><span class="p">)</span>
+
+    <span class="n">conditions</span> <span class="o">=</span> <span class="n">name_df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_scans</span><span class="p">):</span>
+        <span class="n">temperatures</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;Temperature&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">scans</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+        <span class="n">signals</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;Signal&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">scans</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+
+    <span class="n">temperatures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">temperatures</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">temperatures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">temperatures</span><span class="p">,</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">signals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">signals</span><span class="p">)</span>
+
+    <span class="c1"># Iterate over the wavelengths</span>
+
+    <span class="n">named_wls</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">wl</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; nm&#39;</span> <span class="k">for</span> <span class="n">wl</span> <span class="ow">in</span> <span class="n">wavelengths</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_wavelengths</span><span class="p">):</span>
+
+        <span class="n">signals_temp</span> <span class="o">=</span> <span class="n">signals</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="n">signals_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">temps_data</span>   <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Iterate over the columns of the arrays</span>
+        <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_scans</span><span class="p">):</span>
+
+            <span class="n">x</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">[:,</span> <span class="n">ii</span><span class="p">]</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">signals_temp</span><span class="p">[:,</span> <span class="n">ii</span><span class="p">]</span>
+
+            <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+
+            <span class="c1"># Find np.nans in y and x, and remove them</span>
+            <span class="n">non_nas_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+            <span class="n">non_nas_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+            <span class="n">non_nas_yx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">non_nas_y</span><span class="p">,</span> <span class="n">non_nas_x</span><span class="p">)</span>
+
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">non_nas_yx</span><span class="p">]</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">non_nas_yx</span><span class="p">]</span>
+
+            <span class="n">signals_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+            <span class="n">temps_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">wl</span> <span class="o">=</span> <span class="n">named_wls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="n">signal_data_dic</span><span class="p">[</span><span class="n">wl</span><span class="p">]</span> <span class="o">=</span> <span class="n">signals_data</span>
+        <span class="n">temp_data_dic</span><span class="p">[</span><span class="n">wl</span><span class="p">]</span> <span class="o">=</span> <span class="n">temps_data</span>
+
+    <span class="k">return</span> <span class="n">signal_data_dic</span><span class="p">,</span> <span class="n">temp_data_dic</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">named_wls</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, osvalB.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,879 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pychemelt package &#8212; PyChemelt 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pychemelt';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pychemelt.utils package" href="pychemelt.utils.html" />
+    <link rel="prev" title="pychemelt" href="modules.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PyChemelt 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="modules.html">
+    pychemelt
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/osvalB/pychemelt" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="modules.html">
+    pychemelt
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/osvalB/pychemelt" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">pychemelt package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pychemelt.utils.html">pychemelt.utils package</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">pychemelt</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pychemelt package</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-pychemelt">
+<span id="pychemelt-package"></span><h1>pychemelt package<a class="headerlink" href="#module-pychemelt" title="Link to this heading">#</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pychemelt.utils.html">pychemelt.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pychemelt.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pychemelt.utils.html#module-pychemelt.utils.constants">pychemelt.utils.constants module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pychemelt.utils.html#module-pychemelt.utils.files">pychemelt.utils.files module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.get_sheet_names_of_xlsx"><code class="docutils literal notranslate"><span class="pre">get_sheet_names_of_xlsx()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.file_is_of_type_uncle"><code class="docutils literal notranslate"><span class="pre">file_is_of_type_uncle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.detect_file_type"><code class="docutils literal notranslate"><span class="pre">detect_file_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.detect_encoding"><code class="docutils literal notranslate"><span class="pre">detect_encoding()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.find_indexes_of_non_signal_conditions"><code class="docutils literal notranslate"><span class="pre">find_indexes_of_non_signal_conditions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.find_repeated_words"><code class="docutils literal notranslate"><span class="pre">find_repeated_words()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.remove_words_in_string"><code class="docutils literal notranslate"><span class="pre">remove_words_in_string()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.load_csv_file"><code class="docutils literal notranslate"><span class="pre">load_csv_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.get_start_line_quantstudio_txt"><code class="docutils literal notranslate"><span class="pre">get_start_line_quantstudio_txt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.load_quantstudio_txt"><code class="docutils literal notranslate"><span class="pre">load_quantstudio_txt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.load_thermofluor_xlsx"><code class="docutils literal notranslate"><span class="pre">load_thermofluor_xlsx()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.space_combinations"><code class="docutils literal notranslate"><span class="pre">space_combinations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.load_nanoDSF_xlsx"><code class="docutils literal notranslate"><span class="pre">load_nanoDSF_xlsx()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.load_panta_xlsx"><code class="docutils literal notranslate"><span class="pre">load_panta_xlsx()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.load_uncle_multi_channel"><code class="docutils literal notranslate"><span class="pre">load_uncle_multi_channel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.load_mx3005p_txt"><code class="docutils literal notranslate"><span class="pre">load_mx3005p_txt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.files.load_supr_dsf"><code class="docutils literal notranslate"><span class="pre">load_supr_dsf()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pychemelt.utils.html#module-pychemelt.utils.fitting">pychemelt.utils.fitting module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.fitting.fit_line_robust"><code class="docutils literal notranslate"><span class="pre">fit_line_robust()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.fitting.fit_quadratic_robust"><code class="docutils literal notranslate"><span class="pre">fit_quadratic_robust()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.fitting.fit_exponential_robust"><code class="docutils literal notranslate"><span class="pre">fit_exponential_robust()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.fitting.compare_linear_to_quadratic"><code class="docutils literal notranslate"><span class="pre">compare_linear_to_quadratic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.fitting.fit_thermal_unfolding"><code class="docutils literal notranslate"><span class="pre">fit_thermal_unfolding()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.fitting.fit_thermal_unfolding_exponential"><code class="docutils literal notranslate"><span class="pre">fit_thermal_unfolding_exponential()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.fitting.fit_tc_unfolding_single_slopes"><code class="docutils literal notranslate"><span class="pre">fit_tc_unfolding_single_slopes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.fitting.fit_tc_unfolding_shared_slopes_many_signals"><code class="docutils literal notranslate"><span class="pre">fit_tc_unfolding_shared_slopes_many_signals()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.fitting.fit_tc_unfolding_many_signals_slow"><code class="docutils literal notranslate"><span class="pre">fit_tc_unfolding_many_signals_slow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.fitting.fit_tc_unfolding_many_signals"><code class="docutils literal notranslate"><span class="pre">fit_tc_unfolding_many_signals()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.fitting.evaluate_need_to_refit"><code class="docutils literal notranslate"><span class="pre">evaluate_need_to_refit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pychemelt.utils.html#module-pychemelt.utils.fractions">pychemelt.utils.fractions module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.fractions.fn_two_state_monomer"><code class="docutils literal notranslate"><span class="pre">fn_two_state_monomer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.fractions.fu_two_state_dimer"><code class="docutils literal notranslate"><span class="pre">fu_two_state_dimer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pychemelt.utils.html#module-pychemelt.utils.math">pychemelt.utils.math module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.temperature_to_kelvin"><code class="docutils literal notranslate"><span class="pre">temperature_to_kelvin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.temperature_to_celsius"><code class="docutils literal notranslate"><span class="pre">temperature_to_celsius()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.shift_temperature"><code class="docutils literal notranslate"><span class="pre">shift_temperature()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.solve_one_root_quadratic"><code class="docutils literal notranslate"><span class="pre">solve_one_root_quadratic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.solve_one_root_depressed_cubic"><code class="docutils literal notranslate"><span class="pre">solve_one_root_depressed_cubic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.is_evenly_spaced"><code class="docutils literal notranslate"><span class="pre">is_evenly_spaced()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.first_derivative_savgol"><code class="docutils literal notranslate"><span class="pre">first_derivative_savgol()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.relative_errors"><code class="docutils literal notranslate"><span class="pre">relative_errors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.find_line_outliers"><code class="docutils literal notranslate"><span class="pre">find_line_outliers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.residuals_squares_sum"><code class="docutils literal notranslate"><span class="pre">residuals_squares_sum()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.r_squared"><code class="docutils literal notranslate"><span class="pre">r_squared()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.adjusted_r2"><code class="docutils literal notranslate"><span class="pre">adjusted_r2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.compute_aic"><code class="docutils literal notranslate"><span class="pre">compute_aic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.compare_akaikes"><code class="docutils literal notranslate"><span class="pre">compare_akaikes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.rss_p"><code class="docutils literal notranslate"><span class="pre">rss_p()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.get_rss"><code class="docutils literal notranslate"><span class="pre">get_rss()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.math.get_desired_rss"><code class="docutils literal notranslate"><span class="pre">get_desired_rss()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pychemelt.utils.html#module-pychemelt.utils.processing">pychemelt.utils.processing module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.processing.expand_temperature_list"><code class="docutils literal notranslate"><span class="pre">expand_temperature_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.processing.delete_words_appearing_more_than_five_times"><code class="docutils literal notranslate"><span class="pre">delete_words_appearing_more_than_five_times()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.processing.remove_letter_number_combinations"><code class="docutils literal notranslate"><span class="pre">remove_letter_number_combinations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.processing.remove_numbers_after_letter"><code class="docutils literal notranslate"><span class="pre">remove_numbers_after_letter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.processing.remove_non_numeric_char"><code class="docutils literal notranslate"><span class="pre">remove_non_numeric_char()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.processing.clean_conditions_labels"><code class="docutils literal notranslate"><span class="pre">clean_conditions_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.processing.subset_signal_by_temperature"><code class="docutils literal notranslate"><span class="pre">subset_signal_by_temperature()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.processing.guess_Tm_from_derivative"><code class="docutils literal notranslate"><span class="pre">guess_Tm_from_derivative()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.processing.estimate_signal_baseline_params"><code class="docutils literal notranslate"><span class="pre">estimate_signal_baseline_params()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.processing.estimate_signal_baseline_params_exponential"><code class="docutils literal notranslate"><span class="pre">estimate_signal_baseline_params_exponential()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.processing.fit_local_thermal_unfolding_to_signal_lst"><code class="docutils literal notranslate"><span class="pre">fit_local_thermal_unfolding_to_signal_lst()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.processing.fit_local_thermal_unfolding_to_signal_lst_exponential"><code class="docutils literal notranslate"><span class="pre">fit_local_thermal_unfolding_to_signal_lst_exponential()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.processing.re_arrange_predictions"><code class="docutils literal notranslate"><span class="pre">re_arrange_predictions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.processing.re_arrange_params"><code class="docutils literal notranslate"><span class="pre">re_arrange_params()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.processing.subset_data"><code class="docutils literal notranslate"><span class="pre">subset_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pychemelt.utils.html#module-pychemelt.utils.rates">pychemelt.utils.rates module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.rates.eq_constant_thermo"><code class="docutils literal notranslate"><span class="pre">eq_constant_thermo()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.rates.arrhenius"><code class="docutils literal notranslate"><span class="pre">arrhenius()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.rates.eq_constant_termochem"><code class="docutils literal notranslate"><span class="pre">eq_constant_termochem()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pychemelt.utils.html#module-pychemelt.utils.signals">pychemelt.utils.signals module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.signals.signal_two_state_tc_unfolding_monomer"><code class="docutils literal notranslate"><span class="pre">signal_two_state_tc_unfolding_monomer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.signals.signal_two_state_t_unfolding_monomer"><code class="docutils literal notranslate"><span class="pre">signal_two_state_t_unfolding_monomer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pychemelt.utils.html#pychemelt.utils.signals.signal_two_state_t_unfolding_monomer_exponential"><code class="docutils literal notranslate"><span class="pre">signal_two_state_t_unfolding_monomer_exponential()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-pychemelt.main">
+<span id="pychemelt-main-module"></span><h2>pychemelt.main module<a class="headerlink" href="#module-pychemelt.main" title="Link to this heading">#</a></h2>
+<p>Main class to handle thermal and chemical denaturation data
+The current model assumes the protein is a monomer and that the unfolding is reversible</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pychemelt.main.Sample">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pychemelt.main.</span></span><span class="sig-name descname"><span class="pre">Sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Test'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to hold the data of a single sample and fit it</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Test'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.read_file">
+<span class="sig-name descname"><span class="pre">read_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.read_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.read_file" title="Link to this definition">#</a></dt>
+<dd><p>Read the file and load the data into the sample object
+:param file: Path to the file
+:type file: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the file was read and loaded into the sample object</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.read_multiple_files">
+<span class="sig-name descname"><span class="pre">read_multiple_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.read_multiple_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.read_multiple_files" title="Link to this definition">#</a></dt>
+<dd><p>Read multiple files and load the data into the sample object
+:param files: List of paths to the files
+:type files: list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the files were read and loaded into the sample object</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.set_signal">
+<span class="sig-name descname"><span class="pre">set_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal_names</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.set_signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.set_signal" title="Link to this definition">#</a></dt>
+<dd><p>Set multiple signals to be used for the analysis.
+This way, we can fit globally multiple signals at the same time, such as 350nm and 330nm
+:param signal_names: List of names of the signals to be used. E.g., [‘350nm’,’330nm’]
+:type signal_names: list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.set_denaturant_concentrations">
+<span class="sig-name descname"><span class="pre">set_denaturant_concentrations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">concentrations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.set_denaturant_concentrations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.set_denaturant_concentrations" title="Link to this definition">#</a></dt>
+<dd><p>Set the denaturant concentrations for the sample
+:param concentrations: List of denaturant concentrations
+:type concentrations: list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.select_conditions">
+<span class="sig-name descname"><span class="pre">select_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boolean_lst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalise_to_global_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.select_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.select_conditions" title="Link to this definition">#</a></dt>
+<dd><p>For each signal, select the conditions to be used for the analysis
+:param boolean_lst: List of boolean lists, one for each condition
+:type boolean_lst: list
+:param normalise_to_global_max: If True, normalise the signal to the global maximum - per signal type
+:type normalise_to_global_max: bool</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.set_temperature_range">
+<span class="sig-name descname"><span class="pre">set_temperature_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_temp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.set_temperature_range"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.set_temperature_range" title="Link to this definition">#</a></dt>
+<dd><p>Set the temperature range for the sample
+:param min_temp: Minimum temperature
+:type min_temp: float
+:param max_temp: Maximum temperature
+:type max_temp: float</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.set_signal_id">
+<span class="sig-name descname"><span class="pre">set_signal_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.set_signal_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.set_signal_id" title="Link to this definition">#</a></dt>
+<dd><p>Create a list with the same length as the total number of signals
+The elements of the list indicated the ID of the signal,
+e.g., all 350nm datasets are mapped to 0, all 330nm datasets to 1, etc.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.estimate_derivative">
+<span class="sig-name descname"><span class="pre">estimate_derivative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.estimate_derivative"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.estimate_derivative" title="Link to this definition">#</a></dt>
+<dd><p>Estimate the derivative of the signal using Savitzky-Golay filter
+:param window_length: Length of the filter window in degrees
+:type window_length: int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.guess_Tm">
+<span class="sig-name descname"><span class="pre">guess_Tm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.guess_Tm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.guess_Tm" title="Link to this definition">#</a></dt>
+<dd><p>Guess the Tm of the sample using the derivative of the signal
+:param x1: Shift from the minimum and maximum temperature to estimate the median of the initial and final baselines
+:type x1: float
+:param x2: Shift from the minimum and maximum temperature to estimate the median of the initial and final baselines
+:type x2: float</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>x2 must be greater than x1</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.init_slope_dic">
+<span class="sig-name descname"><span class="pre">init_slope_dic</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.init_slope_dic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.init_slope_dic" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.estimate_baseline_parameters">
+<span class="sig-name descname"><span class="pre">estimate_baseline_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_range_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_range_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_order_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_order_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.estimate_baseline_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.estimate_baseline_parameters" title="Link to this definition">#</a></dt>
+<dd><p>Estimate the baseline parameters for multiple signals
+:param window_range_native: Range of the window (in degrees) to estimate the baselines and slopes of the native state
+:type window_range_native: int
+:param window_range_unfolded: Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state
+:type window_range_unfolded: int
+:param poly_order_native: Order of the polynomial to fit the native state baseline (0, 1 or 2)
+:type poly_order_native: int
+:param poly_order_unfolded: Order of the polynomial to fit the unfolded state baseline (0, 1 or 2)
+:type poly_order_unfolded: int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.estimate_baseline_parameters_exponential">
+<span class="sig-name descname"><span class="pre">estimate_baseline_parameters_exponential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_range_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_range_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.estimate_baseline_parameters_exponential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.estimate_baseline_parameters_exponential" title="Link to this definition">#</a></dt>
+<dd><p>Estimate the baseline parameters for multiple signals
+Using exponential functions
+:param window_range_native: Range of the window (in degrees) to estimate the baselines and slopes of the native state
+:type window_range_native: int
+:param window_range_unfolded: Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state
+:type window_range_unfolded: int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.estimate_baseline_parameters_automatic">
+<span class="sig-name descname"><span class="pre">estimate_baseline_parameters_automatic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_range_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_range_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.estimate_baseline_parameters_automatic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.estimate_baseline_parameters_automatic" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.compare_models">
+<span class="sig-name descname"><span class="pre">compare_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_range_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_range_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_ids_lst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.compare_models"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.compare_models" title="Link to this definition">#</a></dt>
+<dd><p>Fit the thermal unfolding curves using four different models:</p>
+<blockquote>
+<div><p>Linear dependence for the native state - Linear dependence for the unfolded state
+Linear dependence for the native state - Quadratic dependence for the unfolded state
+Quadratic dependence for the native state - Linear dependence for the unfolded state
+Quadratic dependence for the native state - Quadratic dependence for the unfolded state</p>
+</div></blockquote>
+<p>Then compare them using the akaike criterion</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window_range_native</strong> (<em>int</em>) – Range of the window (in degrees) to estimate the baselines and slopes of the native state</p></li>
+<li><p><strong>window_range_unfolded</strong> (<em>int</em>) – Range of the window (in degrees) to estimate the baselines and slopes of the unfolded state</p></li>
+<li><p><strong>exclude_ids_lst</strong> (<em>list</em>) – List of ids to exclude from the fitting</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.reset_fittings_results">
+<span class="sig-name descname"><span class="pre">reset_fittings_results</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.reset_fittings_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.reset_fittings_results" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.fit_thermal_unfolding_local">
+<span class="sig-name descname"><span class="pre">fit_thermal_unfolding_local</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.fit_thermal_unfolding_local"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.fit_thermal_unfolding_local" title="Link to this definition">#</a></dt>
+<dd><p>Fit the thermal unfolding of the sample using the signal and temperature data
+We fit one curve at a time, with individual parameters</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.guess_Cp">
+<span class="sig-name descname"><span class="pre">guess_Cp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.guess_Cp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.guess_Cp" title="Link to this definition">#</a></dt>
+<dd><p>Guess the Cp of the sample by fitting a line to the Tm and dH values</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.expand_multiple_signal">
+<span class="sig-name descname"><span class="pre">expand_multiple_signal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.expand_multiple_signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.expand_multiple_signal" title="Link to this definition">#</a></dt>
+<dd><p>Create a single list with all the signals
+Create a single list with all the temperatures</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.guess_initial_parameters">
+<span class="sig-name descname"><span class="pre">guess_initial_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_range_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_range_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_order_native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_order_unfolded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.guess_initial_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.guess_initial_parameters" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.create_params_df">
+<span class="sig-name descname"><span class="pre">create_params_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.create_params_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.create_params_df" title="Link to this definition">#</a></dt>
+<dd><p>Create a dataframe of the parameters</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.create_dg_df">
+<span class="sig-name descname"><span class="pre">create_dg_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.create_dg_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.create_dg_df" title="Link to this definition">#</a></dt>
+<dd><p>Create a dataframe of the dg values versus temperature</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.fit_thermal_unfolding_global">
+<span class="sig-name descname"><span class="pre">fit_thermal_unfolding_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fit_m_dep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp_limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dh_limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tm_limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.fit_thermal_unfolding_global"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.fit_thermal_unfolding_global" title="Link to this definition">#</a></dt>
+<dd><p>Fit the thermal unfolding of the sample using the signal and temperature data
+We fit all the curves at once, with global thermodynamic parameters but local slopes and local baselines)
+Multiple signals can be fitted at the same time, such as 350nm and 330nm
+:param fit_m_dep: If True, fit the temperature dependence of the m-value
+:type fit_m_dep: bool
+:param cp_limits: List of two values, the lower and upper bounds for the Cp value</p>
+<blockquote>
+<div><p>If None, the bounds are set automatically</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dh_limits</strong> (<em>list</em>) – List of two values, the lower and upper bounds for the dH value
+If None, the bounds are set automatically</p></li>
+<li><p><strong>tm_limits</strong> (<em>list</em>) – List of two values, the lower and upper bounds for the Tm value
+If None, the bounds are set automatically</p></li>
+<li><p><strong>cp_value</strong> (<em>float</em>) – If provided, the Cp value is fixed to this value, the bounds are ignored</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.fit_thermal_unfolding_global_global">
+<span class="sig-name descname"><span class="pre">fit_thermal_unfolding_global_global</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.fit_thermal_unfolding_global_global"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.fit_thermal_unfolding_global_global" title="Link to this definition">#</a></dt>
+<dd><p>Fit the thermal unfolding of the sample using the signal and temperature data
+We fit all the curves at once, with global thermodynamic parameters and global slopes (but local baselines)
+Multiple refers to the fact that we fit many signals at the same time, such as 350nm and 330nm
+Must be run after fit_thermal_unfolding_global_multiple</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.fit_thermal_unfolding_global_global_global">
+<span class="sig-name descname"><span class="pre">fit_thermal_unfolding_global_global_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_scale_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.fit_thermal_unfolding_global_global_global"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.fit_thermal_unfolding_global_global_global" title="Link to this definition">#</a></dt>
+<dd><p>Fit the thermal unfolding of the sample using the signal and temperature data
+We fit all the curves at once, with global thermodynamic parameters, global slopes and global baselines
+Must be run after fit_thermal_unfolding_global_global
+:param model_scale_factor: If True, model a scale factor for each denaturant concentration
+:type model_scale_factor: bool</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.main.Sample.signal_to_df">
+<span class="sig-name descname"><span class="pre">signal_to_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'raw'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/main.html#Sample.signal_to_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.main.Sample.signal_to_df" title="Link to this definition">#</a></dt>
+<dd><p>Create a dataframe with three columns: Temperature, Signal, and Denaturant.
+Optimized for speed by avoiding per-curve DataFrame creation.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="modules.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">pychemelt</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pychemelt.utils.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">pychemelt.utils package</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pychemelt.main">pychemelt.main module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample"><code class="docutils literal notranslate"><span class="pre">Sample</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.__init__"><code class="docutils literal notranslate"><span class="pre">Sample.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.read_file"><code class="docutils literal notranslate"><span class="pre">Sample.read_file()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.read_multiple_files"><code class="docutils literal notranslate"><span class="pre">Sample.read_multiple_files()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.set_signal"><code class="docutils literal notranslate"><span class="pre">Sample.set_signal()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.set_denaturant_concentrations"><code class="docutils literal notranslate"><span class="pre">Sample.set_denaturant_concentrations()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.select_conditions"><code class="docutils literal notranslate"><span class="pre">Sample.select_conditions()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.set_temperature_range"><code class="docutils literal notranslate"><span class="pre">Sample.set_temperature_range()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.set_signal_id"><code class="docutils literal notranslate"><span class="pre">Sample.set_signal_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.estimate_derivative"><code class="docutils literal notranslate"><span class="pre">Sample.estimate_derivative()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.guess_Tm"><code class="docutils literal notranslate"><span class="pre">Sample.guess_Tm()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.init_slope_dic"><code class="docutils literal notranslate"><span class="pre">Sample.init_slope_dic()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.estimate_baseline_parameters"><code class="docutils literal notranslate"><span class="pre">Sample.estimate_baseline_parameters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.estimate_baseline_parameters_exponential"><code class="docutils literal notranslate"><span class="pre">Sample.estimate_baseline_parameters_exponential()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.estimate_baseline_parameters_automatic"><code class="docutils literal notranslate"><span class="pre">Sample.estimate_baseline_parameters_automatic()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.compare_models"><code class="docutils literal notranslate"><span class="pre">Sample.compare_models()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.reset_fittings_results"><code class="docutils literal notranslate"><span class="pre">Sample.reset_fittings_results()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.fit_thermal_unfolding_local"><code class="docutils literal notranslate"><span class="pre">Sample.fit_thermal_unfolding_local()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.guess_Cp"><code class="docutils literal notranslate"><span class="pre">Sample.guess_Cp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.expand_multiple_signal"><code class="docutils literal notranslate"><span class="pre">Sample.expand_multiple_signal()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.guess_initial_parameters"><code class="docutils literal notranslate"><span class="pre">Sample.guess_initial_parameters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.create_params_df"><code class="docutils literal notranslate"><span class="pre">Sample.create_params_df()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.create_dg_df"><code class="docutils literal notranslate"><span class="pre">Sample.create_dg_df()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.fit_thermal_unfolding_global"><code class="docutils literal notranslate"><span class="pre">Sample.fit_thermal_unfolding_global()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.fit_thermal_unfolding_global_global"><code class="docutils literal notranslate"><span class="pre">Sample.fit_thermal_unfolding_global_global()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.fit_thermal_unfolding_global_global_global"><code class="docutils literal notranslate"><span class="pre">Sample.fit_thermal_unfolding_global_global_global()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.main.Sample.signal_to_df"><code class="docutils literal notranslate"><span class="pre">Sample.signal_to_df()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pychemelt.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, osvalB.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
