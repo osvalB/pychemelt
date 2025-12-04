@@ -76,6 +76,8 @@ class Sample:
         self.user_min_temp = 5
         self.user_max_temp = 100
 
+        self.predicted = None # Flattened list of fitted signals
+
     def read_file(self, file):
 
         """
@@ -707,10 +709,13 @@ class Sample:
 
         self.global_fit_params = None
         self.predicted_lst_multiple = None
+
+        self.predicted_lst_multiple_scaled = None
+        self.signal_lst_multiple_scaled = None
+
         self.p0 = None
         self.low_bounds = None
         self.high_bounds = None
-        self.global_fit_params = None
         self.rel_errors = None
 
         return None

@@ -4,13 +4,23 @@ Author: Osvaldo Burastero
 """
 import re
 import numpy as np
+import itertools
+
 from collections import Counter
 
 from .math import shift_temperature, relative_errors
-from .fitting import fit_line_robust, fit_quadratic_robust, fit_thermal_unfolding, fit_exponential_robust, fit_thermal_unfolding_exponential
+
+from .fitting import (
+    fit_line_robust,
+    fit_quadratic_robust,
+    fit_thermal_unfolding,
+    fit_exponential_robust,
+    fit_thermal_unfolding_exponential
+)
 
 from .signals import signal_two_state_t_unfolding_monomer, signal_two_state_t_unfolding_monomer_exponential
 
+from .palette import VIRIDIS
 
 def expand_temperature_list(temp_lst,signal_lst):
 
@@ -562,3 +572,53 @@ def subset_data(data,max_points):
         do_remove = len(data) >= max_points
 
     return data
+
+
+def get_colors_from_numeric_values(values, min_val, max_val, use_log_scale=False):
+    """
+    Map numeric values to colors in the VIRIDIS palette based on a specified range.
+
+    Parameters
+    ----------
+    values : list or np.ndarray
+        Numeric values to map to colors.
+    min_val : float
+        Minimum value of the range.
+    max_val : float
+        Maximum value of the range.
+    use_log_scale : bool, optional
+        Whether to use logarithmic scaling for the values, default is True.
+
+    Returns
+    -------
+    list
+        List of hex color codes corresponding to the input values.
+    """
+    values = np.array(values)
+    if use_log_scale:
+        min_val = np.log10(min_val)
+        max_val = np.log10(max_val)
+        values = np.log10(values)
+    seq = np.linspace(min_val, max_val, len(VIRIDIS))
+    idx = [np.argmin(np.abs(v - seq)) for v in values]
+
+    return [VIRIDIS[i] for i in idx]
+
+
+def combine_sequences(seq1, seq2):
+    """
+    Combine two sequences to generate all possible combinations of their elements.
+
+    Parameters
+    ----------
+    seq1 : list
+        First sequence of elements.
+    seq2 : list
+        Second sequence of elements.
+
+    Returns
+    -------
+    list
+        A list of tuples, where each tuple contains one element from seq1 and one from seq2.
+    """
+    return list(itertools.product(seq1, seq2))

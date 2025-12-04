@@ -86,7 +86,7 @@ def signal_two_state_t_unfolding_monomer(
     qU : float, optional
         Quadratic dependence coefficient for the unfolded state (default: 0)
     extra_arg : None, optional
-        Not used but present for API compatibility
+        Not used but present for compatibility
 
     Returns
     -------

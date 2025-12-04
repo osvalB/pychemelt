@@ -43,3 +43,5 @@ logbook_example.py
 .idea/
 
 .pytest_cache/
+
+extra_tests/
