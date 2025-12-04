@@ -1361,6 +1361,198 @@ This is used to compute asymmetric confidence intervals for the fitted parameter
 </dd></dl>
 
 </section>
+<section id="module-pychemelt.utils.palette">
+<span id="pychemelt-utils-palette-module"></span><h2>pychemelt.utils.palette module<a class="headerlink" href="#module-pychemelt.utils.palette" title="Link to this heading">#</a></h2>
+<p>Viridis color palette.</p>
+<p>A perceptually uniform color map that is readable by those with colorblindness.
+Contains hex color values transitioning from dark purple to yellow.</p>
+</section>
+<section id="module-pychemelt.utils.plotting">
+<span id="pychemelt-utils-plotting-module"></span><h2>pychemelt.utils.plotting module<a class="headerlink" href="#module-pychemelt.utils.plotting" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.PlotConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pychemelt.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">PlotConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/plotting.html#PlotConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.plotting.PlotConfig" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>General plot configuration</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.PlotConfig.width">
+<span class="sig-name descname"><span class="pre">width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1000</span></em><a class="headerlink" href="#pychemelt.utils.plotting.PlotConfig.width" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.PlotConfig.height">
+<span class="sig-name descname"><span class="pre">height</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">800</span></em><a class="headerlink" href="#pychemelt.utils.plotting.PlotConfig.height" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.PlotConfig.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'png'</span></em><a class="headerlink" href="#pychemelt.utils.plotting.PlotConfig.type" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.PlotConfig.font_size">
+<span class="sig-name descname"><span class="pre">font_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">16</span></em><a class="headerlink" href="#pychemelt.utils.plotting.PlotConfig.font_size" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.PlotConfig.marker_size">
+<span class="sig-name descname"><span class="pre">marker_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#pychemelt.utils.plotting.PlotConfig.marker_size" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.PlotConfig.line_width">
+<span class="sig-name descname"><span class="pre">line_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#pychemelt.utils.plotting.PlotConfig.line_width" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.PlotConfig.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pychemelt.utils.plotting.PlotConfig.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.AxisConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pychemelt.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">AxisConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">showgrid_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">showgrid_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_y_axis_ticks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tickwidth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticklen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gridwidth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/plotting.html#AxisConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.plotting.AxisConfig" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Axis styling configuration</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.AxisConfig.showgrid_x">
+<span class="sig-name descname"><span class="pre">showgrid_x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#pychemelt.utils.plotting.AxisConfig.showgrid_x" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.AxisConfig.showgrid_y">
+<span class="sig-name descname"><span class="pre">showgrid_y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#pychemelt.utils.plotting.AxisConfig.showgrid_y" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.AxisConfig.n_y_axis_ticks">
+<span class="sig-name descname"><span class="pre">n_y_axis_ticks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#pychemelt.utils.plotting.AxisConfig.n_y_axis_ticks" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.AxisConfig.linewidth">
+<span class="sig-name descname"><span class="pre">linewidth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#pychemelt.utils.plotting.AxisConfig.linewidth" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.AxisConfig.tickwidth">
+<span class="sig-name descname"><span class="pre">tickwidth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#pychemelt.utils.plotting.AxisConfig.tickwidth" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.AxisConfig.ticklen">
+<span class="sig-name descname"><span class="pre">ticklen</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#pychemelt.utils.plotting.AxisConfig.ticklen" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.AxisConfig.gridwidth">
+<span class="sig-name descname"><span class="pre">gridwidth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#pychemelt.utils.plotting.AxisConfig.gridwidth" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.AxisConfig.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">showgrid_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">showgrid_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_y_axis_ticks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tickwidth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticklen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gridwidth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pychemelt.utils.plotting.AxisConfig.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.LayoutConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pychemelt.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">LayoutConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show_subplot_titles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical_spacing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/plotting.html#LayoutConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.plotting.LayoutConfig" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Layout and spacing configuration</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.LayoutConfig.show_subplot_titles">
+<span class="sig-name descname"><span class="pre">show_subplot_titles</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pychemelt.utils.plotting.LayoutConfig.show_subplot_titles" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.LayoutConfig.vertical_spacing">
+<span class="sig-name descname"><span class="pre">vertical_spacing</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.1</span></em><a class="headerlink" href="#pychemelt.utils.plotting.LayoutConfig.vertical_spacing" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.LayoutConfig.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show_subplot_titles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical_spacing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pychemelt.utils.plotting.LayoutConfig.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.LegendConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pychemelt.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">LegendConfig</span></span><a class="reference internal" href="_modules/pychemelt/utils/plotting.html#LegendConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.plotting.LegendConfig" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Legend and labeling configuration</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.LegendConfig.color_bar_length">
+<span class="sig-name descname"><span class="pre">color_bar_length</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.4</span></em><a class="headerlink" href="#pychemelt.utils.plotting.LegendConfig.color_bar_length" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.LegendConfig.color_bar_orientation">
+<span class="sig-name descname"><span class="pre">color_bar_orientation</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'v'</span></em><a class="headerlink" href="#pychemelt.utils.plotting.LegendConfig.color_bar_orientation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.LegendConfig.color_bar_x_pos">
+<span class="sig-name descname"><span class="pre">color_bar_x_pos</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1.05</span></em><a class="headerlink" href="#pychemelt.utils.plotting.LegendConfig.color_bar_x_pos" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.LegendConfig.color_bar_y_pos">
+<span class="sig-name descname"><span class="pre">color_bar_y_pos</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.5</span></em><a class="headerlink" href="#pychemelt.utils.plotting.LegendConfig.color_bar_y_pos" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.LegendConfig.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pychemelt.utils.plotting.LegendConfig.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.config_fig">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">config_fig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_title_for_download</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'plot'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/plotting.html#config_fig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.plotting.config_fig" title="Link to this definition">#</a></dt>
+<dd><p>Configure plotly figure with download options and toolbar settings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fig</strong> (<em>go.Figure</em>) – Plotly figure object</p></li>
+<li><p><strong>plot_width</strong> (<em>int</em><em>, </em><em>default 800</em>) – Width of the plot in pixels</p></li>
+<li><p><strong>plot_height</strong> (<em>int</em><em>, </em><em>default 600</em>) – Height of the plot in pixels</p></li>
+<li><p><strong>plot_type</strong> (<em>str</em><em>, </em><em>default &quot;png&quot;</em>) – Format for downloading the plot (e.g., “png”, “jpeg”)</p></li>
+<li><p><strong>plot_title_for_download</strong> (<em>str</em><em>, </em><em>default &quot;plot&quot;</em>) – Title for the downloaded plot file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Configured plotly figure</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>go.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.plotting.plot_unfolding">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">plot_unfolding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pychemelt_sample</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pychemelt.utils.plotting.PlotConfig" title="pychemelt.utils.plotting.PlotConfig"><span class="pre">PlotConfig</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pychemelt.utils.plotting.AxisConfig" title="pychemelt.utils.plotting.AxisConfig"><span class="pre">AxisConfig</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pychemelt.utils.plotting.LayoutConfig" title="pychemelt.utils.plotting.LayoutConfig"><span class="pre">LayoutConfig</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pychemelt.utils.plotting.LegendConfig" title="pychemelt.utils.plotting.LegendConfig"><span class="pre">LegendConfig</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/plotting.html#plot_unfolding"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.plotting.plot_unfolding" title="Link to this definition">#</a></dt>
+<dd><p>Plot the unfolding curves, including the signal and the predicted curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pychemelt_sample</strong> – pychemelt.Sample object</p></li>
+<li><p><strong>plot_config</strong> (<a class="reference internal" href="#pychemelt.utils.plotting.PlotConfig" title="pychemelt.utils.plotting.PlotConfig"><em>PlotConfig</em></a><em>, </em><em>optional</em>) – Configuration for the overall plot</p></li>
+<li><p><strong>axis_config</strong> (<a class="reference internal" href="#pychemelt.utils.plotting.AxisConfig" title="pychemelt.utils.plotting.AxisConfig"><em>AxisConfig</em></a><em>, </em><em>optional</em>) – Configuration for the axes</p></li>
+<li><p><strong>layout_config</strong> (<a class="reference internal" href="#pychemelt.utils.plotting.LayoutConfig" title="pychemelt.utils.plotting.LayoutConfig"><em>LayoutConfig</em></a><em>, </em><em>optional</em>) – Configuration for the layout</p></li>
+<li><p><strong>legend_config</strong> (<a class="reference internal" href="#pychemelt.utils.plotting.LegendConfig" title="pychemelt.utils.plotting.LegendConfig"><em>LegendConfig</em></a><em>, </em><em>optional</em>) – configuration for the legend</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 <section id="module-pychemelt.utils.processing">
 <span id="pychemelt-utils-processing-module"></span><h2>pychemelt.utils.processing module<a class="headerlink" href="#module-pychemelt.utils.processing" title="Link to this heading">#</a></h2>
 <p>This module contains helper functions to process data
@@ -1612,6 +1804,48 @@ alphaUs (list): List of unfolded state exponential factors</p>
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.get_colors_from_numeric_values">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">get_colors_from_numeric_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_log_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#get_colors_from_numeric_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.get_colors_from_numeric_values" title="Link to this definition">#</a></dt>
+<dd><p>Map numeric values to colors in the VIRIDIS palette based on a specified range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>list</em><em> or </em><em>np.ndarray</em>) – Numeric values to map to colors.</p></li>
+<li><p><strong>min_val</strong> (<em>float</em>) – Minimum value of the range.</p></li>
+<li><p><strong>max_val</strong> (<em>float</em>) – Maximum value of the range.</p></li>
+<li><p><strong>use_log_scale</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to use logarithmic scaling for the values, default is True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of hex color codes corresponding to the input values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pychemelt.utils.processing.combine_sequences">
+<span class="sig-prename descclassname"><span class="pre">pychemelt.utils.processing.</span></span><span class="sig-name descname"><span class="pre">combine_sequences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pychemelt/utils/processing.html#combine_sequences"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pychemelt.utils.processing.combine_sequences" title="Link to this definition">#</a></dt>
+<dd><p>Combine two sequences to generate all possible combinations of their elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seq1</strong> (<em>list</em>) – First sequence of elements.</p></li>
+<li><p><strong>seq2</strong> (<em>list</em>) – Second sequence of elements.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of tuples, where each tuple contains one element from seq1 and one from seq2.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-pychemelt.utils.rates">
 <span id="pychemelt-utils-rates-module"></span><h2>pychemelt.utils.rates module<a class="headerlink" href="#module-pychemelt.utils.rates" title="Link to this heading">#</a></h2>
@@ -1757,7 +1991,7 @@ denaturation</p>
 <li><p><strong>Cp</strong> (<em>float</em><em>, </em><em>optional</em>) – Variation of heat capacity between the two states (default: 0)</p></li>
 <li><p><strong>qN</strong> (<em>float</em><em>, </em><em>optional</em>) – Quadratic dependence coefficient for the native state (default: 0)</p></li>
 <li><p><strong>qU</strong> (<em>float</em><em>, </em><em>optional</em>) – Quadratic dependence coefficient for the unfolded state (default: 0)</p></li>
-<li><p><strong>extra_arg</strong> (<em>None</em><em>, </em><em>optional</em>) – Not used but present for API compatibility</p></li>
+<li><p><strong>extra_arg</strong> (<em>None</em><em>, </em><em>optional</em>) – Not used but present for compatibility</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1900,6 +2134,47 @@ denaturation</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.math.get_desired_rss"><code class="docutils literal notranslate"><span class="pre">get_desired_rss()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pychemelt.utils.palette">pychemelt.utils.palette module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pychemelt.utils.plotting">pychemelt.utils.plotting module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.PlotConfig"><code class="docutils literal notranslate"><span class="pre">PlotConfig</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.PlotConfig.width"><code class="docutils literal notranslate"><span class="pre">PlotConfig.width</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.PlotConfig.height"><code class="docutils literal notranslate"><span class="pre">PlotConfig.height</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.PlotConfig.type"><code class="docutils literal notranslate"><span class="pre">PlotConfig.type</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.PlotConfig.font_size"><code class="docutils literal notranslate"><span class="pre">PlotConfig.font_size</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.PlotConfig.marker_size"><code class="docutils literal notranslate"><span class="pre">PlotConfig.marker_size</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.PlotConfig.line_width"><code class="docutils literal notranslate"><span class="pre">PlotConfig.line_width</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.PlotConfig.__init__"><code class="docutils literal notranslate"><span class="pre">PlotConfig.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.AxisConfig"><code class="docutils literal notranslate"><span class="pre">AxisConfig</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.AxisConfig.showgrid_x"><code class="docutils literal notranslate"><span class="pre">AxisConfig.showgrid_x</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.AxisConfig.showgrid_y"><code class="docutils literal notranslate"><span class="pre">AxisConfig.showgrid_y</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.AxisConfig.n_y_axis_ticks"><code class="docutils literal notranslate"><span class="pre">AxisConfig.n_y_axis_ticks</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.AxisConfig.linewidth"><code class="docutils literal notranslate"><span class="pre">AxisConfig.linewidth</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.AxisConfig.tickwidth"><code class="docutils literal notranslate"><span class="pre">AxisConfig.tickwidth</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.AxisConfig.ticklen"><code class="docutils literal notranslate"><span class="pre">AxisConfig.ticklen</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.AxisConfig.gridwidth"><code class="docutils literal notranslate"><span class="pre">AxisConfig.gridwidth</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.AxisConfig.__init__"><code class="docutils literal notranslate"><span class="pre">AxisConfig.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.LayoutConfig"><code class="docutils literal notranslate"><span class="pre">LayoutConfig</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.LayoutConfig.show_subplot_titles"><code class="docutils literal notranslate"><span class="pre">LayoutConfig.show_subplot_titles</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.LayoutConfig.vertical_spacing"><code class="docutils literal notranslate"><span class="pre">LayoutConfig.vertical_spacing</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.LayoutConfig.__init__"><code class="docutils literal notranslate"><span class="pre">LayoutConfig.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.LegendConfig"><code class="docutils literal notranslate"><span class="pre">LegendConfig</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.LegendConfig.color_bar_length"><code class="docutils literal notranslate"><span class="pre">LegendConfig.color_bar_length</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.LegendConfig.color_bar_orientation"><code class="docutils literal notranslate"><span class="pre">LegendConfig.color_bar_orientation</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.LegendConfig.color_bar_x_pos"><code class="docutils literal notranslate"><span class="pre">LegendConfig.color_bar_x_pos</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.LegendConfig.color_bar_y_pos"><code class="docutils literal notranslate"><span class="pre">LegendConfig.color_bar_y_pos</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.LegendConfig.__init__"><code class="docutils literal notranslate"><span class="pre">LegendConfig.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.config_fig"><code class="docutils literal notranslate"><span class="pre">config_fig()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.plotting.plot_unfolding"><code class="docutils literal notranslate"><span class="pre">plot_unfolding()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pychemelt.utils.processing">pychemelt.utils.processing module</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.expand_temperature_list"><code class="docutils literal notranslate"><span class="pre">expand_temperature_list()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.delete_words_appearing_more_than_five_times"><code class="docutils literal notranslate"><span class="pre">delete_words_appearing_more_than_five_times()</span></code></a></li>
@@ -1916,6 +2191,8 @@ denaturation</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.re_arrange_predictions"><code class="docutils literal notranslate"><span class="pre">re_arrange_predictions()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.re_arrange_params"><code class="docutils literal notranslate"><span class="pre">re_arrange_params()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.subset_data"><code class="docutils literal notranslate"><span class="pre">subset_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.get_colors_from_numeric_values"><code class="docutils literal notranslate"><span class="pre">get_colors_from_numeric_values()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pychemelt.utils.processing.combine_sequences"><code class="docutils literal notranslate"><span class="pre">combine_sequences()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-pychemelt.utils.rates">pychemelt.utils.rates module</a><ul class="visible nav section-nav flex-column">

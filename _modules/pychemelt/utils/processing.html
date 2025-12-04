@@ -339,13 +339,23 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
+
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">.math</span><span class="w"> </span><span class="kn">import</span> <span class="n">shift_temperature</span><span class="p">,</span> <span class="n">relative_errors</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">.fitting</span><span class="w"> </span><span class="kn">import</span> <span class="n">fit_line_robust</span><span class="p">,</span> <span class="n">fit_quadratic_robust</span><span class="p">,</span> <span class="n">fit_thermal_unfolding</span><span class="p">,</span> <span class="n">fit_exponential_robust</span><span class="p">,</span> <span class="n">fit_thermal_unfolding_exponential</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.fitting</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">fit_line_robust</span><span class="p">,</span>
+    <span class="n">fit_quadratic_robust</span><span class="p">,</span>
+    <span class="n">fit_thermal_unfolding</span><span class="p">,</span>
+    <span class="n">fit_exponential_robust</span><span class="p">,</span>
+    <span class="n">fit_thermal_unfolding_exponential</span>
+<span class="p">)</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">.signals</span><span class="w"> </span><span class="kn">import</span> <span class="n">signal_two_state_t_unfolding_monomer</span><span class="p">,</span> <span class="n">signal_two_state_t_unfolding_monomer_exponential</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">.palette</span><span class="w"> </span><span class="kn">import</span> <span class="n">VIRIDIS</span>
 
 <div class="viewcode-block" id="expand_temperature_list">
 <a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.processing.expand_temperature_list">[docs]</a>
@@ -941,6 +951,62 @@
         <span class="n">do_remove</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">max_points</span>
 
     <span class="k">return</span> <span class="n">data</span></div>
+
+
+
+<div class="viewcode-block" id="get_colors_from_numeric_values">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.processing.get_colors_from_numeric_values">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_colors_from_numeric_values</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">min_val</span><span class="p">,</span> <span class="n">max_val</span><span class="p">,</span> <span class="n">use_log_scale</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Map numeric values to colors in the VIRIDIS palette based on a specified range.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    values : list or np.ndarray</span>
+<span class="sd">        Numeric values to map to colors.</span>
+<span class="sd">    min_val : float</span>
+<span class="sd">        Minimum value of the range.</span>
+<span class="sd">    max_val : float</span>
+<span class="sd">        Maximum value of the range.</span>
+<span class="sd">    use_log_scale : bool, optional</span>
+<span class="sd">        Whether to use logarithmic scaling for the values, default is True.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        List of hex color codes corresponding to the input values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">use_log_scale</span><span class="p">:</span>
+        <span class="n">min_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">min_val</span><span class="p">)</span>
+        <span class="n">max_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">max_val</span><span class="p">)</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">min_val</span><span class="p">,</span> <span class="n">max_val</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">VIRIDIS</span><span class="p">))</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">v</span> <span class="o">-</span> <span class="n">seq</span><span class="p">))</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">VIRIDIS</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="combine_sequences">
+<a class="viewcode-back" href="../../../pychemelt.utils.html#pychemelt.utils.processing.combine_sequences">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">combine_sequences</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Combine two sequences to generate all possible combinations of their elements.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    seq1 : list</span>
+<span class="sd">        First sequence of elements.</span>
+<span class="sd">    seq2 : list</span>
+<span class="sd">        Second sequence of elements.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        A list of tuples, where each tuple contains one element from seq1 and one from seq2.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">))</span></div>
 
 </pre></div>
 

@@ -413,7 +413,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">max_points</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">user_min_temp</span> <span class="o">=</span> <span class="mi">5</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">user_max_temp</span> <span class="o">=</span> <span class="mi">100</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_max_temp</span> <span class="o">=</span> <span class="mi">100</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">predicted</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># Flattened list of fitted signals</span></div>
 
 
 <div class="viewcode-block" id="Sample.read_file">
@@ -1091,10 +1093,13 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">global_fit_params</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">predicted_lst_multiple</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">predicted_lst_multiple_scaled</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signal_lst_multiple_scaled</span> <span class="o">=</span> <span class="kc">None</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">p0</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">low_bounds</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">high_bounds</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">global_fit_params</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rel_errors</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="k">return</span> <span class="kc">None</span></div>

@@ -49,6 +49,22 @@ pychemelt.utils.math module
    :show-inheritance:
    :undoc-members:
 
+pychemelt.utils.palette module
+------------------------------
+
+.. automodule:: pychemelt.utils.palette
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+pychemelt.utils.plotting module
+-------------------------------
+
+.. automodule:: pychemelt.utils.plotting
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 pychemelt.utils.processing module
 ---------------------------------
 
